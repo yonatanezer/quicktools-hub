@@ -1,16 +1,15 @@
 /**
- * Single source of truth for all tools in QuickTools Hub (routes, SEO, categories, related links).
+ * Single source of truth for all tools (routes, tiers, SEO, categories, internal links).
  *
- * - Adding a tool that reuses an existing `implementation` only requires a new object in `tools`.
- * - Introducing a brand-new capability requires adding a `ToolImplementation` value here and
- *   registering its UI once in `lib/tool-implementations.tsx` (same pattern as scaling to many tools).
+ * Tiers: `star` (primary traffic), `standard` (supporting), `seo` (long-tail listings).
+ * Reusing an existing `implementation` only requires a new row in `tools`.
+ * New UI kinds: extend `ToolImplementation` and register once in `lib/tool-implementations.tsx`.
  */
 
 export type ToolCategory = "image" | "text" | "calculator";
 
-/**
- * Maps each tool to its UI implementation. Reuse an existing key for multiple SEO pages that share the same tool.
- */
+export type ToolTier = "star" | "standard" | "seo";
+
 export type ToolImplementation =
   | "image-to-pdf"
   | "word-counter"
@@ -25,16 +24,26 @@ export interface Tool {
   id: string;
   slug: string;
   title: string;
+  /** Homepage / nav emphasis */
+  tier: ToolTier;
   category: ToolCategory;
+  /** `<title>` / sharing — keyword-led, intent-focused */
   seoTitle: string;
   seoDescription: string;
+  /** Short card / list blurb */
   description: string;
+  /** Page H1 — readable and SEO-friendly */
+  h1: string;
+  /** 2–4 lines, shown under H1 */
+  introduction: string;
   implementation: ToolImplementation;
-  /** 200–400 words for tool detail pages */
+  /** 150–300 words for the main SEO article block */
   seoContent: string;
-  /** Up to 2 items; rendered on the tool page */
+  /** 3–5 steps */
+  howToUse: string[];
+  /** 2–4 FAQ items */
   faq: ToolFAQItem[];
-  /** Internal links to related tool slugs */
+  /** Related slugs (stars are also surfaced globally on every tool page) */
   relatedSlugs: string[];
 }
 
@@ -43,97 +52,152 @@ export const tools: Tool[] = [
     id: "image-to-pdf",
     slug: "image-to-pdf",
     title: "Image to PDF",
+    tier: "star",
     category: "image",
-    seoTitle: "Free Image to PDF Converter (JPG & PNG) | QuickTools Hub",
+    seoTitle:
+      "Free Image to PDF Converter Online — JPG & PNG to PDF | QuickTools Hub",
     seoDescription:
-      "Turn JPG or PNG images into a downloadable PDF in your browser. No uploads to a server—fast, private, and free.",
+      "Use our free image to PDF converter online: merge JPG or PNG files into one PDF in your browser. Private, fast, no signup.",
     description:
-      "Convert JPG or PNG files to a single PDF document locally in your browser.",
+      "Turn JPG or PNG images into a single PDF—runs locally in your browser.",
+    h1: "Free Image to PDF Converter Online",
+    introduction:
+      "Upload JPG or PNG files and download a merged PDF in seconds. This free image to PDF converter runs entirely in your browser, so your files are not uploaded to our servers.\n\nIdeal for homework, invoices, screenshots, and quick sharing when you need a tidy PDF attachment.",
     implementation: "image-to-pdf",
-    seoContent: `Converting images to PDF is a common need for school projects, invoices, portfolios, and email attachments. This tool runs entirely in your browser: your files are not uploaded to our servers, which helps keep your content private and speeds up the workflow when you only need a quick merge or export.
+    seoContent: `If you need a dependable image to PDF converter for everyday work, browser-based tools can save time because there is nothing to install. QuickTools Hub focuses on a simple flow: choose your images, build the PDF, and download the result. That approach matches how people actually work—fast tasks, clear outcomes, and minimal friction.
 
-You can use it for scanned pages, screenshots, photos of documents, or design exports. The interface focuses on a simple upload, a clear preview path, and a one-click download so you can move on without installing desktop software.
+Because conversion happens locally, it is a practical choice when privacy matters. School assignments, client screenshots, and personal photos stay on your device while the page does the encoding work. For the best output, prefer sharp images with readable text and add files in the order you want pages to appear.
 
-For best results, use clear images with readable text and consistent orientation. If you need multiple pages, add images in the order you want them to appear in the final PDF. Because processing happens locally, performance depends on your device and image size—very large photos may take a few seconds to encode.
-
-This page is part of QuickTools Hub, a collection of lightweight utilities designed to stay fast and easy to use. If you also work with text metrics or quick math, explore our related tools for counting words and calculating percentages from the links below.`,
+This utility sits alongside other free online tools on the hub, including a word counter online for drafting and calculator tools for quick math. Together, they form a small productivity toolkit you can return to whenever you need a fast result without creating an account.`,
+    howToUse: [
+      "Click “Choose files” (or your browser’s equivalent) and select one or more JPG or PNG images.",
+      "Images are processed in the order you select them—re-select in a different order if you need a different page sequence.",
+      "Wait a moment while your browser builds the PDF; large photos may take slightly longer.",
+      "Download the generated PDF when prompted and save it where you need it.",
+      "Optional: repeat with a new batch if you want a separate PDF file.",
+    ],
     faq: [
       {
-        question: "Are my images uploaded to your servers?",
+        question: "Is this image to PDF converter really free?",
         answer:
-          "No. Conversion uses JavaScript in your browser. Files stay on your device unless you choose to download the PDF.",
+          "Yes. QuickTools Hub provides free online tools with no signup required for this converter.",
       },
       {
-        question: "Which image formats are supported?",
+        question: "Do you upload my images to a server?",
         answer:
-          "You can convert JPG and PNG images. Use high-quality sources for sharper text in the exported PDF.",
+          "No. The conversion uses JavaScript in your browser, so your images stay on your device unless you choose to share the PDF elsewhere.",
+      },
+      {
+        question: "Can I combine multiple images into one PDF?",
+        answer:
+          "Yes. Select multiple JPG or PNG files and the tool merges them into a single downloadable PDF.",
+      },
+      {
+        question: "What formats are supported?",
+        answer:
+          "Use JPG or PNG images. Higher-resolution sources usually produce clearer text in the PDF.",
       },
     ],
-    relatedSlugs: ["word-counter", "percentage-calculator"],
+    relatedSlugs: ["percentage-calculator"],
   },
   {
     id: "word-counter",
     slug: "word-counter",
     title: "Word Counter",
+    tier: "star",
     category: "text",
-    seoTitle: "Word Counter Online — Words, Characters & Sentences | QuickTools Hub",
+    seoTitle:
+      "Word Counter Online — Free Character & Sentence Counter | QuickTools Hub",
     seoDescription:
-      "Count words, characters, and sentences in real time. Paste or type your text for instant stats—free and private.",
+      "Free word counter online: count words, characters, and sentences in real time. Paste or type—no signup, instant results.",
     description:
-      "Paste or type text to see words, characters, and sentence counts update instantly.",
+      "Count words, characters, and sentences live as you type or paste.",
+    h1: "Word Counter Online — Words, Characters & Sentences",
+    introduction:
+      "Use this free word counter online to see words, characters, and sentence totals update instantly. It is built for essays, posts, applications, and any draft where limits matter.\n\nEverything runs in your session in the browser—paste text, edit, and watch the stats change in real time.",
     implementation: "word-counter",
-    seoContent: `A reliable word counter helps writers, students, and professionals stay within limits for essays, social posts, job applications, and reporting. This tool updates in real time as you type or paste, so you can edit with immediate feedback instead of running a separate check after each change.
+    seoContent: `A word counter online is one of the most common free online tools because writing happens everywhere: email, school papers, product pages, and social updates. QuickTools Hub keeps the experience direct—large text area, readable totals, and no account gate—so you can focus on tightening your message.
 
-Beyond a simple total, seeing characters and sentences together helps tune tone and pacing. Character counts matter for SMS-style limits, meta descriptions, and UI copy, while sentence counts can highlight whether a paragraph is dense or easy to scan.
+Character counts matter for SEO snippets, SMS-style limits, and form fields, while word counts help with assignments and editorial guidelines. Seeing sentences alongside words gives a quick sense of rhythm, especially when you are trimming long paragraphs.
 
-Use this page when you are drafting offline notes and want a quick tally, when you are adapting content between platforms with different limits, or when you want a lightweight alternative to a full word processor. Your text is processed in the browser session and is not stored by QuickTools Hub.
-
-For longer documents, consider breaking review into sections so you can spot where wording expands. Pair this tool with our percentage calculator when you need quick numeric context, or use the image-to-PDF tool when you need to share a clean, portable document.`,
+Pair this page with calculator tools when you need quick numeric context, or use our image to PDF converter when you want to share a polished document. The hub is designed as a lightweight productivity toolkit: fast pages, mobile-friendly controls, and clear outcomes.`,
+    howToUse: [
+      "Paste your text into the box, or start typing directly.",
+      "Watch the word, character, and sentence counts update automatically as you edit.",
+      "Use “characters” for hard limits and “words” for editorial or academic targets.",
+      "Copy your text out when you are finished—nothing is saved on our servers.",
+      "Open a related tool if you also need PDF export or percentage math.",
+    ],
     faq: [
       {
-        question: "Does this store my text?",
+        question: "Is this word counter free to use?",
         answer:
-          "No server-side storage is used for the word counter. Text stays in your browser while you use the page.",
+          "Yes. It is a free online tool and does not require signup for basic counting.",
       },
       {
-        question: "How are words detected?",
+        question: "Do you store my text?",
         answer:
-          "Words are split on whitespace after trimming. Numbers and hyphenated tokens are counted as part of words depending on spacing.",
+          "No server-side storage is used for counting. Your text remains in your browser while you use the page.",
+      },
+      {
+        question: "How are words counted?",
+        answer:
+          "Words are split on whitespace after trimming empty edges. Punctuation stays attached to words unless separated by spaces.",
+      },
+      {
+        question: "How are sentences estimated?",
+        answer:
+          "Sentences are approximated by splitting on common sentence endings. Very short fragments may be grouped depending on punctuation.",
       },
     ],
-    relatedSlugs: ["percentage-calculator", "image-to-pdf"],
+    relatedSlugs: ["percentage-calculator"],
   },
   {
     id: "percentage-calculator",
     slug: "percentage-calculator",
     title: "Percentage Calculator",
+    tier: "standard",
     category: "calculator",
-    seoTitle: "Percentage Calculator — Find X% of Y & Percent Change | QuickTools Hub",
+    seoTitle:
+      "Percentage Calculator — X% of Y & Percent Increase/Decrease | QuickTools Hub",
     seoDescription:
-      "Calculate what is X percent of Y and find percent increase or decrease between two values. Clear inputs and instant results.",
+      "Free percentage calculator: find X% of Y and percent change between two values. Clear inputs, instant results, mobile-friendly.",
     description:
-      "Find X% of Y and compute percent increase or decrease between two numbers.",
+      "Find X% of Y and measure percent increase or decrease between two numbers.",
+    h1: "Percentage Calculator",
+    introduction:
+      "Solve two everyday percentage problems in one place: calculate a portion (what is X% of Y?) and measure change between two values (percent increase or decrease).\n\nLarge inputs and simple labels make it easy to use on a phone when you are comparing prices, tips, or quick estimates.",
     implementation: "percentage-calculator",
-    seoContent: `Percentages appear everywhere in discounts, tips, growth metrics, grades, and budgets. This calculator focuses on two practical patterns: finding a portion of a whole (what is X percent of Y) and measuring change between two numbers (percent increase or decrease).
+    seoContent: `Calculator tools are most helpful when they match the questions people actually ask. This percentage calculator focuses on two patterns that show up constantly: finding a part of a whole and understanding relative change. Instead of juggling mental math, you can enter values and read a clear result.
 
-For portion calculations, enter the percent and the base value to see the result without mental arithmetic. For change, enter an old and new value to understand relative movement, which is useful when comparing prices, traffic, or performance over time.
+For shopping and budgeting, percent-of calculations help you estimate discounts and allocations. For reporting, percent change helps you compare an old value to a new one without losing the sense of scale. QuickTools Hub keeps the layout minimal so you can iterate quickly.
 
-The layout uses large inputs and readable labels so you can use it on a phone without zooming. Results update as you adjust values, which makes it easy to explore scenarios such as tiered discounts or incremental improvements.
-
-QuickTools Hub keeps utilities lightweight. If you are also drafting explanations or reports, combine this page with the word counter for concise copy, or convert supporting screenshots to PDF using our image-to-PDF tool when you need a tidy attachment.`,
+If you are writing up results, try our word counter online to tighten explanations, or use the free image to PDF converter when you need a neat attachment. These free online tools are meant to work together as a simple productivity workflow.`,
+    howToUse: [
+      "For “X% of Y,” enter the percent in the first field and the base amount in the second.",
+      "Read the computed result below the inputs; it updates as you type.",
+      "For percent change, enter the original value and the new value.",
+      "Positive change means an increase; negative change means a decrease.",
+      "Adjust numbers freely to compare scenarios such as discounts or growth estimates.",
+    ],
     faq: [
       {
-        question: "How is percent change calculated?",
+        question: "How do you calculate percent change?",
         answer:
-          "Percent change uses (new − old) ÷ old × 100. A negative result means a decrease; a positive result means an increase.",
+          "Percent change is (new − old) ÷ old × 100. If old is zero, the change is undefined.",
       },
       {
         question: "Can I use decimals?",
         answer:
-          "Yes. Enter decimal percentages and decimal bases as needed; the tool evaluates using standard floating-point math.",
+          "Yes. Decimal percentages and decimal bases are supported using standard number parsing.",
+      },
+      {
+        question: "Is this calculator free?",
+        answer:
+          "Yes. It is part of QuickTools Hub’s free online tools and does not require signup.",
       },
     ],
-    relatedSlugs: ["word-counter", "image-to-pdf"],
+    relatedSlugs: ["image-to-pdf", "word-counter"],
   },
 ];
 
@@ -147,6 +211,23 @@ export function getToolBySlug(slug: string): Tool | undefined {
 
 export function getToolsByCategory(category: ToolCategory): Tool[] {
   return tools.filter((t) => t.category === category);
+}
+
+export function getToolsByTier(tier: ToolTier): Tool[] {
+  return tools.filter((t) => t.tier === tier);
+}
+
+export function getStarTools(): Tool[] {
+  return tools.filter((t) => t.tier === "star");
+}
+
+export function getStandardTools(): Tool[] {
+  return tools.filter((t) => t.tier === "standard");
+}
+
+/** Long-tail tools: listed for SEO discovery, not homepage heroes */
+export function getSeoTailTools(): Tool[] {
+  return tools.filter((t) => t.tier === "seo");
 }
 
 /** 200–300 words per category landing page */
