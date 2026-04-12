@@ -6,6 +6,7 @@ import {
   getSeoTailTools,
   getStandardTools,
   getStarTools,
+  tools,
 } from "@/data/tools";
 
 export const metadata: Metadata = {
@@ -113,6 +114,32 @@ export default function HomePage() {
             </div>
           </div>
         ) : null}
+
+        <div
+          id="all-tool-pages"
+          className="mt-12 rounded-xl border border-slate-200 bg-slate-50/80 px-5 py-6 sm:px-6"
+        >
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-600">
+            All tool landing pages
+          </h3>
+          <p className="mt-2 text-sm text-slate-600">
+            Programmatic SEO index: every tool has a dedicated URL under{" "}
+            <code className="rounded bg-white px-1 py-0.5 text-xs">/tools/</code>{" "}
+            for Google and sharing.
+          </p>
+          <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            {tools.map((t) => (
+              <li key={t.id}>
+                <Link
+                  href={`/tools/${t.slug}`}
+                  className="font-medium text-blue-700 hover:underline"
+                >
+                  {t.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       {/* Mid-page ad slot */}

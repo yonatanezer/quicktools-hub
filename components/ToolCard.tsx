@@ -1,13 +1,13 @@
 import Link from "next/link";
-import type { Tool } from "@/data/tools";
+import type { Tool, ToolTier } from "@/types/tool";
 
-const categoryLabel: Record<Tool["category"], string> = {
+const categoryLabel: Record<string, string> = {
   image: "Image",
   text: "Text",
   calculator: "Calculator",
 };
 
-const tierLabel: Record<Tool["tier"], string> = {
+const tierLabel: Record<ToolTier, string> = {
   star: "Featured",
   standard: "Tool",
   seo: "More tools",
@@ -62,7 +62,7 @@ export function ToolCard({
       className={`block transition hover:border-blue-300 hover:shadow-md ${shell}`}
     >
       <p className={badgeClass}>
-        {categoryLabel[tool.category]}
+        {categoryLabel[tool.category] ?? tool.category}
         {variant === "star" ? ` · ${tierLabel[tool.tier]}` : null}
       </p>
       <h2 className={titleClass}>{tool.title}</h2>

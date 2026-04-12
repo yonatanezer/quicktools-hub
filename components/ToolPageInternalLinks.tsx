@@ -1,62 +1,80 @@
 import Link from "next/link";
-import { getStarTools, getToolBySlug } from "@/data/tools";
+import type { Tool } from "@/types/tool";
 
 type Props = {
   currentSlug: string;
-  relatedSlugs: string[];
+  allStarTools: Tool[];
+  relatedTools: Tool[];
 };
 
-export function ToolPageInternalLinks({ currentSlug, relatedSlugs }: Props) {
-  const stars = getStarTools().filter((t) => t.slug !== currentSlug);
-  const related = relatedSlugs
-    .map((slug) => getToolBySlug(slug))
-    .filter((t) => t && t.slug !== currentSlug);
-
-
-const relatedDeduped = related
-  .filter((t): t is NonNullable<typeof t> => t != null)
-  .filter(
-    (t) => !stars.some((s) => s.slug === t.slug)
-  );
-
+/**
+ * Programmatic SEO footer: STAR tools always appear (hub); related slugs add spokes.
+ * Current page star is labeled without a duplicate link.
+ */
+export function ToolPageInternalLinks({
+  currentSlug,
+  allStarTools,
+  relatedTools,
+}: Props) {
   return (
     <section className="mt-10 border-t border-slate-200 pt-8">
       <h2 className="text-lg font-semibold text-slate-900">
-        Explore more free online tools
+        More free online tools
       </h2>
       <p className="mt-2 text-sm text-slate-600">
-        QuickTools Hub groups productivity tools you can run in the browser—no
-        signup required.
+        QuickTools Hub links high-intent utilities together so you can finish
+        related tasks in one session—no signup required.
       </p>
 
-      {stars.length > 0 ? (
+      {allStarTools.length > 0 ? (
         <div className="mt-6">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-            Popular tools
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-blue-800">
+            Featured tools
           </h3>
-          <ul className="mt-3 space-y-3">
-            {stars.map((t) => (
+          <p className="mt-1 text-sm text-slate-600">
+            Our most-used utilities: image to PDF and word counter online.
+          </p>
+          <ul className="mt-4 space-y-3">
+            {allStarTools.map((t) => (
               <li key={t.slug}>
-                <Link
-                  href={`/tools/${t.slug}`}
-                  className="text-base font-semibold text-blue-700 hover:underline"
-                >
-                  {t.title}
-                </Link>
-                <p className="mt-0.5 text-sm text-slate-600">{t.description}</p>
+                {t.slug === currentSlug ? (
+                  <div>
+                    <span className="text-base font-semibold text-slate-900">
+                      {t.title}
+                    </span>
+                    <span className="ml-2 text-sm font-normal text-slate-500">
+                      (you are here)
+                    </span>
+                    <p className="mt-0.5 text-sm text-slate-600">
+                      {t.description}
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <Link
+                      href={`/tools/${t.slug}`}
+                      className="text-base font-semibold text-blue-700 hover:underline"
+                    >
+                      {t.title}
+                    </Link>
+                    <p className="mt-0.5 text-sm text-slate-600">
+                      {t.description}
+                    </p>
+                  </>
+                )}
               </li>
             ))}
           </ul>
         </div>
       ) : null}
 
-      {relatedDeduped.length > 0 ? (
+      {relatedTools.length > 0 ? (
         <div className="mt-8">
           <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
             Related tools
           </h3>
           <ul className="mt-3 space-y-2">
-            {relatedDeduped.map((t) => (
+            {relatedTools.map((t) => (
               <li key={t.slug}>
                 <Link
                   href={`/tools/${t.slug}`}

@@ -4,7 +4,7 @@ import { AdBanner } from "@/components/AdBanner";
 import { HowToUseSection } from "@/components/HowToUseSection";
 import { ToolPageInternalLinks } from "@/components/ToolPageInternalLinks";
 import { ToolSeoSections } from "@/components/ToolSeoSections";
-import { getToolBySlug, tools } from "@/data/tools";
+import { getToolBySlug, getToolPageLinkSections, tools } from "@/data/tools";
 import { ToolImplementationView } from "@/lib/tool-implementations";
 import { buildToolPageMetadata } from "@/lib/seo/tool-metadata";
 
@@ -31,7 +31,9 @@ export default async function ToolPage({ params }: Props) {
   const introParagraphs = tool.introduction
     .split(/\n\n+/)
     .map((p) => p.trim())
-    .filter(Boolean);
+    .filter((p) => p.length > 0);
+
+  const { allStarTools, relatedTools } = getToolPageLinkSections(tool);
 
   return (
     <article>
@@ -48,10 +50,17 @@ export default async function ToolPage({ params }: Props) {
 
       <section
         className="mt-8 rounded-xl border border-slate-200 bg-white p-5 sm:p-6"
-        aria-label="Tool"
+        aria-labelledby="tool-ui-heading"
       >
-        <h2 className="sr-only">{tool.title}</h2>
-        <ToolImplementationView implementation={tool.implementation} />
+        <h2
+          id="tool-ui-heading"
+          className="text-lg font-semibold text-slate-900"
+        >
+          Use the tool
+        </h2>
+        <div className="mt-4">
+          <ToolImplementationView implementation={tool.implementation} />
+        </div>
       </section>
 
       <AdBanner placement="middle" />
@@ -60,7 +69,8 @@ export default async function ToolPage({ params }: Props) {
       <ToolSeoSections tool={tool} />
       <ToolPageInternalLinks
         currentSlug={tool.slug}
-        relatedSlugs={tool.relatedSlugs}
+        allStarTools={allStarTools}
+        relatedTools={relatedTools}
       />
 
       <AdBanner placement="bottom" />

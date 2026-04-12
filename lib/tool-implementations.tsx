@@ -3,7 +3,7 @@
 import { jsPDF } from "jspdf";
 import type { ComponentType } from "react";
 import { useCallback, useMemo, useState } from "react";
-import type { ToolImplementation } from "@/data/tools";
+import type { ToolImplementation } from "@/types/tool";
 
 function readDataUrl(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -110,7 +110,9 @@ export function WordCounterTool() {
   const stats = useMemo(() => {
     const trimmed = text.trim();
     const words =
-      trimmed.length === 0 ? 0 : trimmed.split(/\s+/).filter(Boolean).length;
+      trimmed.length === 0
+        ? 0
+        : trimmed.split(/\s+/).filter((w) => w.length > 0).length;
     const characters = text.length;
     const charactersNoSpaces = text.replace(/\s/g, "").length;
     const sentences =
