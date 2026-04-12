@@ -8,8 +8,11 @@ export const metadata: Metadata = {
   title: "QuickTools Hub — Free Online Tools",
   description:
     "Fast, lightweight browser tools for images, text, and everyday calculations.",
-};
 
+  verification: {
+    google: "03vK3FWhMUnyBMYvG_boBKgpXZsdyamE2c6mY0VAphE",
+  },
+};
 export const viewport = {
   width: "device-width",
   initialScale: 1,
