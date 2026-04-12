@@ -1,37 +1,39 @@
+import type { MetadataRoute } from "next";
 import { tools } from "@/data/tools";
+import { getSiteUrl } from "@/lib/seo/site-url";
 
-export default function sitemap() {
-  const baseUrl = "https://quicktools-hub-seven.vercel.app";
+/** Static discovery for all programmatic SEO tool routes + hub pages. */
+export default function sitemap(): MetadataRoute.Sitemap {
+  const base = getSiteUrl();
 
-  const staticPages = [
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: base, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
     {
-      url: `${baseUrl}`,
+      url: `${base}/image-tools`,
       lastModified: new Date(),
-      priority: 1.0,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/image-tools`,
+      url: `${base}/text-tools`,
       lastModified: new Date(),
-      priority: 0.8,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/text-tools`,
+      url: `${base}/calculator-tools`,
       lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/calculator-tools`,
-      lastModified: new Date(),
-      priority: 0.8,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
   ];
 
-  const toolPages = tools.map((tool) => ({
-    url: `${baseUrl}/tools/${tool.slug}`,
+  const toolPages: MetadataRoute.Sitemap = tools.map((tool) => ({
+    url: `${base}/tools/${tool.slug}`,
     lastModified: new Date(),
+    changeFrequency: "weekly" as const,
     priority:
-      tool.tier === "star" ? 1.0 :
-      tool.tier === "standard" ? 0.8 : 0.6,
+      tool.tier === "star" ? 1 : tool.tier === "standard" ? 0.85 : 0.7,
   }));
 
   return [...staticPages, ...toolPages];
