@@ -10,12 +10,12 @@ export function ToolPageInternalLinks({ currentSlug, relatedSlugs }: Props) {
   const stars = getStarTools().filter((t) => t.slug !== currentSlug);
   const related = relatedSlugs
     .map((slug) => getToolBySlug(slug))
-    .filter(
-      (t): t is NonNullable<typeof t> =>
-        Boolean(t) && t.slug !== currentSlug
-    );
+    .filter((t) => t && t.slug !== currentSlug);
 
-  const relatedDeduped = related.filter(
+
+const relatedDeduped = related
+  .filter((t): t is NonNullable<typeof t> => t != null)
+  .filter(
     (t) => !stars.some((s) => s.slug === t.slug)
   );
 
