@@ -19,7 +19,7 @@ export default function TermsPage() {
         </p>
 
         <p>
-          All tools are provided "as is" without warranties of any kind.
+         All tools are provided {'"'}as is{'"'} without warranties of any kind.
           We do not guarantee accuracy, availability, or suitability for any
           specific purpose.
         </p>
