@@ -15,3 +15,21 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+
+@layer components {
+  .btn-base {
+    @apply inline-flex items-center justify-center rounded-xl text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn-base min-h-[44px] bg-blue-600 px-6 py-2 text-white hover:bg-blue-700;
+  }
+
+  .btn-secondary {
+    @apply btn-base min-h-[44px] border border-slate-300 bg-white px-6 py-2 text-slate-800 hover:bg-slate-50;
+  }
+
+  .btn-ghost {
+    @apply btn-base min-h-[40px] px-3 py-1.5 text-slate-700 hover:bg-slate-100 hover:text-slate-900;
+  }
+}

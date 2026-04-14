@@ -39,7 +39,7 @@ export default async function ToolPage({ params }: Props) {
   const adPlacements = getRevenueOptimizedAdPlacementsForTool(tool, "normal_user");
 
   return (
-    <article>
+    <article className="space-y-10 sm:space-y-12">
       <ToolPageTracker
         tool={{
           tool_slug: tool.slug,
@@ -50,25 +50,33 @@ export default async function ToolPage({ params }: Props) {
       />
       {adPlacements.includes("top") ? <AdBanner placement="top" /> : null}
 
-      <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-        {tool.h1}
-      </h1>
-      <div className="mt-4 max-w-2xl space-y-3 text-lg leading-relaxed text-slate-600">
-        {introParagraphs.map((para, i) => (
-          <p key={i}>{para}</p>
-        ))}
-      </div>
+      <section className="rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 px-6 py-8 sm:px-8 sm:py-10">
+        <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">
+          Free professional online tool
+        </p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          {tool.h1}
+        </h1>
+        <div className="mt-4 max-w-3xl space-y-3 text-lg leading-relaxed text-slate-600">
+          {introParagraphs.map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
+        </div>
+      </section>
 
       <section
-        className="mt-8 rounded-xl border border-slate-200 bg-white p-5 sm:p-6"
+        className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6"
         aria-labelledby="tool-ui-heading"
       >
         <h2
           id="tool-ui-heading"
           className="text-lg font-semibold text-slate-900"
         >
-          Use the tool
+          Use this tool now
         </h2>
+        <p className="mt-2 text-sm text-slate-600">
+          No signup required. Upload or enter your data and get instant results.
+        </p>
         <div className="mt-4">
           <ToolImplementationView
             implementation={tool.implementation}
@@ -79,13 +87,15 @@ export default async function ToolPage({ params }: Props) {
 
       {adPlacements.includes("middle") ? <AdBanner placement="middle" /> : null}
 
-      <HowToUseSection steps={tool.howToUse} />
-      <ToolSeoSections tool={tool} />
-      <ToolPageInternalLinks
-        currentSlug={tool.slug}
-        allStarTools={allStarTools}
-        relatedTools={relatedTools}
-      />
+      <section className="space-y-10 rounded-2xl border border-slate-200 bg-white px-6 py-8 sm:px-8">
+        <HowToUseSection steps={tool.howToUse} />
+        <ToolSeoSections tool={tool} />
+        <ToolPageInternalLinks
+          currentSlug={tool.slug}
+          allStarTools={allStarTools}
+          relatedTools={relatedTools}
+        />
+      </section>
 
       {adPlacements.includes("bottom") ? <AdBanner placement="bottom" /> : null}
     </article>

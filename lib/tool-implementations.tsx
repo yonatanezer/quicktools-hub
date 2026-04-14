@@ -180,7 +180,7 @@ export function WordCounterTool({ toolSlug }: { toolSlug: string }) {
             // Silent failure to preserve UX if clipboard is unavailable.
           }
         }}
-        className="inline-flex min-h-[44px] items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+        className="btn-primary bg-slate-900 px-4 hover:bg-slate-800"
       >
         {copied ? "Copied" : "Copy text"}
       </button>
@@ -445,7 +445,7 @@ export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
         type="button"
         onClick={() => void convert()}
         disabled={busy || !selectedFile}
-        className="inline-flex min-h-[44px] items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+        className="btn-primary px-4"
       >
         {busy ? "Converting..." : "Convert to PDF"}
       </button>
@@ -475,7 +475,7 @@ export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
             href={downloadUrl}
             download={downloadName}
             onClick={() => trackToolAction(toolSlug, "download")}
-            className="mt-3 inline-flex min-h-[44px] items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+            className="btn-primary mt-3 bg-slate-900 px-4 hover:bg-slate-800"
           >
             Download PDF
           </a>

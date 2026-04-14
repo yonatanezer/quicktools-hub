@@ -17,7 +17,7 @@ export function ToolPageInternalLinks({
   relatedTools,
 }: Props) {
   return (
-    <section className="mt-10 border-t border-slate-200 pt-8">
+    <section className="border-t border-slate-200 pt-8">
       <h2 className="text-lg font-semibold text-slate-900">
         More free online tools
       </h2>
@@ -27,7 +27,7 @@ export function ToolPageInternalLinks({
       </p>
 
       {allStarTools.length > 0 ? (
-        <div className="mt-6">
+        <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5">
           <h3 className="text-sm font-semibold uppercase tracking-wide text-blue-800">
             Featured tools
           </h3>
@@ -69,7 +69,7 @@ export function ToolPageInternalLinks({
       ) : null}
 
       {relatedTools.length > 0 ? (
-        <div className="mt-8">
+        <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5">
           <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
             Related tools
           </h3>
@@ -104,6 +104,10 @@ export function ToolPageInternalLinks({
           className="text-blue-700 hover:underline"
         >
           calculator tools
+        </Link>
+        , or{" "}
+        <Link href="/pdf-tools" className="text-blue-700 hover:underline">
+          PDF tools
         </Link>
         .
       </p>
