@@ -1,6 +1,7 @@
 "use client";
 
 import { jsPDF } from "jspdf";
+import mammoth from "mammoth";
 import type { ComponentType } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { getClientUsageSignals, trackToolAction } from "@/lib/analytics";
@@ -300,6 +301,38 @@ export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
     };
   }, [downloadUrl]);
 
+  const runClientFallback = useCallback(
+    async (file: File) => {
+      const arrayBuffer = await file.arrayBuffer();
+      const { value } = await mammoth.extractRawText({ arrayBuffer });
+      const content = value.replace(/\r/g, "").trim();
+      if (!content) {
+        throw new Error("Could not read text from this document.");
+      }
+
+      const pdf = new jsPDF({ unit: "pt", format: "a4" });
+      const margin = 40;
+      const pageWidth = pdf.internal.pageSize.getWidth() - margin * 2;
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const lineHeight = 18;
+      const lines = pdf.splitTextToSize(content, pageWidth) as string[];
+
+      let y = margin;
+      lines.forEach((line) => {
+        if (y > pageHeight - margin) {
+          pdf.addPage();
+          y = margin;
+        }
+        pdf.text(line, margin, y);
+        y += lineHeight;
+      });
+
+      const blob = pdf.output("blob");
+      return URL.createObjectURL(blob);
+    },
+    []
+  );
+
   const convert = useCallback(async () => {
     if (!selectedFile) {
       setError("Please choose a .docx file first.");
@@ -319,13 +352,14 @@ export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
       setDownloadUrl(null);
     }
 
-    const progressTimer = window.setInterval(() => {
-      setProgress((prev) => (prev >= 85 ? prev : prev + 5));
-    }, 300);
-
     try {
       const formData = new FormData();
       formData.append("file", selectedFile);
+      setStatus("Converting on server...");
+      setProgress(35);
+
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), 45_000);
 
       const res = await fetch("/api/word-to-pdf", {
         method: "POST",
@@ -334,7 +368,9 @@ export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
           "x-qth-interaction-ms": String(getClientUsageSignals().interActionMs),
         },
         body: formData,
+        signal: controller.signal,
       });
+      window.clearTimeout(timeoutId);
 
       if (!res.ok) {
         const payload = (await res.json().catch(() => null)) as
@@ -343,6 +379,8 @@ export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
         throw new Error(payload?.error ?? "Conversion failed.");
       }
 
+      setStatus("Preparing download...");
+      setProgress(80);
       const blob = await res.blob();
       const objectUrl = URL.createObjectURL(blob);
       setDownloadUrl(objectUrl);
@@ -351,15 +389,32 @@ export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
       setStatus("Conversion completed. Download your PDF below.");
       trackToolAction(toolSlug, "conversion_complete");
     } catch (e) {
-      const message =
-        e instanceof Error ? e.message : "Conversion failed. Please try again.";
-      setError(message);
-      setStatus("Conversion failed.");
+      try {
+        setStatus("Server conversion is slow. Switching to fallback mode...");
+        setProgress(55);
+        const fallbackUrl = await runClientFallback(selectedFile);
+        setDownloadUrl(fallbackUrl);
+        setDownloadName(
+          `${selectedFile.name.replace(/\.docx$/i, "") || "document"}-fallback.pdf`
+        );
+        setProgress(100);
+        setError(null);
+        setStatus(
+          "Fallback conversion completed. Download your PDF below."
+        );
+        trackToolAction(toolSlug, "conversion_complete");
+      } catch {
+        const message =
+          e instanceof Error
+            ? e.message
+            : "Conversion failed. Please try again.";
+        setError(message);
+        setStatus("Conversion failed.");
+      }
     } finally {
-      window.clearInterval(progressTimer);
       setBusy(false);
     }
-  }, [downloadUrl, selectedFile, toolSlug]);
+  }, [downloadUrl, runClientFallback, selectedFile, toolSlug]);
 
   return (
     <div className="space-y-4">
