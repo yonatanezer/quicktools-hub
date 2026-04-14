@@ -13,7 +13,27 @@ export type ToolImplementation =
   | "pdf-to-word"
   | "merge-pdfs"
   | "split-pdf"
-  | "compress-pdf";
+  | "compress-pdf"
+  | "bmi-calculator"
+  | "age-calculator"
+  | "loan-emi-calculator"
+  | "gpa-calculator"
+  | "calorie-calculator"
+  | "date-difference-calculator"
+  | "celsius-to-fahrenheit"
+  | "inches-to-cm"
+  | "mpg-to-kpl"
+  | "km-to-miles"
+  | "miles-to-km"
+  | "pounds-to-kg"
+  | "kg-to-pounds"
+  | "liters-to-gallons"
+  | "gallons-to-liters"
+  | "hex-to-rgb"
+  | "rgb-to-hex"
+  | "case-converter"
+  | "remove-duplicate-lines"
+  | "text-to-slug";
 
 export type Tool = {
   id: string;
