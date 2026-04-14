@@ -8,7 +8,12 @@ export type ToolTier = "star" | "standard" | "seo";
 export type ToolImplementation =
   | "image-to-pdf"
   | "word-counter"
-  | "percentage-calculator";
+  | "percentage-calculator"
+  | "word-to-pdf"
+  | "pdf-to-word"
+  | "merge-pdfs"
+  | "split-pdf"
+  | "compress-pdf";
 
 export type Tool = {
   id: string;

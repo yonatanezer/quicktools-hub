@@ -27,9 +27,13 @@ export default function ImageToolsPage() {
         <Link href="/text-tools" className="text-blue-700 hover:underline">
           text tools
         </Link>{" "}
-        and{" "}
+        ,{" "}
         <Link href="/calculator-tools" className="text-blue-700 hover:underline">
           calculator tools
+        </Link>
+        , and{" "}
+        <Link href="/pdf-tools" className="text-blue-700 hover:underline">
+          PDF tools
         </Link>
         .
       </p>

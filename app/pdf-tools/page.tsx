@@ -4,14 +4,14 @@ import { AdBanner } from "@/components/AdBanner";
 import { ToolCard } from "@/components/ToolCard";
 import { categorySeo, getToolsByCategory } from "@/data/tools";
 
-const cat = "text" as const;
+const cat = "pdf" as const;
 
 export const metadata: Metadata = {
   title: categorySeo[cat].title,
   description: categorySeo[cat].description,
 };
 
-export default function TextToolsPage() {
+export default function PdfToolsPage() {
   const seo = categorySeo[cat];
   const list = getToolsByCategory(cat);
 
@@ -19,21 +19,21 @@ export default function TextToolsPage() {
     <div>
       <AdBanner placement="top" />
       <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-        Text tools
+        PDF tools
       </h1>
       <p className="mt-4 text-lg text-slate-600">{seo.description}</p>
       <p className="mt-2 text-sm text-slate-500">
         Also see{" "}
         <Link href="/image-tools" className="text-blue-700 hover:underline">
           image tools
-        </Link>{" "}
+        </Link>
         ,{" "}
-        <Link href="/calculator-tools" className="text-blue-700 hover:underline">
-          calculator tools
+        <Link href="/text-tools" className="text-blue-700 hover:underline">
+          text tools
         </Link>
         , and{" "}
-        <Link href="/pdf-tools" className="text-blue-700 hover:underline">
-          PDF tools
+        <Link href="/calculator-tools" className="text-blue-700 hover:underline">
+          calculator tools
         </Link>
         .
       </p>

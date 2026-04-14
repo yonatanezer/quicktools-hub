@@ -1,8 +1,10 @@
 "use client";
 
 import { jsPDF } from "jspdf";
+import mammoth from "mammoth";
 import type { ComponentType } from "react";
 import { useCallback, useMemo, useState } from "react";
+import { trackToolAction } from "@/lib/analytics";
 import type { ToolImplementation } from "@/types/tool";
 
 function readDataUrl(file: File): Promise<string> {
@@ -23,13 +25,14 @@ function loadImageElement(src: string): Promise<HTMLImageElement> {
   });
 }
 
-export function ImageToPdfTool() {
+export function ImageToPdfTool({ toolSlug }: { toolSlug: string }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const onFiles = useCallback(
     async (files: FileList | null) => {
       if (!files?.length) return;
+      trackToolAction(toolSlug, "upload");
       const list = Array.from(files).filter(
         (f) =>
           f.type === "image/jpeg" ||
@@ -68,6 +71,7 @@ export function ImageToPdfTool() {
           first = false;
           pdf.addImage(dataUrl, format, x, y, w, h);
         }
+        trackToolAction(toolSlug, "download");
         pdf.save("images.pdf");
       } catch {
         setError("Could not build the PDF. Try different images.");
@@ -75,7 +79,7 @@ export function ImageToPdfTool() {
         setBusy(false);
       }
     },
-    []
+    [toolSlug]
   );
 
   return (
@@ -105,8 +109,9 @@ export function ImageToPdfTool() {
   );
 }
 
-export function WordCounterTool() {
+export function WordCounterTool({ toolSlug }: { toolSlug: string }) {
   const [text, setText] = useState("");
+  const [copied, setCopied] = useState(false);
   const stats = useMemo(() => {
     const trimmed = text.trim();
     const words =
@@ -162,6 +167,23 @@ export function WordCounterTool() {
           </dd>
         </div>
       </dl>
+      <button
+        type="button"
+        onClick={async () => {
+          if (!text.trim()) return;
+          try {
+            await navigator.clipboard.writeText(text);
+            trackToolAction(toolSlug, "copy");
+            setCopied(true);
+            window.setTimeout(() => setCopied(false), 1500);
+          } catch {
+            // Silent failure to preserve UX if clipboard is unavailable.
+          }
+        }}
+        className="inline-flex min-h-[44px] items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+      >
+        {copied ? "Copied" : "Copy text"}
+      </button>
     </div>
   );
 }
@@ -264,17 +286,127 @@ export function PercentageCalculatorTool() {
   );
 }
 
-const views: Record<ToolImplementation, ComponentType> = {
+export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<string>(
+    "Upload a .docx file to generate a PDF."
+  );
+
+  const convert = useCallback(async (file: File | null) => {
+    if (!file) return;
+    trackToolAction(toolSlug, "upload");
+    if (!/\.docx$/i.test(file.name)) {
+      setError("Please upload a valid .docx file.");
+      return;
+    }
+
+    setBusy(true);
+    setError(null);
+    setStatus("Reading document content...");
+
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const { value } = await mammoth.extractRawText({ arrayBuffer });
+      const content = value.replace(/\r/g, "").trim();
+
+      if (!content) {
+        setError(
+          "This document appears empty or unsupported. Try another .docx file."
+        );
+        setBusy(false);
+        return;
+      }
+
+      setStatus("Generating PDF...");
+      const pdf = new jsPDF({ unit: "pt", format: "a4" });
+      const margin = 40;
+      const pageWidth = pdf.internal.pageSize.getWidth() - margin * 2;
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const lineHeight = 18;
+      const lines = pdf.splitTextToSize(content, pageWidth) as string[];
+
+      let y = margin;
+      lines.forEach((line) => {
+        if (y > pageHeight - margin) {
+          pdf.addPage();
+          y = margin;
+        }
+        pdf.text(line, margin, y);
+        y += lineHeight;
+      });
+
+      const baseName = file.name.replace(/\.docx$/i, "") || "document";
+      trackToolAction(toolSlug, "download");
+      pdf.save(`${baseName}.pdf`);
+      setStatus("PDF is ready. Your download should start automatically.");
+    } catch {
+      setError("Conversion failed. Please try a different .docx file.");
+    } finally {
+      setBusy(false);
+    }
+  }, [toolSlug]);
+
+  return (
+    <div className="space-y-4">
+      <label className="block">
+        <span className="mb-2 block text-sm font-medium text-slate-700">
+          Word file (.docx)
+        </span>
+        <input
+          type="file"
+          accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          onChange={(e) => {
+            const selected = e.target.files?.[0] ?? null;
+            void convert(selected);
+          }}
+          disabled={busy}
+          className="block w-full cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-4 text-base file:mr-4 file:rounded-md file:border-0 file:bg-slate-100 file:px-4 file:py-2 file:text-sm file:font-medium file:text-slate-800"
+        />
+      </label>
+      {error ? (
+        <p className="text-sm text-red-600" role="alert">
+          {error}
+        </p>
+      ) : null}
+      <p className="text-sm text-slate-600">{busy ? "Converting..." : status}</p>
+    </div>
+  );
+}
+
+function PdfToolComingSoon({ name }: { name: string }) {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-slate-700">
+      <h3 className="text-base font-semibold text-slate-900">{name}</h3>
+      <p className="mt-2 text-sm leading-relaxed">
+        This PDF workflow is being finalized and will be available soon. In the
+        meantime, try the Word to PDF converter from this category.
+      </p>
+    </div>
+  );
+}
+
+const views: Record<ToolImplementation, ComponentType<{ toolSlug: string }>> = {
   "image-to-pdf": ImageToPdfTool,
   "word-counter": WordCounterTool,
-  "percentage-calculator": PercentageCalculatorTool,
+  "percentage-calculator": () => <PercentageCalculatorTool />,
+  "word-to-pdf": WordToPdfTool,
+  "pdf-to-word": () => <PdfToolComingSoon name="PDF to Word Converter" />,
+  "merge-pdfs": () => <PdfToolComingSoon name="Merge PDFs" />,
+  "split-pdf": () => <PdfToolComingSoon name="Split PDF" />,
+  "compress-pdf": () => <PdfToolComingSoon name="Compress PDF" />,
 };
 
 export function ToolImplementationView({
   implementation,
+  toolSlug,
 }: {
   implementation: ToolImplementation;
+  toolSlug: string;
 }) {
   const Cmp = views[implementation];
-  return <Cmp />;
+  if (!Cmp) {
+    return <PdfToolComingSoon name="Tool unavailable" />;
+  }
+  return <Cmp toolSlug={toolSlug} />;
 }

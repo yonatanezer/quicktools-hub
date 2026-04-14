@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { trackToolAction } from "@/lib/analytics";
 import type { Tool, ToolTier } from "@/types/tool";
 
 const categoryLabel: Record<string, string> = {
   image: "Image",
   text: "Text",
   calculator: "Calculator",
+  pdf: "PDF",
 };
 
 const tierLabel: Record<ToolTier, string> = {
@@ -59,6 +63,7 @@ export function ToolCard({
   return (
     <Link
       href={`/tools/${tool.slug}`}
+      onClick={() => trackToolAction(tool.slug, "open_tool_card")}
       className={`block transition hover:border-blue-300 hover:shadow-md ${shell}`}
     >
       <p className={badgeClass}>

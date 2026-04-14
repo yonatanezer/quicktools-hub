@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AdBanner } from "@/components/AdBanner";
 import { HowToUseSection } from "@/components/HowToUseSection";
+import { ToolPageTracker } from "@/components/ToolPageTracker";
 import { ToolPageInternalLinks } from "@/components/ToolPageInternalLinks";
 import { ToolSeoSections } from "@/components/ToolSeoSections";
 import { getToolBySlug, getToolPageLinkSections, tools } from "@/data/tools";
@@ -37,6 +38,14 @@ export default async function ToolPage({ params }: Props) {
 
   return (
     <article>
+      <ToolPageTracker
+        tool={{
+          tool_slug: tool.slug,
+          tool_title: tool.title,
+          tool_category: tool.category,
+          tool_tier: tool.tier,
+        }}
+      />
       <AdBanner placement="top" />
 
       <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
@@ -59,7 +68,10 @@ export default async function ToolPage({ params }: Props) {
           Use the tool
         </h2>
         <div className="mt-4">
-          <ToolImplementationView implementation={tool.implementation} />
+          <ToolImplementationView
+            implementation={tool.implementation}
+            toolSlug={tool.slug}
+          />
         </div>
       </section>
 

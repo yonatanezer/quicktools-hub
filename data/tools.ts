@@ -171,6 +171,216 @@ If you are writing up your findings afterward, a word counter online can help yo
     ],
     relatedSlugs: ["image-to-pdf", "word-counter"],
   },
+  {
+    id: "word-to-pdf",
+    slug: "word-to-pdf",
+    title: "Word to PDF",
+    tier: "star",
+    category: "pdf",
+    seoTitle:
+      "Free Word to PDF Converter Online (.DOCX) — Fast & Secure | QuickTools Hub",
+    seoDescription:
+      "Convert Word to PDF online for free. Upload a DOCX file and download a clean PDF in seconds with a browser-based converter.",
+    description:
+      "Convert .docx files to PDF online in your browser with a fast, simple workflow.",
+    h1: "Free Online Word to PDF Converter",
+    introduction:
+      "Convert Microsoft Word documents (.docx) into clean, shareable PDF files directly in your browser. This tool is ideal for assignments, proposals, resumes, and business documents where fixed formatting matters.\n\nNo account is required, and the workflow is optimized for quick conversion on desktop and mobile.",
+    implementation: "word-to-pdf",
+    seoContent: `People search for a Word to PDF converter when they need a reliable format for sharing, printing, or uploading documents. A PDF keeps layout more consistent across devices, which helps when you submit schoolwork, client files, or official forms. This page is built to satisfy that intent with a simple flow: upload DOCX, convert, and download.
+
+Many users need conversion without installing desktop software. Browser-based tools are convenient when you switch between devices or work in managed environments where installing apps is restricted. That is why this utility focuses on fast processing, clear call-to-action buttons, and straightforward guidance.
+
+Search queries vary from "docx to pdf converter" to "save Word file as PDF online." The underlying goal is the same: produce a stable file that looks professional and is easy to share. QuickTools Hub keeps that process lightweight and mobile-friendly.
+
+If your workflow continues after conversion, check related tools in this hub. You can merge multiple PDFs into one package, split large files into smaller sections, or compress files before email submission. These internal links are designed to help users complete end-to-end document tasks in one place.`,
+    howToUse: [
+      "Click the file input and upload a .docx document from your device.",
+      "Wait while the tool reads your document and generates a PDF.",
+      "Your browser will automatically start the PDF download when conversion finishes.",
+      "Open the PDF to verify formatting before sharing or submitting it.",
+    ],
+    faq: [
+      {
+        question: "Can I convert DOCX to PDF for free?",
+        answer:
+          "Yes. This Word to PDF converter is free to use with no signup required.",
+      },
+      {
+        question: "Does this tool support old .doc files?",
+        answer:
+          "No. The current converter is optimized for .docx files. Please resave older .doc files as .docx first.",
+      },
+      {
+        question: "Will my Word document be uploaded to a server?",
+        answer:
+          "The conversion flow is browser-based for speed and privacy-focused processing during use.",
+      },
+    ],
+    relatedSlugs: ["merge-pdfs", "split-pdf", "compress-pdf", "pdf-to-word"],
+  },
+  {
+    id: "pdf-to-word",
+    slug: "pdf-to-word",
+    title: "PDF to Word",
+    tier: "standard",
+    category: "pdf",
+    seoTitle:
+      "PDF to Word Converter Online — Convert PDF to Editable DOCX | QuickTools Hub",
+    seoDescription:
+      "Convert PDF to editable Word format online. Fast PDF to DOCX workflow for document updates and content reuse.",
+    description:
+      "Convert PDF files into editable Word documents for easier updates and reuse.",
+    h1: "PDF to Word Converter Online",
+    introduction:
+      "Turn PDF files into editable Word documents when you need to revise, repurpose, or extract content. This workflow is useful for reports, contracts, and study materials that were shared as fixed PDFs.\n\nUpload your file, convert, and continue editing in familiar DOCX format.",
+    implementation: "pdf-to-word",
+    seoContent: `A PDF to Word converter solves a common productivity issue: content trapped in a non-editable format. When teams collaborate on proposals, forms, or long reports, converting to DOCX allows faster revisions and comments. This landing page targets those high-intent search queries with practical guidance and clear expectations.
+
+Users often search for "convert PDF to editable Word" because they need to make small updates without recreating the document from scratch. A focused conversion tool reduces manual copy-paste and preserves more structure where possible.
+
+Whether you are working on business paperwork or student assignments, having both directions of conversion (Word to PDF and PDF to Word) creates a complete document workflow. Combined with merge, split, and compress utilities, this category supports end-to-end PDF tasks in one hub.`,
+    howToUse: [
+      "Open the converter and upload the PDF file you want to edit.",
+      "Start conversion and wait for DOCX generation to complete.",
+      "Download the converted Word file and review layout or formatting.",
+      "Make edits in Word and export back to PDF if needed.",
+    ],
+    faq: [
+      {
+        question: "Why convert PDF to Word?",
+        answer:
+          "It lets you edit content more easily, especially for text-heavy business or academic documents.",
+      },
+      {
+        question: "Will formatting be exactly identical?",
+        answer:
+          "Complex layouts can vary by file. Always review the output before final submission.",
+      },
+    ],
+    relatedSlugs: ["word-to-pdf", "merge-pdfs", "compress-pdf"],
+  },
+  {
+    id: "merge-pdfs",
+    slug: "merge-pdfs",
+    title: "Merge PDFs",
+    tier: "standard",
+    category: "pdf",
+    seoTitle: "Merge PDF Files Online for Free — Combine Multiple PDFs | QuickTools Hub",
+    seoDescription:
+      "Combine multiple PDF files into one document online. Fast merge workflow for reports, applications, and attachments.",
+    description:
+      "Combine several PDF files into one organized document for easier sharing.",
+    h1: "Merge PDF Files Online",
+    introduction:
+      "Combine multiple PDF files into a single document in the order you choose. Merging is helpful for job applications, invoices, project handoffs, and any workflow where one organized file is easier to send.\n\nThis page is optimized for quick, repeatable PDF assembly tasks.",
+    implementation: "merge-pdfs",
+    seoContent: `Merge PDF search intent is highly practical: users already have documents and need one clean file. Instead of sending multiple attachments, a merged PDF simplifies review and reduces confusion. That is why this page focuses on straightforward steps and a clear value proposition.
+
+Common use cases include combining signed pages, appending terms to a proposal, and packaging monthly reports. A single merged document also improves record-keeping because all relevant pages stay together.
+
+When paired with other PDF tools, merge becomes part of a broader workflow. You can split source files first, merge only the required pages, and then compress the final output for email delivery.`,
+    howToUse: [
+      "Upload the PDF files you want to combine.",
+      "Arrange file order so pages appear correctly in the final document.",
+      "Start merge and wait for one consolidated PDF output.",
+      "Download and share the merged PDF file.",
+    ],
+    faq: [
+      {
+        question: "Can I merge more than two PDFs?",
+        answer:
+          "Yes. You can combine multiple files into one output document.",
+      },
+      {
+        question: "Does order matter when merging?",
+        answer:
+          "Yes. Arrange files before merging so pages appear in the intended sequence.",
+      },
+    ],
+    relatedSlugs: ["split-pdf", "compress-pdf", "word-to-pdf"],
+  },
+  {
+    id: "split-pdf",
+    slug: "split-pdf",
+    title: "Split PDF",
+    tier: "standard",
+    category: "pdf",
+    seoTitle: "Split PDF Online — Extract Pages from PDF Files | QuickTools Hub",
+    seoDescription:
+      "Split PDF files online and extract only the pages you need. Great for sharing, submissions, and document cleanup.",
+    description:
+      "Extract specific pages from a PDF and create smaller files for sharing.",
+    h1: "Split PDF Pages Online",
+    introduction:
+      "Split a large PDF into smaller files when you only need specific pages. This tool is useful for assignments, legal packets, and reports where each recipient needs different sections.\n\nExtracting relevant pages also helps keep file sizes smaller and easier to manage.",
+    implementation: "split-pdf",
+    seoContent: `Split PDF queries usually come from practical constraints: upload limits, page-specific sharing, or document cleanup. Instead of sending a full file, you can extract the exact pages needed for a class portal, client review, or internal process.
+
+A page-splitting workflow saves time and improves clarity. Recipients see only what matters to their task, and you avoid exposing unrelated pages.
+
+This page is part of the QuickTools Hub PDF category, where related tools support complete document handling. After splitting, users often merge selected pages into a curated packet or compress output files for faster delivery.`,
+    howToUse: [
+      "Upload the PDF file containing all pages.",
+      "Choose page ranges you want to extract into a new file.",
+      "Run the split action and generate the new PDF output.",
+      "Download the extracted pages and verify page order.",
+    ],
+    faq: [
+      {
+        question: "When should I split a PDF?",
+        answer:
+          "Split files when only part of a document is needed for sharing or submission.",
+      },
+      {
+        question: "Can split PDFs improve upload success?",
+        answer:
+          "Yes. Smaller extracted files can help when a portal has file size limits.",
+      },
+    ],
+    relatedSlugs: ["merge-pdfs", "compress-pdf", "pdf-to-word"],
+  },
+  {
+    id: "compress-pdf",
+    slug: "compress-pdf",
+    title: "Compress PDF",
+    tier: "standard",
+    category: "pdf",
+    seoTitle:
+      "Compress PDF Online — Reduce PDF File Size Fast | QuickTools Hub",
+    seoDescription:
+      "Reduce PDF file size online for email and uploads. Compress large documents while keeping readable quality.",
+    description:
+      "Reduce PDF file size for faster uploads, email attachments, and sharing.",
+    h1: "Compress PDF Files Online",
+    introduction:
+      "Reduce large PDF file sizes so documents are easier to upload, email, and store. Compression is useful for resumes, reports, and scanned files that exceed size limits.\n\nThis workflow helps you keep documents accessible without unnecessary friction.",
+    implementation: "compress-pdf",
+    seoContent: `Compress PDF is a high-intent query because file size limits are common in job portals, school systems, and email attachments. Users want a fast way to reduce size without rebuilding the entire document. This page addresses that need with practical guidance and clear next actions.
+
+Large PDFs often come from scanned images or export settings that prioritize quality over size. Compression helps strike a better balance by making documents more portable and easier to transfer.
+
+Compression also pairs naturally with split and merge actions. You can assemble a final packet, then compress once before sharing. This category-level workflow design improves usability and keeps QuickTools Hub relevant for repeat document tasks.`,
+    howToUse: [
+      "Upload a PDF file that is too large for your target platform.",
+      "Choose the compression mode when available.",
+      "Generate a smaller PDF and compare quality to the original.",
+      "Download and submit the optimized file.",
+    ],
+    faq: [
+      {
+        question: "Why should I compress a PDF?",
+        answer:
+          "Compression helps documents meet upload limits and send faster by email.",
+      },
+      {
+        question: "Will compression affect quality?",
+        answer:
+          "Some quality reduction can occur depending on settings. Check readability after download.",
+      },
+    ],
+    relatedSlugs: ["merge-pdfs", "split-pdf", "word-to-pdf"],
+  },
 ];
 
 export const toolsBySlug: Map<string, Tool> = new Map(
@@ -239,7 +449,7 @@ export function getToolPageLinkSections(current: Tool): {
   return { allStarTools, relatedTools };
 }
 
-const categoryKeys = ["image", "text", "calculator"] as const;
+const categoryKeys = ["image", "text", "calculator", "pdf"] as const;
 export type CategoryPageId = (typeof categoryKeys)[number];
 
 export const categorySeo: Record<
@@ -287,5 +497,17 @@ We keep performance in mind. Lightweight pages load fast on mobile networks, and
 Additional calculator utilities will appear here as the site grows. Each listing uses the same structured data source, which keeps navigation and descriptions consistent. Tool pages also link to text and image utilities when your workflow needs supporting steps.
 
 Choose a calculator from the cards below. If you are writing up findings afterward, consider pairing results with our text tools for concise explanations.`,
+  },
+  pdf: {
+    title: "PDF Tools — Convert, Merge, Split & Compress Online | QuickTools Hub",
+    description:
+      "Use free PDF tools to convert, merge, split, and compress files online with fast browser-friendly workflows.",
+    body: `PDF tools are essential for modern digital workflows. Whether you are preparing applications, sharing business documents, or organizing study files, having quick access to conversion and file management utilities saves time and reduces friction.
+
+This category includes core workflows people search for most often: Word to PDF conversion, PDF to Word editing, file merging, page splitting, and PDF compression. Each tool is designed with clear inputs, simple calls to action, and mobile-friendly layout so tasks can be completed quickly.
+
+Many document tasks happen under deadlines, so usability matters. We keep controls obvious, avoid unnecessary complexity, and provide practical guidance on each tool page. That approach helps users complete high-intent tasks without switching between multiple websites.
+
+As QuickTools Hub expands, this PDF category will continue to grow with additional document utilities and stronger cross-linking between related tasks. Browse the tools below to pick the workflow you need and complete your document job in a few steps.`,
   },
 };

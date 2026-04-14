@@ -45,6 +45,10 @@ export default function HomePage() {
             image
           </Link>
           ,{" "}
+          <Link href="/pdf-tools" className="text-blue-700 hover:underline">
+            PDF
+          </Link>
+          ,{" "}
           <Link href="/text-tools" className="text-blue-700 hover:underline">
             text
           </Link>
