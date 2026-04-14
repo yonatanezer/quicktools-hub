@@ -32,7 +32,7 @@ export function ToolPageInternalLinks({
             Featured tools
           </h3>
           <p className="mt-1 text-sm text-slate-600">
-            Our most-used utilities: image to PDF and word counter online.
+            Our highest-priority tools across documents, text, health, and planning.
           </p>
           <ul className="mt-4 space-y-3">
             {allStarTools.map((t) => (

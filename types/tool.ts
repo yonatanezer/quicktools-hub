@@ -33,7 +33,22 @@ export type ToolImplementation =
   | "rgb-to-hex"
   | "case-converter"
   | "remove-duplicate-lines"
-  | "text-to-slug";
+  | "text-to-slug"
+  | "mortgage-calculator"
+  | "compound-interest-calculator"
+  | "savings-goal-calculator"
+  | "simple-interest-calculator"
+  | "credit-card-payoff-calculator"
+  | "auto-loan-calculator"
+  | "debt-to-income-calculator"
+  | "refinance-calculator"
+  | "down-payment-calculator"
+  | "amortization-calculator"
+  | "apr-calculator"
+  | "retirement-savings-calculator"
+  | "inflation-calculator"
+  | "roi-calculator"
+  | "break-even-calculator";
 
 export type Tool = {
   id: string;

@@ -698,6 +698,430 @@ function TextToSlugTool() {
   );
 }
 
+function MortgageCalculatorTool() {
+  const [principal, setPrincipal] = useState("350000");
+  const [annualRate, setAnnualRate] = useState("6.5");
+  const [years, setYears] = useState("30");
+  const result = useMemo(() => {
+    const p = parseFloat(principal);
+    const rAnnual = parseFloat(annualRate);
+    const y = parseFloat(years);
+    if ([p, rAnnual, y].some((v) => Number.isNaN(v) || v <= 0)) return null;
+    const n = y * 12;
+    const r = rAnnual / 1200;
+    const monthly = r === 0 ? p / n : (p * r * (1 + r) ** n) / ((1 + r) ** n - 1);
+    const total = monthly * n;
+    return { monthly, total, interest: total - p };
+  }, [annualRate, principal, years]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-3">
+        <input type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Loan amount" />
+        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual rate (%)" />
+        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Term (years)" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Monthly: {result ? formatResult(result.monthly, 2) : "—"} | Total paid: {result ? formatResult(result.total, 2) : "—"} | Interest: {result ? formatResult(result.interest, 2) : "—"}
+      </p>
+    </div>
+  );
+}
+
+function CompoundInterestCalculatorTool() {
+  const [principal, setPrincipal] = useState("10000");
+  const [annualRate, setAnnualRate] = useState("7");
+  const [years, setYears] = useState("10");
+  const [timesPerYear, setTimesPerYear] = useState("12");
+  const amount = useMemo(() => {
+    const p = parseFloat(principal);
+    const r = parseFloat(annualRate) / 100;
+    const t = parseFloat(years);
+    const n = parseFloat(timesPerYear);
+    if ([p, r, t, n].some((v) => Number.isNaN(v) || v < 0) || n <= 0) return null;
+    return p * (1 + r / n) ** (n * t);
+  }, [annualRate, principal, timesPerYear, years]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <input type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Initial amount" />
+        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual rate (%)" />
+        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years" />
+        <input type="number" value={timesPerYear} onChange={(e) => setTimesPerYear(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Compounds per year" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Future value: {amount === null ? "—" : formatResult(amount, 2)}
+      </p>
+    </div>
+  );
+}
+
+function SavingsGoalCalculatorTool() {
+  const [target, setTarget] = useState("50000");
+  const [current, setCurrent] = useState("5000");
+  const [annualRate, setAnnualRate] = useState("5");
+  const [years, setYears] = useState("8");
+  const monthlyContribution = useMemo(() => {
+    const goal = parseFloat(target);
+    const now = parseFloat(current);
+    const r = parseFloat(annualRate) / 1200;
+    const n = parseFloat(years) * 12;
+    if ([goal, now, r, n].some((v) => Number.isNaN(v)) || goal <= now || n <= 0) return null;
+    if (r === 0) return (goal - now) / n;
+    const fvCurrent = now * (1 + r) ** n;
+    const numerator = goal - fvCurrent;
+    return (numerator * r) / ((1 + r) ** n - 1);
+  }, [annualRate, current, target, years]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <input type="number" value={target} onChange={(e) => setTarget(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Savings target" />
+        <input type="number" value={current} onChange={(e) => setCurrent(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current savings" />
+        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Expected annual return (%)" />
+        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years to goal" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Required monthly savings: {monthlyContribution === null || monthlyContribution < 0 ? "—" : formatResult(monthlyContribution, 2)}
+      </p>
+    </div>
+  );
+}
+
+function SimpleInterestCalculatorTool() {
+  const [principal, setPrincipal] = useState("10000");
+  const [annualRate, setAnnualRate] = useState("6");
+  const [years, setYears] = useState("3");
+  const result = useMemo(() => {
+    const p = parseFloat(principal);
+    const r = parseFloat(annualRate) / 100;
+    const t = parseFloat(years);
+    if ([p, r, t].some((v) => Number.isNaN(v) || v < 0)) return null;
+    const interest = p * r * t;
+    return { interest, total: p + interest };
+  }, [annualRate, principal, years]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-3">
+        <input type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Principal" />
+        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Rate (%)" />
+        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Interest: {result ? formatResult(result.interest, 2) : "—"} | Total amount: {result ? formatResult(result.total, 2) : "—"}
+      </p>
+    </div>
+  );
+}
+
+function CreditCardPayoffCalculatorTool() {
+  const [balance, setBalance] = useState("8000");
+  const [apr, setApr] = useState("22");
+  const [monthlyPayment, setMonthlyPayment] = useState("250");
+  const months = useMemo(() => {
+    const b = parseFloat(balance);
+    const r = parseFloat(apr) / 1200;
+    const p = parseFloat(monthlyPayment);
+    if ([b, r, p].some((v) => Number.isNaN(v) || v <= 0)) return null;
+    if (p <= b * r) return null;
+    if (r === 0) return b / p;
+    return -Math.log(1 - (r * b) / p) / Math.log(1 + r);
+  }, [apr, balance, monthlyPayment]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-3">
+        <input type="number" value={balance} onChange={(e) => setBalance(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current balance" />
+        <input type="number" value={apr} onChange={(e) => setApr(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="APR (%)" />
+        <input type="number" value={monthlyPayment} onChange={(e) => setMonthlyPayment(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Monthly payment" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Payoff time: {months === null ? "Increase monthly payment to exceed monthly interest." : `${formatResult(months, 1)} months`}
+      </p>
+    </div>
+  );
+}
+
+function AutoLoanCalculatorTool() {
+  const [carPrice, setCarPrice] = useState("30000");
+  const [downPayment, setDownPayment] = useState("5000");
+  const [annualRate, setAnnualRate] = useState("7.5");
+  const [months, setMonths] = useState("60");
+  const values = useMemo(() => {
+    const price = parseFloat(carPrice);
+    const down = parseFloat(downPayment);
+    const r = parseFloat(annualRate) / 1200;
+    const n = parseFloat(months);
+    const p = price - down;
+    if ([price, down, r, n].some((v) => Number.isNaN(v)) || p <= 0 || n <= 0) return null;
+    const monthly = r === 0 ? p / n : (p * r * (1 + r) ** n) / ((1 + r) ** n - 1);
+    return { monthly, financed: p, total: monthly * n };
+  }, [annualRate, carPrice, downPayment, months]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <input type="number" value={carPrice} onChange={(e) => setCarPrice(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Car price" />
+        <input type="number" value={downPayment} onChange={(e) => setDownPayment(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Down payment" />
+        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual rate (%)" />
+        <input type="number" value={months} onChange={(e) => setMonths(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Term (months)" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Financed: {values ? formatResult(values.financed, 2) : "—"} | Monthly: {values ? formatResult(values.monthly, 2) : "—"} | Total: {values ? formatResult(values.total, 2) : "—"}
+      </p>
+    </div>
+  );
+}
+
+function DebtToIncomeCalculatorTool() {
+  const [monthlyDebt, setMonthlyDebt] = useState("1800");
+  const [grossIncome, setGrossIncome] = useState("6000");
+  const dti = useMemo(() => {
+    const debt = parseFloat(monthlyDebt);
+    const income = parseFloat(grossIncome);
+    if ([debt, income].some((v) => Number.isNaN(v) || v <= 0)) return null;
+    return (debt / income) * 100;
+  }, [grossIncome, monthlyDebt]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <input type="number" value={monthlyDebt} onChange={(e) => setMonthlyDebt(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Monthly debt payments" />
+        <input type="number" value={grossIncome} onChange={(e) => setGrossIncome(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Gross monthly income" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Debt-to-income ratio: {dti === null ? "—" : `${formatResult(dti, 2)}%`}
+      </p>
+    </div>
+  );
+}
+
+function RefinanceCalculatorTool() {
+  const [oldBalance, setOldBalance] = useState("240000");
+  const [oldRate, setOldRate] = useState("7.2");
+  const [newRate, setNewRate] = useState("5.9");
+  const [remainingMonths, setRemainingMonths] = useState("300");
+  const [closingCosts, setClosingCosts] = useState("5000");
+  const result = useMemo(() => {
+    const p = parseFloat(oldBalance);
+    const oldR = parseFloat(oldRate) / 1200;
+    const newR = parseFloat(newRate) / 1200;
+    const n = parseFloat(remainingMonths);
+    const costs = parseFloat(closingCosts);
+    if ([p, oldR, newR, n, costs].some((v) => Number.isNaN(v) || v < 0) || n <= 0 || p <= 0) return null;
+    const oldMonthly = oldR === 0 ? p / n : (p * oldR * (1 + oldR) ** n) / ((1 + oldR) ** n - 1);
+    const newMonthly = newR === 0 ? p / n : (p * newR * (1 + newR) ** n) / ((1 + newR) ** n - 1);
+    const savings = oldMonthly - newMonthly;
+    const breakEven = savings > 0 ? costs / savings : null;
+    return { oldMonthly, newMonthly, savings, breakEven };
+  }, [closingCosts, newRate, oldBalance, oldRate, remainingMonths]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <input type="number" value={oldBalance} onChange={(e) => setOldBalance(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current loan balance" />
+        <input type="number" value={remainingMonths} onChange={(e) => setRemainingMonths(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Remaining months" />
+        <input type="number" value={oldRate} onChange={(e) => setOldRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current rate (%)" />
+        <input type="number" value={newRate} onChange={(e) => setNewRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="New rate (%)" />
+        <input type="number" value={closingCosts} onChange={(e) => setClosingCosts(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3 sm:col-span-2" placeholder="Refinance closing costs" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Monthly savings: {result ? formatResult(result.savings, 2) : "—"} | Break-even: {result?.breakEven === null || result?.breakEven === undefined ? "Not beneficial at this rate" : `${formatResult(result.breakEven, 1)} months`}
+      </p>
+    </div>
+  );
+}
+
+function DownPaymentCalculatorTool() {
+  const [homePrice, setHomePrice] = useState("450000");
+  const [downPercent, setDownPercent] = useState("20");
+  const values = useMemo(() => {
+    const price = parseFloat(homePrice);
+    const pct = parseFloat(downPercent);
+    if ([price, pct].some((v) => Number.isNaN(v) || v < 0)) return null;
+    const down = (price * pct) / 100;
+    return { down, loanAmount: price - down };
+  }, [downPercent, homePrice]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <input type="number" value={homePrice} onChange={(e) => setHomePrice(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Home price" />
+        <input type="number" value={downPercent} onChange={(e) => setDownPercent(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Down payment (%)" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Down payment: {values ? formatResult(values.down, 2) : "—"} | Estimated loan: {values ? formatResult(values.loanAmount, 2) : "—"}
+      </p>
+    </div>
+  );
+}
+
+function AmortizationCalculatorTool() {
+  const [principal, setPrincipal] = useState("250000");
+  const [annualRate, setAnnualRate] = useState("6.2");
+  const [years, setYears] = useState("25");
+  const values = useMemo(() => {
+    const p = parseFloat(principal);
+    const r = parseFloat(annualRate) / 1200;
+    const n = parseFloat(years) * 12;
+    if ([p, r, n].some((v) => Number.isNaN(v) || v < 0) || p <= 0 || n <= 0) return null;
+    const payment = r === 0 ? p / n : (p * r * (1 + r) ** n) / ((1 + r) ** n - 1);
+    const total = payment * n;
+    const totalInterest = total - p;
+    const firstMonthInterest = p * r;
+    const firstMonthPrincipal = payment - firstMonthInterest;
+    return { payment, totalInterest, firstMonthInterest, firstMonthPrincipal };
+  }, [annualRate, principal, years]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-3">
+        <input type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Loan amount" />
+        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual rate (%)" />
+        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Term (years)" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-sm font-medium">
+        Monthly payment: {values ? formatResult(values.payment, 2) : "—"} | Total interest: {values ? formatResult(values.totalInterest, 2) : "—"} | Month 1 principal/interest: {values ? `${formatResult(values.firstMonthPrincipal, 2)} / ${formatResult(values.firstMonthInterest, 2)}` : "—"}
+      </p>
+    </div>
+  );
+}
+
+function AprCalculatorTool() {
+  const [loanAmount, setLoanAmount] = useState("20000");
+  const [fees, setFees] = useState("800");
+  const [monthlyPayment, setMonthlyPayment] = useState("420");
+  const [months, setMonths] = useState("60");
+  const aprValue = useMemo(() => {
+    const principal = parseFloat(loanAmount) - parseFloat(fees);
+    const payment = parseFloat(monthlyPayment);
+    const n = parseFloat(months);
+    if ([principal, payment, n].some((v) => Number.isNaN(v) || v <= 0)) return null;
+    let low = 0;
+    let high = 1;
+    for (let i = 0; i < 60; i += 1) {
+      const mid = (low + high) / 2;
+      const pv =
+        mid === 0
+          ? payment * n
+          : payment * ((1 - (1 + mid) ** -n) / mid);
+      if (pv > principal) low = mid;
+      else high = mid;
+    }
+    return ((low + high) / 2) * 12 * 100;
+  }, [fees, loanAmount, monthlyPayment, months]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <input type="number" value={loanAmount} onChange={(e) => setLoanAmount(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Loan amount" />
+        <input type="number" value={fees} onChange={(e) => setFees(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Upfront fees" />
+        <input type="number" value={monthlyPayment} onChange={(e) => setMonthlyPayment(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Monthly payment" />
+        <input type="number" value={months} onChange={(e) => setMonths(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Term (months)" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Estimated APR: {aprValue === null ? "—" : `${formatResult(aprValue, 2)}%`}
+      </p>
+    </div>
+  );
+}
+
+function RetirementSavingsCalculatorTool() {
+  const [current, setCurrent] = useState("25000");
+  const [monthlyContribution, setMonthlyContribution] = useState("500");
+  const [annualReturn, setAnnualReturn] = useState("7");
+  const [years, setYears] = useState("25");
+  const value = useMemo(() => {
+    const p = parseFloat(current);
+    const c = parseFloat(monthlyContribution);
+    const r = parseFloat(annualReturn) / 1200;
+    const n = parseFloat(years) * 12;
+    if ([p, c, r, n].some((v) => Number.isNaN(v) || v < 0) || n <= 0) return null;
+    const fvPrincipal = p * (1 + r) ** n;
+    const fvContrib = r === 0 ? c * n : c * (((1 + r) ** n - 1) / r);
+    return fvPrincipal + fvContrib;
+  }, [annualReturn, current, monthlyContribution, years]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <input type="number" value={current} onChange={(e) => setCurrent(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current savings" />
+        <input type="number" value={monthlyContribution} onChange={(e) => setMonthlyContribution(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Monthly contribution" />
+        <input type="number" value={annualReturn} onChange={(e) => setAnnualReturn(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual return (%)" />
+        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Estimated retirement value: {value === null ? "—" : formatResult(value, 2)}
+      </p>
+    </div>
+  );
+}
+
+function InflationCalculatorTool() {
+  const [amount, setAmount] = useState("10000");
+  const [inflationRate, setInflationRate] = useState("3");
+  const [years, setYears] = useState("10");
+  const values = useMemo(() => {
+    const a = parseFloat(amount);
+    const r = parseFloat(inflationRate) / 100;
+    const t = parseFloat(years);
+    if ([a, r, t].some((v) => Number.isNaN(v) || v < 0)) return null;
+    const futureCost = a * (1 + r) ** t;
+    const futurePurchasingPower = a / (1 + r) ** t;
+    return { futureCost, futurePurchasingPower };
+  }, [amount, inflationRate, years]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-3">
+        <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Amount today" />
+        <input type="number" value={inflationRate} onChange={(e) => setInflationRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Inflation rate (%)" />
+        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-sm font-medium">
+        Future cost equivalent: {values ? formatResult(values.futureCost, 2) : "—"} | Purchasing power of current amount: {values ? formatResult(values.futurePurchasingPower, 2) : "—"}
+      </p>
+    </div>
+  );
+}
+
+function RoiCalculatorTool() {
+  const [initial, setInitial] = useState("10000");
+  const [finalValue, setFinalValue] = useState("13000");
+  const roi = useMemo(() => {
+    const i = parseFloat(initial);
+    const f = parseFloat(finalValue);
+    if ([i, f].some((v) => Number.isNaN(v)) || i <= 0) return null;
+    return ((f - i) / i) * 100;
+  }, [finalValue, initial]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <input type="number" value={initial} onChange={(e) => setInitial(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Initial investment" />
+        <input type="number" value={finalValue} onChange={(e) => setFinalValue(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Final value" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        ROI: {roi === null ? "—" : `${formatResult(roi, 2)}%`}
+      </p>
+    </div>
+  );
+}
+
+function BreakEvenCalculatorTool() {
+  const [fixedCosts, setFixedCosts] = useState("10000");
+  const [pricePerUnit, setPricePerUnit] = useState("80");
+  const [variableCostPerUnit, setVariableCostPerUnit] = useState("35");
+  const breakEvenUnits = useMemo(() => {
+    const fixed = parseFloat(fixedCosts);
+    const price = parseFloat(pricePerUnit);
+    const variable = parseFloat(variableCostPerUnit);
+    const contribution = price - variable;
+    if ([fixed, price, variable].some((v) => Number.isNaN(v) || v < 0) || contribution <= 0) return null;
+    return fixed / contribution;
+  }, [fixedCosts, pricePerUnit, variableCostPerUnit]);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-3">
+        <input type="number" value={fixedCosts} onChange={(e) => setFixedCosts(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Fixed costs" />
+        <input type="number" value={pricePerUnit} onChange={(e) => setPricePerUnit(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Price per unit" />
+        <input type="number" value={variableCostPerUnit} onChange={(e) => setVariableCostPerUnit(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Variable cost per unit" />
+      </div>
+      <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
+        Break-even volume: {breakEvenUnits === null ? "—" : `${formatResult(breakEvenUnits, 2)} units`}
+      </p>
+    </div>
+  );
+}
+
 export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -1002,6 +1426,21 @@ const views: Record<ToolImplementation, ComponentType<{ toolSlug: string }>> = {
   "case-converter": () => <CaseConverterTool />,
   "remove-duplicate-lines": () => <RemoveDuplicateLinesTool />,
   "text-to-slug": () => <TextToSlugTool />,
+  "mortgage-calculator": () => <MortgageCalculatorTool />,
+  "compound-interest-calculator": () => <CompoundInterestCalculatorTool />,
+  "savings-goal-calculator": () => <SavingsGoalCalculatorTool />,
+  "simple-interest-calculator": () => <SimpleInterestCalculatorTool />,
+  "credit-card-payoff-calculator": () => <CreditCardPayoffCalculatorTool />,
+  "auto-loan-calculator": () => <AutoLoanCalculatorTool />,
+  "debt-to-income-calculator": () => <DebtToIncomeCalculatorTool />,
+  "refinance-calculator": () => <RefinanceCalculatorTool />,
+  "down-payment-calculator": () => <DownPaymentCalculatorTool />,
+  "amortization-calculator": () => <AmortizationCalculatorTool />,
+  "apr-calculator": () => <AprCalculatorTool />,
+  "retirement-savings-calculator": () => <RetirementSavingsCalculatorTool />,
+  "inflation-calculator": () => <InflationCalculatorTool />,
+  "roi-calculator": () => <RoiCalculatorTool />,
+  "break-even-calculator": () => <BreakEvenCalculatorTool />,
 };
 
 export function ToolImplementationView({

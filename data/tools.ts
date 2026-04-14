@@ -61,7 +61,7 @@ QuickTools Hub is designed as a set of standalone SEO landing pages: each tool t
           "JPG and PNG are supported. Clear, high-contrast images usually produce sharper text in the exported PDF.",
       },
     ],
-    relatedSlugs: ["percentage-calculator"],
+    relatedSlugs: ["word-to-pdf", "merge-pdfs", "compress-pdf"],
   },
   {
     id: "word-counter",
@@ -115,7 +115,7 @@ QuickTools Hub also connects related workflows. If you need to package screensho
           "Character counts are useful as a guide, but always confirm the exact limit in your CMS or search console previews.",
       },
     ],
-    relatedSlugs: ["percentage-calculator"],
+    relatedSlugs: ["case-converter", "text-to-slug", "remove-duplicate-lines"],
   },
   {
     id: "percentage-calculator",
@@ -169,7 +169,7 @@ If you are writing up your findings afterward, a word counter online can help yo
           "Yes. The layout uses large inputs and spacing suited to phones.",
       },
     ],
-    relatedSlugs: ["image-to-pdf", "word-counter"],
+    relatedSlugs: ["loan-emi-calculator", "gpa-calculator", "date-difference-calculator"],
   },
   {
     id: "word-to-pdf",
@@ -217,7 +217,7 @@ If your workflow continues after conversion, check related tools in this hub. Yo
           "The conversion flow is browser-based for speed and privacy-focused processing during use.",
       },
     ],
-    relatedSlugs: ["merge-pdfs", "split-pdf", "compress-pdf", "pdf-to-word"],
+    relatedSlugs: ["pdf-to-word", "merge-pdfs", "compress-pdf", "image-to-pdf"],
   },
   {
     id: "pdf-to-word",
@@ -258,7 +258,7 @@ Whether you are working on business paperwork or student assignments, having bot
           "Complex layouts can vary by file. Always review the output before final submission.",
       },
     ],
-    relatedSlugs: ["word-to-pdf", "merge-pdfs", "compress-pdf"],
+    relatedSlugs: ["word-to-pdf", "merge-pdfs", "split-pdf"],
   },
   {
     id: "merge-pdfs",
@@ -422,7 +422,7 @@ This page also links to related calculators inside QuickTools Hub, including cal
           "BMI is a general screening metric. For medical advice, consult a healthcare professional.",
       },
     ],
-    relatedSlugs: ["age-calculator", "calorie-calculator", "percentage-calculator"],
+    relatedSlugs: ["age-calculator", "calorie-calculator", "pounds-to-kg"],
   },
   {
     id: "age-calculator",
@@ -460,7 +460,7 @@ Within QuickTools Hub, this tool connects naturally to health and planning utili
           "Yes. Set the reference date to any day to calculate age at that time.",
       },
     ],
-    relatedSlugs: ["bmi-calculator", "date-difference-calculator", "percentage-calculator"],
+    relatedSlugs: ["bmi-calculator", "date-difference-calculator", "calorie-calculator"],
   },
   {
     id: "loan-emi-calculator",
@@ -499,7 +499,707 @@ QuickTools Hub keeps this workflow simple and mobile-friendly, with clear labels
           "It is a strong estimate. Final values can vary by lender fees and rounding rules.",
       },
     ],
-    relatedSlugs: ["percentage-calculator", "date-difference-calculator", "gpa-calculator"],
+    relatedSlugs: ["mortgage-calculator", "apr-calculator", "credit-card-payoff-calculator"],
+  },
+  {
+    id: "mortgage-calculator",
+    slug: "mortgage-calculator",
+    title: "Mortgage Calculator",
+    tier: "star",
+    category: "calculator",
+    seoTitle: "Mortgage Calculator Online — Estimate Monthly Home Payment",
+    seoDescription:
+      "Calculate monthly mortgage payments, total interest, and total cost using loan amount, term, and interest rate.",
+    description:
+      "Estimate monthly mortgage payments and long-term borrowing cost.",
+    h1: "Free Online Mortgage Calculator",
+    introduction:
+      "Use this mortgage calculator to estimate monthly payments before you buy or refinance a home. Enter loan amount, interest rate, and term to see a fast payment breakdown.\n\nThe output helps you compare scenarios, plan affordability, and prepare for lender conversations.",
+    implementation: "mortgage-calculator",
+    seoContent: `Mortgage calculators attract very high-intent traffic because users are usually close to a financial decision. Most visitors want one clear answer first: “how much will I pay each month?” This page is designed to satisfy that exact search intent quickly with practical inputs and immediate results.
+
+Beyond the monthly payment, total interest and total repayment are critical for realistic budgeting. A home loan can look affordable on monthly cash flow while still carrying large lifetime interest costs. Showing both views on one page helps users make stronger decisions and compare loan options with confidence.
+
+This calculator also supports related planning workflows inside QuickTools Hub. You may also want to use our loan EMI calculator to compare monthly cost assumptions, our down payment calculator to test equity scenarios, and our refinance calculator when evaluating lower-rate offers. These internal links are intentional and cluster-focused, helping users move through the full mortgage planning journey in one place.
+
+The page is mobile-friendly and built for repeated testing, so users can adjust values quickly and understand trade-offs before taking action.`,
+    howToUse: [
+      "Enter your mortgage principal amount.",
+      "Set annual interest rate and loan term in years.",
+      "Review estimated monthly payment instantly.",
+      "Compare total repayment and interest before choosing a scenario.",
+    ],
+    faq: [
+      {
+        question: "Does this include property tax and insurance?",
+        answer:
+          "This version focuses on principal and interest. Add taxes and insurance separately for a full housing payment estimate.",
+      },
+      {
+        question: "Can I compare 15-year vs 30-year loans?",
+        answer:
+          "Yes. Change the loan term to compare monthly payments and total interest.",
+      },
+      {
+        question: "Is this calculator free?",
+        answer: "Yes. It is free and available without signup.",
+      },
+    ],
+    relatedSlugs: ["loan-emi-calculator", "down-payment-calculator", "refinance-calculator"],
+  },
+  {
+    id: "compound-interest-calculator",
+    slug: "compound-interest-calculator",
+    title: "Compound Interest Calculator",
+    tier: "star",
+    category: "calculator",
+    seoTitle: "Compound Interest Calculator — Growth Projection Online",
+    seoDescription:
+      "Project investment growth with compound interest using principal, rate, time, and compounding frequency.",
+    description:
+      "Project future value of savings and investments with compounding.",
+    h1: "Free Compound Interest Calculator",
+    introduction:
+      "Calculate how money grows over time with compound interest. Enter principal, annual return, years, and compounding frequency to estimate future value.\n\nThis tool is useful for long-term savings plans, investing goals, and side-by-side growth comparisons.",
+    implementation: "compound-interest-calculator",
+    seoContent: `Compound interest is one of the most searched and monetizable finance topics because it directly connects to savings, investing, and retirement planning. Users are often asking practical questions like “how much will my money grow in 10 years?” or “what happens if I increase my return by 1%?” This page answers those questions with a fast, clean calculator.
+
+The value of this tool is not only the formula output, but the ability to test scenarios. Small changes in annual return, compounding frequency, or investment horizon can produce meaningful differences in final value. That makes this calculator especially useful for people building long-term plans.
+
+You may also want to use our retirement savings calculator for contribution-based growth, our savings goal calculator for required monthly deposits, and our inflation calculator to understand real purchasing power over time. Together, these connected pages form a strong finance cluster that supports deeper user journeys and topical authority.
+
+The interface is built for quick iteration so users can run multiple what-if models without friction.`,
+    howToUse: [
+      "Enter starting principal amount.",
+      "Set annual interest/return rate and time horizon.",
+      "Choose compounding frequency (for example monthly).",
+      "Read projected future value and compare scenarios.",
+    ],
+    faq: [
+      {
+        question: "What is compound interest?",
+        answer:
+          "Compound interest means you earn returns on both your original principal and previously earned interest.",
+      },
+      {
+        question: "Why does compounding frequency matter?",
+        answer:
+          "More frequent compounding can slightly increase final value over long periods.",
+      },
+      {
+        question: "Can I use this for investments?",
+        answer:
+          "Yes. It is useful for rough projections, but real market returns vary.",
+      },
+    ],
+    relatedSlugs: ["retirement-savings-calculator", "savings-goal-calculator", "inflation-calculator"],
+  },
+  {
+    id: "savings-goal-calculator",
+    slug: "savings-goal-calculator",
+    title: "Savings Goal Calculator",
+    tier: "standard",
+    category: "calculator",
+    seoTitle: "Savings Goal Calculator — Required Monthly Savings",
+    seoDescription:
+      "Find how much you need to save monthly to reach a target amount by a specific deadline.",
+    description:
+      "Estimate monthly savings required to reach a financial target.",
+    h1: "Savings Goal Calculator",
+    introduction:
+      "This savings goal calculator estimates the monthly amount you need to save to hit a target by your chosen date. It considers your current balance and expected return.\n\nUse it to plan emergency funds, travel budgets, or large purchases with realistic monthly targets.",
+    implementation: "savings-goal-calculator",
+    seoContent: `Savings goal queries signal strong financial intent because users are actively planning future spending. Most visitors are trying to answer a straightforward question: “how much should I save each month to reach my goal?” This calculator is built around that exact outcome.
+
+By combining a target amount, current savings, time horizon, and expected return, the tool translates long-term goals into a practical monthly action plan. That makes it easier to budget and track progress consistently.
+
+The calculator also fits naturally into broader personal finance workflows. You may also want to use our compound interest calculator to test growth assumptions, our retirement savings calculator for long-term contribution planning, and our inflation calculator to estimate future purchasing power. These related links strengthen cluster depth while helping users continue meaningful planning steps.
+
+Clear, scenario-friendly inputs make this page useful for repeat use. Users can compare optimistic and conservative return assumptions and pick the savings rate that fits real-life cash flow.`,
+    howToUse: [
+      "Enter your target savings amount.",
+      "Add current savings balance and expected annual return.",
+      "Set years remaining until the goal date.",
+      "Review required monthly contribution and adjust assumptions.",
+    ],
+    faq: [
+      {
+        question: "Can I use zero interest rate?",
+        answer:
+          "Yes. The tool supports zero return and calculates straight-line monthly saving.",
+      },
+      {
+        question: "Is this for short-term goals only?",
+        answer:
+          "No. It works for both short-term and long-term savings goals.",
+      },
+      {
+        question: "Should I include inflation?",
+        answer:
+          "For long timelines, include inflation separately using the inflation calculator.",
+      },
+    ],
+    relatedSlugs: ["compound-interest-calculator", "retirement-savings-calculator", "inflation-calculator"],
+  },
+  {
+    id: "simple-interest-calculator",
+    slug: "simple-interest-calculator",
+    title: "Simple Interest Calculator",
+    tier: "seo",
+    category: "calculator",
+    seoTitle: "Simple Interest Calculator — Interest and Total Amount",
+    seoDescription:
+      "Calculate simple interest and maturity value using principal, annual rate, and time.",
+    description:
+      "Compute simple interest and total amount for basic lending scenarios.",
+    h1: "Simple Interest Calculator",
+    introduction:
+      "Use this simple interest calculator for straightforward lending or borrowing estimates. Enter principal, annual rate, and duration to get interest and total maturity amount.\n\nIt is ideal for educational examples and non-compounding scenarios.",
+    implementation: "simple-interest-calculator",
+    seoContent: `Simple interest calculators still attract high-intent finance traffic because many users need quick, non-compounding estimates for short-term lending arrangements or classroom work. This tool delivers immediate clarity by showing both the interest amount and the total repayment value.
+
+Unlike compound models, simple interest keeps the calculation linear, which makes it easier to understand and explain. That transparency is useful when comparing basic borrowing offers or validating manual calculations.
+
+You may also want to use our compound interest calculator for long-term growth scenarios, our APR calculator for cost-of-credit comparisons, and our loan EMI calculator for monthly installment planning. Together, these related pages provide a complete journey from basic formulas to real-world borrowing decisions.
+
+The interface is intentionally lightweight so users can test multiple rates and durations quickly. This improves usability and helps the page perform as a dependable finance utility for both first-time and repeat visitors.`,
+    howToUse: [
+      "Enter principal amount.",
+      "Set annual interest rate and time in years.",
+      "Read simple interest and total amount.",
+      "Adjust rate or duration to compare outcomes.",
+    ],
+    faq: [
+      {
+        question: "What is the simple interest formula?",
+        answer: "Simple Interest = Principal × Rate × Time.",
+      },
+      {
+        question: "Is this the same as compound interest?",
+        answer:
+          "No. Compound interest adds interest on prior interest, while simple interest does not.",
+      },
+      {
+        question: "Can this estimate short-term loans?",
+        answer: "Yes. It is useful for basic short-term interest estimates.",
+      },
+    ],
+    relatedSlugs: ["loan-emi-calculator", "compound-interest-calculator", "savings-goal-calculator"],
+  },
+  {
+    id: "credit-card-payoff-calculator",
+    slug: "credit-card-payoff-calculator",
+    title: "Credit Card Payoff Calculator",
+    tier: "standard",
+    category: "calculator",
+    seoTitle: "Credit Card Payoff Calculator — Estimate Debt Payoff Time",
+    seoDescription:
+      "Estimate how long it takes to pay off credit card debt based on APR, balance, and monthly payment.",
+    description:
+      "Estimate credit card payoff timeline from balance, APR, and payment.",
+    h1: "Credit Card Payoff Calculator",
+    introduction:
+      "Calculate how long it may take to pay off your credit card balance with your current monthly payment. This tool helps you evaluate repayment speed and test higher payment strategies.\n\nUse it to build a realistic debt reduction plan.",
+    implementation: "credit-card-payoff-calculator",
+    seoContent: `Credit card payoff calculators attract highly monetizable intent because users are actively trying to reduce expensive revolving debt. Most visitors need a concrete number: “how many months until I’m debt-free if I pay this amount each month?” This page provides that answer quickly.
+
+The tool also highlights an important repayment threshold: if your payment is too low to exceed monthly interest, the payoff timeline can become impractical. That makes this calculator useful for behavior change, not just numeric output.
+
+You may also want to use our debt-to-income calculator to assess financial pressure, our APR calculator to compare borrowing costs, and our break-even calculator when evaluating trade-offs in monthly budgeting. These internal links support a tight finance cluster and encourage deeper problem-solving journeys.
+
+The workflow is simple and mobile-friendly, allowing users to test different monthly payments and see how faster repayment can reduce long-term interest burden.`,
+    howToUse: [
+      "Enter your current credit card balance.",
+      "Add APR and planned monthly payment.",
+      "View estimated payoff timeline.",
+      "Increase payment amount to test faster debt payoff scenarios.",
+    ],
+    faq: [
+      {
+        question: "Why does payoff time change so much with payment?",
+        answer:
+          "Because credit cards compound interest monthly, small payment increases can reduce payoff duration significantly.",
+      },
+      {
+        question: "What if my payment is too low?",
+        answer:
+          "If payment does not exceed monthly interest, payoff may be very slow or not feasible.",
+      },
+      {
+        question: "Is this exact for all cards?",
+        answer:
+          "It is an estimate. Actual statements may differ due to fees and issuer-specific rules.",
+      },
+    ],
+    relatedSlugs: ["debt-to-income-calculator", "apr-calculator", "loan-emi-calculator"],
+  },
+  {
+    id: "auto-loan-calculator",
+    slug: "auto-loan-calculator",
+    title: "Auto Loan Calculator",
+    tier: "standard",
+    category: "calculator",
+    seoTitle: "Auto Loan Calculator — Car Payment Estimator",
+    seoDescription:
+      "Estimate car loan monthly payment using vehicle price, down payment, APR, and term.",
+    description:
+      "Estimate monthly car payments with down payment and interest rate.",
+    h1: "Auto Loan Calculator",
+    introduction:
+      "Estimate monthly car loan payments before visiting a dealership. Enter car price, down payment, annual rate, and loan term to compare options.\n\nThe output helps you evaluate affordability and financing trade-offs.",
+    implementation: "auto-loan-calculator",
+    seoContent: `Auto loan search intent is highly actionable and commercially valuable. Users searching for a car payment calculator are usually preparing for a real purchase and comparing financing offers. This page gives fast monthly payment estimates so visitors can make better decisions before signing any paperwork.
+
+Including down payment in the model is especially useful, because it directly affects financed amount, monthly cost, and total repayment. Scenario testing helps users understand whether to prioritize a larger upfront payment or a shorter term.
+
+You may also want to use our loan EMI calculator for installment comparisons, our APR calculator to evaluate true borrowing cost, and our debt-to-income calculator to check whether a new payment fits your monthly budget. These contextual links strengthen the finance cluster and support a full decision workflow.
+
+The tool is optimized for quick iteration, making it practical on both mobile and desktop for shoppers comparing multiple vehicles and financing terms.`,
+    howToUse: [
+      "Enter car price and planned down payment.",
+      "Set annual interest rate and loan term in months.",
+      "Review estimated monthly payment and total repayment.",
+      "Try multiple scenarios before choosing financing.",
+    ],
+    faq: [
+      {
+        question: "Does this include insurance and taxes?",
+        answer:
+          "This calculator focuses on loan repayment only. Add taxes, insurance, and fees separately.",
+      },
+      {
+        question: "Can I compare 48 vs 60 months?",
+        answer:
+          "Yes. Adjust term to compare monthly payment versus total interest cost.",
+      },
+      {
+        question: "Is a larger down payment always better?",
+        answer:
+          "A larger down payment often reduces total borrowing cost, but liquidity needs also matter.",
+      },
+    ],
+    relatedSlugs: ["loan-emi-calculator", "apr-calculator", "debt-to-income-calculator"],
+  },
+  {
+    id: "debt-to-income-calculator",
+    slug: "debt-to-income-calculator",
+    title: "Debt-to-Income Calculator",
+    tier: "seo",
+    category: "calculator",
+    seoTitle: "Debt-to-Income (DTI) Calculator — Monthly Ratio Check",
+    seoDescription:
+      "Calculate debt-to-income ratio (DTI) from monthly debt payments and gross monthly income.",
+    description:
+      "Check your debt-to-income ratio for loan readiness and budgeting.",
+    h1: "Debt-to-Income (DTI) Calculator",
+    introduction:
+      "Use this DTI calculator to measure monthly debt obligations relative to gross monthly income. It is commonly used by lenders for mortgage, auto, and personal loan qualification.\n\nA quick DTI check helps you assess borrowing readiness and monthly risk.",
+    implementation: "debt-to-income-calculator",
+    seoContent: `Debt-to-income ratio is a core underwriting metric, so DTI searches usually carry high intent and strong monetization potential. People use this calculator when they are preparing for mortgage or loan applications and want to know where they stand before applying.
+
+The formula is straightforward, but interpretation matters. A lower DTI often indicates better capacity to handle additional debt, while a high DTI can signal affordability pressure. This page helps users calculate the ratio quickly and use it as a planning input.
+
+You may also want to use our mortgage calculator to estimate potential housing payments, our credit card payoff calculator to reduce monthly obligations, and our loan EMI calculator to model new debt before applying. These tightly related links form a focused finance cluster and increase topical depth.
+
+The interface is simple so users can test scenarios in seconds, such as reducing monthly debt or increasing income, and see how those changes affect overall borrowing profile.`,
+    howToUse: [
+      "Enter total monthly debt payments.",
+      "Enter gross monthly income.",
+      "Read your debt-to-income percentage instantly.",
+      "Adjust inputs to test affordability improvements.",
+    ],
+    faq: [
+      {
+        question: "What is a good DTI ratio?",
+        answer:
+          "Thresholds vary by lender, but lower DTI is generally better for borrowing approval.",
+      },
+      {
+        question: "Should I include rent in debt?",
+        answer:
+          "DTI methods vary. For lending prep, follow the lender’s specific guidelines.",
+      },
+      {
+        question: "Can DTI affect mortgage approval?",
+        answer:
+          "Yes. DTI is a key factor in many mortgage underwriting decisions.",
+      },
+    ],
+    relatedSlugs: ["mortgage-calculator", "loan-emi-calculator", "credit-card-payoff-calculator"],
+  },
+  {
+    id: "refinance-calculator",
+    slug: "refinance-calculator",
+    title: "Refinance Calculator",
+    tier: "seo",
+    category: "calculator",
+    seoTitle: "Refinance Calculator — Monthly Savings and Break-even",
+    seoDescription:
+      "Estimate mortgage refinance savings and break-even period using old rate, new rate, and closing costs.",
+    description:
+      "Estimate refinance savings and break-even timeline.",
+    h1: "Mortgage Refinance Calculator",
+    introduction:
+      "This refinance calculator compares your current loan rate with a potential new rate and estimates monthly savings and break-even time after closing costs.\n\nIt helps you decide whether refinancing is financially worthwhile.",
+    implementation: "refinance-calculator",
+    seoContent: `Refinance intent is deeply transactional and often tied to high-value decisions, making it one of the most important finance topics for authority and ad revenue. Users want to know whether a lower interest rate actually delivers net savings after fees. This calculator addresses that decision directly with clear break-even analysis.
+
+Monthly payment reduction alone is not enough; timing matters. If break-even occurs too late, refinancing may not be efficient for borrowers who plan to move or sell sooner. Presenting both savings and break-even helps users make practical, time-aware decisions.
+
+You may also want to use our mortgage calculator for baseline payment scenarios, our APR calculator for cost-of-credit comparisons, and our amortization calculator to understand interest structure over time. These finance links reinforce topical connectivity and provide a complete analysis path for borrowers.
+
+The page is optimized for fast scenario modeling on mobile and desktop so users can evaluate multiple rate and fee combinations before contacting lenders.`,
+    howToUse: [
+      "Enter current loan balance and remaining term.",
+      "Input current and new interest rates.",
+      "Add estimated refinance closing costs.",
+      "Review monthly savings and break-even period.",
+    ],
+    faq: [
+      {
+        question: "What is refinance break-even?",
+        answer:
+          "It is the number of months required for payment savings to recover refinance costs.",
+      },
+      {
+        question: "Does a lower rate always mean refinance is good?",
+        answer:
+          "Not always. Closing costs and time horizon can change the decision.",
+      },
+      {
+        question: "Can this calculator replace lender disclosures?",
+        answer:
+          "No. Use it as a planning estimate and confirm with official loan disclosures.",
+      },
+    ],
+    relatedSlugs: ["mortgage-calculator", "loan-emi-calculator", "savings-goal-calculator"],
+  },
+  {
+    id: "down-payment-calculator",
+    slug: "down-payment-calculator",
+    title: "Down Payment Calculator",
+    tier: "seo",
+    category: "calculator",
+    seoTitle: "Down Payment Calculator — Home Down Payment and Loan Amount",
+    seoDescription:
+      "Calculate required down payment and remaining loan amount based on home price and percentage.",
+    description:
+      "Calculate down payment amount and estimated financed balance.",
+    h1: "Home Down Payment Calculator",
+    introduction:
+      "Use this down payment calculator to estimate how much cash you need upfront for a home purchase and how much you may need to finance.\n\nIt is useful when comparing homes and budgeting for closing readiness.",
+    implementation: "down-payment-calculator",
+    seoContent: `Down payment planning is one of the earliest steps in the home-buying process, and the search intent is highly actionable. Users usually want a fast estimate tied to real listing prices, which makes this calculator a strong fit for both UX and monetizable finance traffic.
+
+By converting a percentage target into a concrete cash amount, the tool helps buyers set savings milestones and estimate the resulting loan size. This reduces ambiguity and supports more realistic mortgage planning.
+
+You may also want to use our mortgage calculator to estimate monthly payments, our savings goal calculator to plan monthly contributions toward your target, and our refinance calculator for future rate planning. These internal links create a coherent home-finance cluster that supports deeper engagement.
+
+The interface is deliberately simple for rapid scenario testing. Users can quickly compare 10%, 15%, and 20% down payment options and understand how each affects financing needs.`,
+    howToUse: [
+      "Enter estimated home purchase price.",
+      "Set desired down payment percentage.",
+      "View calculated down payment amount.",
+      "Review remaining financed loan estimate.",
+    ],
+    faq: [
+      {
+        question: "Does this include closing costs?",
+        answer:
+          "No. This tool focuses on down payment and estimated financed amount only.",
+      },
+      {
+        question: "Can I use custom percentages?",
+        answer: "Yes. You can enter any percentage value.",
+      },
+      {
+        question: "Why is this useful before pre-approval?",
+        answer:
+          "It helps you estimate required cash and financing before speaking with lenders.",
+      },
+    ],
+    relatedSlugs: ["mortgage-calculator", "savings-goal-calculator", "loan-emi-calculator"],
+  },
+  {
+    id: "amortization-calculator",
+    slug: "amortization-calculator",
+    title: "Amortization Calculator",
+    tier: "seo",
+    category: "calculator",
+    seoTitle: "Loan Amortization Calculator — Payment Interest Breakdown",
+    seoDescription:
+      "Estimate loan amortization, monthly payment, and principal-interest split over time.",
+    description:
+      "Estimate monthly amortized payment and interest structure.",
+    h1: "Loan Amortization Calculator",
+    introduction:
+      "Use this amortization calculator to estimate monthly loan payments and understand how principal and interest are distributed over time.\n\nIt is useful for mortgages, auto loans, and long-term borrowing comparisons.",
+    implementation: "amortization-calculator",
+    seoContent: `Amortization analysis is essential for borrowers who want to understand where monthly payments actually go. High-intent users search this topic when evaluating long-term debt and deciding whether extra payments or refinancing are worthwhile. This page provides a clear, practical breakdown.
+
+By combining payment amount, total interest, and early principal-interest allocation, the tool helps users move beyond headline rates. That context often reveals the real cost of long-duration financing.
+
+You may also want to use our mortgage calculator for baseline payment estimates, our refinance calculator for break-even analysis, and our loan EMI calculator for monthly installment comparisons. These links strengthen your finance topic graph and guide users through the full borrowing lifecycle.
+
+This calculator is intentionally fast and mobile-friendly for repeated scenario checks. Users can compare terms and rates quickly, then make better planning decisions with clearer visibility into repayment structure.`,
+    howToUse: [
+      "Enter loan amount, annual rate, and term.",
+      "Review estimated monthly payment.",
+      "Check total interest projection.",
+      "Use the first-month split as a quick amortization snapshot.",
+    ],
+    faq: [
+      {
+        question: "What is amortization?",
+        answer:
+          "Amortization is the process of repaying a loan through scheduled payments over time.",
+      },
+      {
+        question: "Why is early interest often higher?",
+        answer:
+          "Because interest is calculated on outstanding balance, which is highest at the start.",
+      },
+      {
+        question: "Can I use this for non-mortgage loans?",
+        answer:
+          "Yes. It works for many fixed-rate installment loans.",
+      },
+    ],
+    relatedSlugs: ["mortgage-calculator", "loan-emi-calculator", "refinance-calculator"],
+  },
+  {
+    id: "apr-calculator",
+    slug: "apr-calculator",
+    title: "APR Calculator",
+    tier: "seo",
+    category: "calculator",
+    seoTitle: "APR Calculator — Estimate Annual Percentage Rate",
+    seoDescription:
+      "Estimate APR using loan amount, fees, payment amount, and term.",
+    description:
+      "Estimate annual percentage rate including fee impact.",
+    h1: "APR Calculator",
+    introduction:
+      "Use this APR calculator to estimate the effective annual borrowing cost when fees are included. It helps compare loan offers more accurately than interest rate alone.\n\nEnter loan details to see a practical APR estimate.",
+    implementation: "apr-calculator",
+    seoContent: `APR intent is highly monetizable because users are actively comparing credit offers and looking for true borrowing cost clarity. Many borrowers focus only on nominal interest rate, but fees and payment structure can materially change effective annual cost. This calculator helps reveal that difference.
+
+Estimating APR allows better apples-to-apples comparison across lenders. It is especially useful for personal loans, auto financing, and refinancing offers where fee structures vary.
+
+You may also want to use our loan EMI calculator for payment planning, our credit card payoff calculator for revolving debt strategy, and our refinance calculator for long-term savings checks. These contextual finance links build a stronger cluster and help users move through connected borrowing decisions.
+
+The page is designed for practical scenario testing, with clean inputs and instant recalculation. Users can adjust fees or payment assumptions and immediately see how APR shifts, which improves confidence before choosing a lender.`,
+    howToUse: [
+      "Enter total loan amount and upfront fees.",
+      "Add monthly payment and loan term.",
+      "Review estimated APR output.",
+      "Compare multiple lender offers with consistent assumptions.",
+    ],
+    faq: [
+      {
+        question: "Is APR different from interest rate?",
+        answer:
+          "Yes. APR generally includes fees and reflects broader annual borrowing cost.",
+      },
+      {
+        question: "Can this replace official lender APR?",
+        answer:
+          "No. This is an estimate for comparison planning before formal disclosure.",
+      },
+      {
+        question: "Why is APR useful?",
+        answer:
+          "It helps you compare loan offers on a more complete cost basis.",
+      },
+    ],
+    relatedSlugs: ["loan-emi-calculator", "credit-card-payoff-calculator", "auto-loan-calculator"],
+  },
+  {
+    id: "retirement-savings-calculator",
+    slug: "retirement-savings-calculator",
+    title: "Retirement Savings Calculator",
+    tier: "standard",
+    category: "calculator",
+    seoTitle: "Retirement Savings Calculator — Long-Term Growth Projection",
+    seoDescription:
+      "Project retirement savings growth using current balance, monthly contributions, and expected annual return.",
+    description:
+      "Project long-term retirement value from savings and contributions.",
+    h1: "Retirement Savings Calculator",
+    introduction:
+      "Estimate future retirement savings using your current balance, monthly contribution, expected return, and investment timeline. It helps convert long-term planning into clear projections.\n\nRun multiple scenarios to set realistic contribution goals.",
+    implementation: "retirement-savings-calculator",
+    seoContent: `Retirement planning content is a cornerstone of high-authority finance clusters because user intent is long-term, actionable, and highly valuable. This calculator helps users answer a practical question: “if I keep contributing this amount, where could I end up by retirement?”
+
+The model combines current savings, recurring contributions, and compounding to generate an estimated future value. It is useful for both early-stage planning and mid-course adjustments when income or contribution rates change.
+
+You may also want to use our compound interest calculator for base growth projections, our savings goal calculator for target-based monthly planning, and our inflation calculator to adjust expectations for real purchasing power. These contextual links create a coherent finance journey and strengthen internal topical relevance.
+
+The tool is optimized for quick scenario testing on mobile and desktop. Users can compare conservative and optimistic assumptions, then build a savings plan aligned with real-world constraints.`,
+    howToUse: [
+      "Enter current retirement savings balance.",
+      "Add monthly contribution amount.",
+      "Set expected annual return and years to retirement.",
+      "Review projected retirement value and compare scenarios.",
+    ],
+    faq: [
+      {
+        question: "Is this guaranteed future value?",
+        answer:
+          "No. It is a projection based on assumptions. Actual market returns vary.",
+      },
+      {
+        question: "Can I model contribution increases?",
+        answer:
+          "You can rerun scenarios with different contribution amounts to compare outcomes.",
+      },
+      {
+        question: "Should I account for inflation?",
+        answer:
+          "Yes. Use the inflation calculator to estimate real purchasing power.",
+      },
+    ],
+    relatedSlugs: ["compound-interest-calculator", "savings-goal-calculator", "inflation-calculator"],
+  },
+  {
+    id: "inflation-calculator",
+    slug: "inflation-calculator",
+    title: "Inflation Calculator",
+    tier: "seo",
+    category: "calculator",
+    seoTitle: "Inflation Calculator — Future Cost and Purchasing Power",
+    seoDescription:
+      "Estimate future value impact of inflation and the changing purchasing power of money over time.",
+    description:
+      "Estimate future cost impact and purchasing power under inflation.",
+    h1: "Inflation Calculator",
+    introduction:
+      "Estimate how inflation can affect future costs and the purchasing power of money over time. This helps you make more realistic savings and investment decisions.\n\nEnter current amount, inflation rate, and years to project change.",
+    implementation: "inflation-calculator",
+    seoContent: `Inflation-aware planning is increasingly important across personal finance, retirement strategy, and long-term saving decisions. Users searching this calculator usually want to understand a practical question: “what will this amount be worth in the future?” This page provides that answer in a simple, actionable format.
+
+By showing both future cost equivalent and purchasing power impact, the calculator helps users avoid underestimating long-term goals. This context is especially valuable when planning retirement targets, education funds, or major purchases years ahead.
+
+You may also want to use our retirement savings calculator to model long-term contributions, our compound interest calculator for growth projections, and our savings goal calculator to determine monthly targets. These finance links intentionally create a connected planning cluster.
+
+The interface is lightweight and scenario-friendly. Users can test multiple inflation assumptions quickly and build more resilient financial plans based on realistic long-term conditions.`,
+    howToUse: [
+      "Enter a current amount.",
+      "Set annual inflation rate and projection period.",
+      "Review future cost equivalent.",
+      "Compare purchasing power impact across different rates.",
+    ],
+    faq: [
+      {
+        question: "Why does inflation matter in planning?",
+        answer:
+          "Inflation reduces purchasing power, so future goals usually require larger nominal amounts.",
+      },
+      {
+        question: "Can inflation rates change over time?",
+        answer:
+          "Yes. This calculator uses a fixed-rate assumption for simple estimation.",
+      },
+      {
+        question: "Is this useful for retirement planning?",
+        answer:
+          "Yes. It helps adjust savings targets to real future buying power.",
+      },
+    ],
+    relatedSlugs: ["retirement-savings-calculator", "compound-interest-calculator", "savings-goal-calculator"],
+  },
+  {
+    id: "roi-calculator",
+    slug: "roi-calculator",
+    title: "ROI Calculator",
+    tier: "seo",
+    category: "calculator",
+    seoTitle: "ROI Calculator — Return on Investment Percentage",
+    seoDescription:
+      "Calculate return on investment (ROI) percentage from initial investment and final value.",
+    description:
+      "Calculate investment return percentage quickly.",
+    h1: "ROI Calculator",
+    introduction:
+      "Use this ROI calculator to measure percentage return on an investment based on starting value and ending value. It is helpful for quick opportunity comparisons.\n\nYou can test multiple scenarios to compare performance ideas.",
+    implementation: "roi-calculator",
+    seoContent: `ROI queries represent strong commercial intent because users are evaluating business, marketing, or investment decisions with real budget impact. This page provides a fast return percentage calculation so visitors can compare opportunities more confidently.
+
+A simple ROI percentage is often the first screening metric before deeper analysis. It helps identify whether an investment delivered gains relative to initial cost, making it useful for both personal finance and business planning.
+
+You may also want to use our compound interest calculator for long-term growth scenarios, our break-even calculator for operational planning, and our inflation calculator to adjust returns in real terms. These related links reinforce finance topical authority and keep users inside a coherent decision path.
+
+The tool is intentionally minimal and built for repeated use. Users can quickly adjust inputs and compare ideas without switching to spreadsheets for basic return checks.`,
+    howToUse: [
+      "Enter initial investment amount.",
+      "Enter final value after gains or losses.",
+      "Read ROI percentage instantly.",
+      "Compare multiple opportunities with consistent assumptions.",
+    ],
+    faq: [
+      {
+        question: "What is ROI formula?",
+        answer:
+          "ROI = (Final Value − Initial Investment) ÷ Initial Investment × 100.",
+      },
+      {
+        question: "Can ROI be negative?",
+        answer: "Yes. Negative ROI indicates a loss.",
+      },
+      {
+        question: "Does this include time factor?",
+        answer:
+          "No. This calculator shows total ROI percentage, not annualized return.",
+      },
+    ],
+    relatedSlugs: ["compound-interest-calculator", "retirement-savings-calculator", "savings-goal-calculator"],
+  },
+  {
+    id: "break-even-calculator",
+    slug: "break-even-calculator",
+    title: "Break-even Calculator",
+    tier: "seo",
+    category: "calculator",
+    seoTitle: "Break-even Calculator — Required Units to Cover Costs",
+    seoDescription:
+      "Calculate break-even units based on fixed costs, variable cost per unit, and selling price.",
+    description:
+      "Estimate how many units are needed to break even.",
+    h1: "Break-even Calculator",
+    introduction:
+      "Use this break-even calculator to estimate how many units you need to sell before covering fixed and variable costs. It is useful for pricing strategy and business planning.\n\nThe result gives a quick threshold for evaluating profitability targets.",
+    implementation: "break-even-calculator",
+    seoContent: `Break-even calculators attract high-intent finance and business traffic because users are trying to make practical go/no-go decisions. Whether launching a product or evaluating a campaign, understanding break-even volume helps set realistic sales and pricing expectations.
+
+This tool converts fixed costs and contribution margin into a clear unit threshold. That single number is often a powerful decision aid for early-stage planning and performance tracking.
+
+You may also want to use our ROI calculator to evaluate return percentages, our savings goal calculator for cash target planning, and our loan EMI calculator when debt financing is part of the model. These links maintain a focused finance ecosystem while guiding users to adjacent planning tools.
+
+The interface is clean and fast, designed for repeated scenario testing. Users can adjust price, variable cost, or fixed overhead and immediately see how break-even volume changes.`,
+    howToUse: [
+      "Enter fixed costs for the period.",
+      "Add selling price per unit and variable cost per unit.",
+      "View break-even units instantly.",
+      "Adjust pricing or cost assumptions to compare scenarios.",
+    ],
+    faq: [
+      {
+        question: "What is break-even point?",
+        answer:
+          "It is the sales level where total revenue equals total cost, resulting in zero profit.",
+      },
+      {
+        question: "What if variable cost is higher than price?",
+        answer:
+          "Break-even is not feasible because contribution margin is zero or negative.",
+      },
+      {
+        question: "Is this useful for small businesses?",
+        answer:
+          "Yes. It helps evaluate pricing, cost control, and sales targets quickly.",
+      },
+    ],
+    relatedSlugs: ["loan-emi-calculator", "savings-goal-calculator", "auto-loan-calculator"],
   },
   {
     id: "gpa-calculator",
@@ -574,7 +1274,7 @@ Inside QuickTools Hub, this utility links to BMI and age calculators so users ca
         answer: "Yes. Metric values are fully supported.",
       },
     ],
-    relatedSlugs: ["bmi-calculator", "age-calculator", "percentage-calculator"],
+    relatedSlugs: ["bmi-calculator", "age-calculator", "pounds-to-kg"],
   },
   {
     id: "date-difference-calculator",
@@ -684,7 +1384,7 @@ This page also connects to related unit converters in QuickTools Hub for users w
         answer: "Yes. Enter decimals such as 2.5 inches.",
       },
     ],
-    relatedSlugs: ["celsius-to-fahrenheit", "km-to-miles", "miles-to-km"],
+    relatedSlugs: ["celsius-to-fahrenheit", "pounds-to-kg", "kg-to-pounds"],
   },
   {
     id: "mpg-to-kpl",
@@ -721,7 +1421,7 @@ QuickTools Hub keeps this utility fast and direct while linking to broader conve
         answer: "Yes, using a fixed conversion constant.",
       },
     ],
-    relatedSlugs: ["loan-emi-calculator", "celsius-to-fahrenheit", "inches-to-cm"],
+    relatedSlugs: ["percentage-calculator", "celsius-to-fahrenheit", "inches-to-cm"],
   },
   {
     id: "km-to-miles",
@@ -757,7 +1457,7 @@ By focusing on a single conversion intent and clean output, this page supports b
         answer: "Yes. Decimal input is fully supported.",
       },
     ],
-    relatedSlugs: ["inches-to-cm", "celsius-to-fahrenheit", "percentage-calculator"],
+    relatedSlugs: ["inches-to-cm", "celsius-to-fahrenheit", "date-difference-calculator"],
   },
   {
     id: "miles-to-km",
@@ -793,7 +1493,7 @@ QuickTools Hub links this converter to related distance and measurement utilitie
         answer: "Yes. It is free with no signup required.",
       },
     ],
-    relatedSlugs: ["inches-to-cm", "celsius-to-fahrenheit", "percentage-calculator"],
+    relatedSlugs: ["inches-to-cm", "celsius-to-fahrenheit", "date-difference-calculator"],
   },
   {
     id: "pounds-to-kg",
@@ -901,7 +1601,7 @@ Related links point to other unit and calculator pages for common next steps, wh
         answer: "Yes. Decimal values are supported.",
       },
     ],
-    relatedSlugs: ["celsius-to-fahrenheit", "km-to-miles", "miles-to-km"],
+    relatedSlugs: ["celsius-to-fahrenheit", "inches-to-cm", "date-difference-calculator"],
   },
   {
     id: "gallons-to-liters",
@@ -937,7 +1637,7 @@ QuickTools Hub links this page to related measurement tools, enabling users to c
         answer: "Yes. It is fully free to use.",
       },
     ],
-    relatedSlugs: ["celsius-to-fahrenheit", "km-to-miles", "miles-to-km"],
+    relatedSlugs: ["celsius-to-fahrenheit", "inches-to-cm", "date-difference-calculator"],
   },
   {
     id: "hex-to-rgb",
@@ -973,7 +1673,7 @@ This page links to related text-format tools in QuickTools Hub, helping users co
         answer: "Yes. Three-character HEX values are expanded automatically.",
       },
     ],
-    relatedSlugs: ["case-converter", "text-to-slug", "word-counter"],
+    relatedSlugs: ["word-counter", "case-converter", "text-to-slug"],
   },
   {
     id: "rgb-to-hex",
@@ -1009,13 +1709,13 @@ QuickTools Hub keeps this converter lightweight and internally linked to related
         answer: "This version converts standard RGB without alpha.",
       },
     ],
-    relatedSlugs: ["case-converter", "text-to-slug", "word-counter"],
+    relatedSlugs: ["word-counter", "case-converter", "text-to-slug"],
   },
   {
     id: "case-converter",
     slug: "case-converter",
     title: "Case Converter",
-    tier: "seo",
+    tier: "standard",
     category: "text",
     seoTitle: "Case Converter Online — Uppercase, Lowercase, Title Case",
     seoDescription:
@@ -1045,7 +1745,7 @@ QuickTools Hub links this tool to other writing utilities such as word counting 
         answer: "Yes. Punctuation is preserved while letter case changes.",
       },
     ],
-    relatedSlugs: ["word-counter", "text-to-slug", "percentage-calculator"],
+    relatedSlugs: ["word-counter", "text-to-slug", "remove-duplicate-lines"],
   },
   {
     id: "remove-duplicate-lines",
@@ -1088,7 +1788,7 @@ Within QuickTools Hub, this tool connects to other text-processing pages such as
     id: "text-to-slug",
     slug: "text-to-slug",
     title: "Text to Slug Converter",
-    tier: "seo",
+    tier: "standard",
     category: "text",
     seoTitle: "Text to Slug Converter — URL Slug Generator Online",
     seoDescription:
@@ -1119,7 +1819,7 @@ QuickTools Hub links this page to other writing tools, including case and word u
         answer: "Yes. Unsupported symbols are removed automatically.",
       },
     ],
-    relatedSlugs: ["word-counter", "case-converter", "percentage-calculator"],
+    relatedSlugs: ["word-counter", "case-converter", "remove-duplicate-lines"],
   },
 ];
 
