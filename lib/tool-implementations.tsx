@@ -1,10 +1,9 @@
 "use client";
 
 import { jsPDF } from "jspdf";
-import mammoth from "mammoth";
 import type { ComponentType } from "react";
-import { useCallback, useMemo, useState } from "react";
-import { trackToolAction } from "@/lib/analytics";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { getClientUsageSignals, trackToolAction } from "@/lib/analytics";
 import type { ToolImplementation } from "@/types/tool";
 
 function readDataUrl(file: File): Promise<string> {
@@ -289,63 +288,78 @@ export function PercentageCalculatorTool() {
 export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [status, setStatus] = useState<string>(
-    "Upload a .docx file to generate a PDF."
-  );
+  const [status, setStatus] = useState("Upload a .docx file to start conversion.");
+  const [progress, setProgress] = useState(0);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+  const [downloadName, setDownloadName] = useState("document.pdf");
 
-  const convert = useCallback(async (file: File | null) => {
-    if (!file) return;
-    trackToolAction(toolSlug, "upload");
-    if (!/\.docx$/i.test(file.name)) {
+  useEffect(() => {
+    return () => {
+      if (downloadUrl) URL.revokeObjectURL(downloadUrl);
+    };
+  }, [downloadUrl]);
+
+  const convert = useCallback(async () => {
+    if (!selectedFile) {
+      setError("Please choose a .docx file first.");
+      return;
+    }
+    if (!/\.docx$/i.test(selectedFile.name)) {
       setError("Please upload a valid .docx file.");
       return;
     }
 
     setBusy(true);
     setError(null);
-    setStatus("Reading document content...");
+    setProgress(10);
+    setStatus("Uploading your document...");
+    if (downloadUrl) {
+      URL.revokeObjectURL(downloadUrl);
+      setDownloadUrl(null);
+    }
+
+    const progressTimer = window.setInterval(() => {
+      setProgress((prev) => (prev >= 85 ? prev : prev + 5));
+    }, 300);
 
     try {
-      const arrayBuffer = await file.arrayBuffer();
-      const { value } = await mammoth.extractRawText({ arrayBuffer });
-      const content = value.replace(/\r/g, "").trim();
+      const formData = new FormData();
+      formData.append("file", selectedFile);
 
-      if (!content) {
-        setError(
-          "This document appears empty or unsupported. Try another .docx file."
-        );
-        setBusy(false);
-        return;
-      }
-
-      setStatus("Generating PDF...");
-      const pdf = new jsPDF({ unit: "pt", format: "a4" });
-      const margin = 40;
-      const pageWidth = pdf.internal.pageSize.getWidth() - margin * 2;
-      const pageHeight = pdf.internal.pageSize.getHeight();
-      const lineHeight = 18;
-      const lines = pdf.splitTextToSize(content, pageWidth) as string[];
-
-      let y = margin;
-      lines.forEach((line) => {
-        if (y > pageHeight - margin) {
-          pdf.addPage();
-          y = margin;
-        }
-        pdf.text(line, margin, y);
-        y += lineHeight;
+      const res = await fetch("/api/word-to-pdf", {
+        method: "POST",
+        headers: {
+          "x-qth-usage-depth": String(getClientUsageSignals().usageDepth),
+          "x-qth-interaction-ms": String(getClientUsageSignals().interActionMs),
+        },
+        body: formData,
       });
 
-      const baseName = file.name.replace(/\.docx$/i, "") || "document";
-      trackToolAction(toolSlug, "download");
-      pdf.save(`${baseName}.pdf`);
-      setStatus("PDF is ready. Your download should start automatically.");
-    } catch {
-      setError("Conversion failed. Please try a different .docx file.");
+      if (!res.ok) {
+        const payload = (await res.json().catch(() => null)) as
+          | { error?: string }
+          | null;
+        throw new Error(payload?.error ?? "Conversion failed.");
+      }
+
+      const blob = await res.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      setDownloadUrl(objectUrl);
+      setDownloadName(`${selectedFile.name.replace(/\.docx$/i, "") || "document"}.pdf`);
+      setProgress(100);
+      setStatus("Conversion completed. Download your PDF below.");
+      trackToolAction(toolSlug, "conversion_complete");
+    } catch (e) {
+      const message =
+        e instanceof Error ? e.message : "Conversion failed. Please try again.";
+      setError(message);
+      setStatus("Conversion failed.");
     } finally {
+      window.clearInterval(progressTimer);
       setBusy(false);
     }
-  }, [toolSlug]);
+  }, [downloadUrl, selectedFile, toolSlug]);
 
   return (
     <div className="space-y-4">
@@ -358,18 +372,60 @@ export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
           accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           onChange={(e) => {
             const selected = e.target.files?.[0] ?? null;
-            void convert(selected);
+            setSelectedFile(selected);
+            setProgress(0);
+            setError(null);
+            if (selected) {
+              trackToolAction(toolSlug, "upload");
+              setStatus(`${selected.name} selected. Click convert to continue.`);
+            } else {
+              setStatus("Upload a .docx file to start conversion.");
+            }
           }}
           disabled={busy}
           className="block w-full cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-4 text-base file:mr-4 file:rounded-md file:border-0 file:bg-slate-100 file:px-4 file:py-2 file:text-sm file:font-medium file:text-slate-800"
         />
       </label>
+      <button
+        type="button"
+        onClick={() => void convert()}
+        disabled={busy || !selectedFile}
+        className="inline-flex min-h-[44px] items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {busy ? "Converting..." : "Convert to PDF"}
+      </button>
+      <div className="space-y-2">
+        <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200">
+          <div
+            className="h-full rounded-full bg-blue-600 transition-all"
+            style={{ width: `${progress}%` }}
+            aria-hidden="true"
+          />
+        </div>
+        <p className="text-xs text-slate-500">Progress: {progress}%</p>
+      </div>
       {error ? (
         <p className="text-sm text-red-600" role="alert">
           {error}
         </p>
       ) : null}
-      <p className="text-sm text-slate-600">{busy ? "Converting..." : status}</p>
+      <p className="text-sm text-slate-600">{status}</p>
+
+      {downloadUrl ? (
+        <div className="rounded-lg border border-green-200 bg-green-50 p-4">
+          <p className="text-sm text-green-800">
+            Your PDF is ready. Download now and share or submit it.
+          </p>
+          <a
+            href={downloadUrl}
+            download={downloadName}
+            onClick={() => trackToolAction(toolSlug, "download")}
+            className="mt-3 inline-flex min-h-[44px] items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Download PDF
+          </a>
+        </div>
+      ) : null}
     </div>
   );
 }

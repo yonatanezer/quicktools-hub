@@ -2,22 +2,65 @@ import Link from "next/link";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-slate-200 bg-white py-8 text-center text-sm text-slate-600">
-      <p>QuickTools Hub — lightweight browser tools.</p>
-      <nav className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2">
-        <Link href="/image-tools" className="text-blue-700 hover:underline">
-          Image tools
-        </Link>
-        <Link href="/pdf-tools" className="text-blue-700 hover:underline">
-          PDF tools
-        </Link>
-        <Link href="/text-tools" className="text-blue-700 hover:underline">
-          Text tools
-        </Link>
-        <Link href="/calculator-tools" className="text-blue-700 hover:underline">
-          Calculator tools
-        </Link>
-      </nav>
+    <footer className="mt-auto border-t border-slate-200 bg-white py-10 text-sm text-slate-600">
+      <div className="mx-auto max-w-5xl space-y-6 px-4">
+        <div className="space-y-2">
+          <h2 className="text-base font-semibold text-slate-900">
+            QuickTools Hub
+          </h2>
+          <p>
+            Practical browser-based tools for document conversion, text workflows,
+            and quick calculations. Built for speed, clarity, and trustworthy
+            everyday use.
+          </p>
+        </div>
+
+        <nav aria-label="Footer tools navigation">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-900">
+            Tool categories
+          </h3>
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+            <Link href="/image-tools" className="text-blue-700 hover:underline">
+              Image tools
+            </Link>
+            <Link href="/pdf-tools" className="text-blue-700 hover:underline">
+              PDF tools
+            </Link>
+            <Link href="/text-tools" className="text-blue-700 hover:underline">
+              Text tools
+            </Link>
+            <Link
+              href="/calculator-tools"
+              className="text-blue-700 hover:underline"
+            >
+              Calculator tools
+            </Link>
+          </div>
+        </nav>
+
+        <nav aria-label="Footer legal navigation">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-900">
+            Legal and trust
+          </h3>
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+            <Link
+              href="/privacy-policy"
+              className="text-blue-700 hover:underline"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-of-service"
+              className="text-blue-700 hover:underline"
+            >
+              Terms of Service
+            </Link>
+            <Link href="/contact" className="text-blue-700 hover:underline">
+              Contact
+            </Link>
+          </div>
+        </nav>
+      </div>
     </footer>
   );
 }

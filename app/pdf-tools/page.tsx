@@ -41,6 +41,9 @@ export default function PdfToolsPage() {
       <AdBanner placement="middle" />
 
       <section className="mt-8 space-y-4 text-base leading-relaxed text-slate-700">
+        <h2 className="text-xl font-semibold text-slate-900">
+          Why people use PDF tools
+        </h2>
         {seo.body.split("\n\n").map((para, i) => (
           <p key={i}>{para}</p>
         ))}

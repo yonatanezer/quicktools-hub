@@ -6,6 +6,7 @@ import { ToolPageTracker } from "@/components/ToolPageTracker";
 import { ToolPageInternalLinks } from "@/components/ToolPageInternalLinks";
 import { ToolSeoSections } from "@/components/ToolSeoSections";
 import { getToolBySlug, getToolPageLinkSections, tools } from "@/data/tools";
+import { getRevenueOptimizedAdPlacementsForTool } from "@/lib/ad-strategy";
 import { ToolImplementationView } from "@/lib/tool-implementations";
 import { buildToolPageMetadata } from "@/lib/seo/tool-metadata";
 
@@ -35,6 +36,7 @@ export default async function ToolPage({ params }: Props) {
     .filter((p) => p.length > 0);
 
   const { allStarTools, relatedTools } = getToolPageLinkSections(tool);
+  const adPlacements = getRevenueOptimizedAdPlacementsForTool(tool, "normal_user");
 
   return (
     <article>
@@ -46,7 +48,7 @@ export default async function ToolPage({ params }: Props) {
           tool_tier: tool.tier,
         }}
       />
-      <AdBanner placement="top" />
+      {adPlacements.includes("top") ? <AdBanner placement="top" /> : null}
 
       <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
         {tool.h1}
@@ -75,7 +77,7 @@ export default async function ToolPage({ params }: Props) {
         </div>
       </section>
 
-      <AdBanner placement="middle" />
+      {adPlacements.includes("middle") ? <AdBanner placement="middle" /> : null}
 
       <HowToUseSection steps={tool.howToUse} />
       <ToolSeoSections tool={tool} />
@@ -85,7 +87,7 @@ export default async function ToolPage({ params }: Props) {
         relatedTools={relatedTools}
       />
 
-      <AdBanner placement="bottom" />
+      {adPlacements.includes("bottom") ? <AdBanner placement="bottom" /> : null}
     </article>
   );
 }
