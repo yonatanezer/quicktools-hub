@@ -24,6 +24,8 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+
   return (
     <html lang="en">
       <Script
@@ -40,6 +42,15 @@ export default function RootLayout({
     `,
   }}
 />
+      {adsenseClient ? (
+        <Script
+          id="adsense-script"
+          async
+          strategy="afterInteractive"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+          crossOrigin="anonymous"
+        />
+      ) : null}
       <body className="flex min-h-screen flex-col antialiased">
       <noscript>
   <iframe

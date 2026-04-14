@@ -1,4 +1,8 @@
-type EventName = "tool_open" | "tool_action" | "tool_engagement";
+type EventName =
+  | "tool_open"
+  | "tool_action"
+  | "tool_engagement"
+  | "ad_slot_rendered";
 
 type DataLayerEvent = {
   event: EventName;

@@ -1,16 +1,4 @@
-/**
- * Google AdSense placeholder — swap inner content for your ad unit.
- *
- * Insert AdSense script once in app/layout.tsx <head>, for example:
- *   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX"
- *     crossOrigin="anonymous" />
- *
- * Then replace the placeholder below with:
- *   <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="YYYYYYYYYY" />
- *   and push to adsbygoogle per Google’s snippet (often via useEffect in a small client wrapper).
- *
- * Layout uses min-height so empty slots do not collapse awkwardly.
- */
+import { AdSlot } from "@/components/AdSlot";
 
 type Placement = "top" | "middle" | "bottom";
 
@@ -20,15 +8,42 @@ const placementLabels: Record<Placement, string> = {
   bottom: "Ad slot — bottom",
 };
 
+const SLOT_CONFIG: Record<
+  Placement,
+  { slot: string | undefined; minHeight: number }
+> = {
+  top: { slot: process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP, minHeight: 100 },
+  middle: { slot: process.env.NEXT_PUBLIC_ADSENSE_SLOT_MIDDLE, minHeight: 120 },
+  bottom: { slot: process.env.NEXT_PUBLIC_ADSENSE_SLOT_BOTTOM, minHeight: 100 },
+};
+
 export function AdBanner({ placement }: { placement: Placement }) {
+  const cfg = SLOT_CONFIG[placement];
+  const isProduction = process.env.NODE_ENV === "production";
+  const hasEnv =
+    Boolean(process.env.NEXT_PUBLIC_ADSENSE_CLIENT) && Boolean(cfg.slot);
+  const shouldRenderLiveAd = isProduction && hasEnv;
+
   return (
     <aside
       className="my-4 w-full sm:my-6"
       aria-label={`Advertisement ${placement}`}
     >
-      <div className="mx-auto flex min-h-[90px] max-w-3xl items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-100/80 px-4 py-6 text-center text-sm text-slate-500 sm:min-h-[100px]">
-        {placementLabels[placement]}
-      </div>
+      {shouldRenderLiveAd ? (
+        <AdSlot
+          placement={placement}
+          adSlotId={cfg.slot!}
+          minHeight={cfg.minHeight}
+          className="border border-transparent"
+        />
+      ) : (
+        <div
+          className="mx-auto flex max-w-3xl items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-100/80 px-4 py-6 text-center text-sm text-slate-500"
+          style={{ minHeight: cfg.minHeight }}
+        >
+          {placementLabels[placement]}
+        </div>
+      )}
     </aside>
   );
 }
