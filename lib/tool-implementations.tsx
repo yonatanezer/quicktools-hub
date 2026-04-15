@@ -5,6 +5,13 @@ import mammoth from "mammoth";
 import type { ComponentType } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { getClientUsageSignals, trackToolAction } from "@/lib/analytics";
+import {
+  BusinessHoursCalculatorTool,
+  ResolutionTimeCalculatorTool,
+  ResponseTimeCalculatorTool,
+  SlaDeadlineCalculatorTool,
+  SlaRemainingTimeTool,
+} from "@/components/sla/SlaToolkitTools";
 import type { ToolImplementation } from "@/types/tool";
 
 function readDataUrl(file: File): Promise<string> {
@@ -1441,6 +1448,17 @@ const views: Record<ToolImplementation, ComponentType<{ toolSlug: string }>> = {
   "inflation-calculator": () => <InflationCalculatorTool />,
   "roi-calculator": () => <RoiCalculatorTool />,
   "break-even-calculator": () => <BreakEvenCalculatorTool />,
+  "sla-calculator": ({ toolSlug }) => <SlaDeadlineCalculatorTool toolSlug={toolSlug} />,
+  "business-hours-calculator": ({ toolSlug }) => (
+    <BusinessHoursCalculatorTool toolSlug={toolSlug} />
+  ),
+  "response-time-calculator": ({ toolSlug }) => (
+    <ResponseTimeCalculatorTool toolSlug={toolSlug} />
+  ),
+  "resolution-time-calculator": ({ toolSlug }) => (
+    <ResolutionTimeCalculatorTool toolSlug={toolSlug} />
+  ),
+  "sla-remaining-time": ({ toolSlug }) => <SlaRemainingTimeTool toolSlug={toolSlug} />,
 };
 
 export function ToolImplementationView({

@@ -1821,6 +1821,242 @@ QuickTools Hub links this page to other writing tools, including case and word u
     ],
     relatedSlugs: ["word-counter", "case-converter", "remove-duplicate-lines"],
   },
+  {
+    id: "sla-calculator",
+    slug: "sla-calculator",
+    title: "SLA Deadline Calculator",
+    tier: "star",
+    category: "calculator",
+    seoTitle:
+      "SLA Deadline Calculator — Add SLA Time with Business Hours and Holidays",
+    seoDescription:
+      "Calculate SLA deadlines from a start timestamp using business days, working hours, and holiday exclusions. Free online SLA calculator.",
+    description:
+      "Add SLA duration to a ticket start time with configurable workdays, business hours, and holidays.",
+    h1: "SLA Deadline Calculator",
+    introduction:
+      "Calculate exact SLA breach deadlines for support tickets and incidents by adding target time only during active business windows. Configure workdays, office hours, and holiday dates to match your operations.\n\nThis is designed for support teams, IT service desks, and SaaS ops teams that need accurate SLA commitments.",
+    implementation: "sla-calculator",
+    seoContent: `SLA deadline calculators are high-intent tools for support operations teams that need fast, accurate breach timestamps. This page calculates SLA due times from a start date and only counts configured business windows, so weekends and holidays do not create false deadlines.
+
+Teams often search for "SLA due date calculator" or "business hours SLA calculator" when they outgrow manual spreadsheet formulas. A dedicated calculator improves consistency and reduces escalations caused by timing errors in queue triage and shift handovers.
+
+QuickTools Hub structures these pages as a focused SLA and support toolkit cluster. From this deadline calculator, users can jump directly to response-time, resolution-time, and remaining-time tools to complete full ticket lifecycle analysis in one workflow.`,
+    howToUse: [
+      "Set when the ticket or case started.",
+      "Enter the SLA target in minutes or use quick presets.",
+      "Choose business-hours mode or 24/7 mode.",
+      "Configure working days, office hours, and holiday dates.",
+      "Click calculate to get the exact SLA deadline timestamp.",
+    ],
+    faq: [
+      {
+        question: "Does this SLA calculator skip weekends and holidays?",
+        answer:
+          "Yes. It only counts time inside your configured working days and excludes listed holidays.",
+      },
+      {
+        question: "Can I run this as a 24/7 SLA calculator?",
+        answer:
+          "Yes. Switch to 24/7 mode to remove working-hour restrictions while still using selected working days.",
+      },
+      {
+        question: "What unit should I use for SLA targets?",
+        answer:
+          "Use minutes for the most precise calculations. Preset buttons are provided for common 24h, 48h, and 3-day SLAs.",
+      },
+    ],
+    relatedSlugs: [
+      "response-time-calculator",
+      "resolution-time-calculator",
+      "business-hours-calculator",
+      "sla-remaining-time",
+    ],
+  },
+  {
+    id: "business-hours-calculator",
+    slug: "business-hours-calculator",
+    title: "Business Hours Calculator",
+    tier: "standard",
+    category: "calculator",
+    seoTitle:
+      "Business Hours Calculator — Working Time Between Two Timestamps",
+    seoDescription:
+      "Calculate working hours between two timestamps with configurable schedules and holidays. Ideal for support and operations teams.",
+    description:
+      "Measure working-time duration between two dates while excluding off-hours and holidays.",
+    h1: "Business Hours Calculator",
+    introduction:
+      "Find total business time between two timestamps for reporting, staffing analysis, and operational SLAs. Results account for your configured workweek, shift hours, and holidays.\n\nUse it to normalize support metrics and compare queue performance fairly.",
+    implementation: "business-hours-calculator",
+    seoContent: `A business hours calculator helps support and operations teams convert raw clock time into operational time. This distinction is critical because elapsed time and staffed time are rarely equal, especially across nights, weekends, and public holidays.
+
+Users searching "working hours between dates" typically need a fast answer for tickets, projects, or service contracts. This tool handles those scenarios with a reusable business-calendar model that is consistent across the SLA toolkit.
+
+If you also track response or resolution SLAs, this page links to the related calculators so your team can evaluate full lifecycle metrics without switching systems.`,
+    howToUse: [
+      "Set the start and end timestamps.",
+      "Choose business-hours or 24/7 mode.",
+      "Configure workdays, hours, and holiday exclusions.",
+      "Run calculation to get total working time.",
+    ],
+    faq: [
+      {
+        question: "Can this calculator handle custom shift schedules?",
+        answer:
+          "Yes. You can set working-day and working-hour windows to match your support team schedule.",
+      },
+      {
+        question: "What happens if end time is before start time?",
+        answer:
+          "The tool returns a negative duration, which helps identify reversed timestamps.",
+      },
+    ],
+    relatedSlugs: [
+      "sla-calculator",
+      "response-time-calculator",
+      "resolution-time-calculator",
+      "sla-remaining-time",
+    ],
+  },
+  {
+    id: "response-time-calculator",
+    slug: "response-time-calculator",
+    title: "Response Time Calculator",
+    tier: "standard",
+    category: "calculator",
+    seoTitle:
+      "Response Time Calculator — Ticket Open to First Reply (Business Hours)",
+    seoDescription:
+      "Measure support ticket first response time using business hours only. Configure schedule and holidays for accurate SLA reporting.",
+    description:
+      "Calculate first response SLA time between ticket creation and first agent reply.",
+    h1: "Response Time Calculator",
+    introduction:
+      "Calculate first response time between ticket opening and first agent reply while excluding non-working periods. This gives a realistic SLA view for support teams with business-hour coverage.\n\nUse configurable calendars to mirror your regional and shift-based operations.",
+    implementation: "response-time-calculator",
+    seoContent: `Response-time SLAs are often the first KPI customers notice. This calculator focuses specifically on open-to-first-reply duration and measures it inside your defined business windows, helping teams avoid inflated or misleading numbers from overnight gaps.
+
+Searchers looking for "first response SLA calculator" usually need incident-ready numbers for internal reporting or customer-facing commitments. A dedicated workflow reduces ambiguity and improves consistency across analysts and team leads.
+
+For complete support operations insight, pair this with resolution-time and remaining-time calculators in the same SLA toolkit cluster.`,
+    howToUse: [
+      "Set ticket opened timestamp and first response timestamp.",
+      "Configure business schedule and holidays.",
+      "Calculate to get total first response business time.",
+      "Compare result against your response SLA target.",
+    ],
+    faq: [
+      {
+        question: "Is this different from full elapsed response time?",
+        answer:
+          "Yes. This tool reports response time within business hours only, not total wall-clock time.",
+      },
+      {
+        question: "Can I use this for multi-region support teams?",
+        answer:
+          "Yes. Set the calendar to your reporting region or team schedule before running the calculation.",
+      },
+    ],
+    relatedSlugs: [
+      "resolution-time-calculator",
+      "sla-remaining-time",
+      "business-hours-calculator",
+      "sla-calculator",
+    ],
+  },
+  {
+    id: "resolution-time-calculator",
+    slug: "resolution-time-calculator",
+    title: "Resolution Time Calculator",
+    tier: "standard",
+    category: "calculator",
+    seoTitle:
+      "Resolution Time Calculator — Ticket Open to Resolved (Business Hours)",
+    seoDescription:
+      "Calculate support ticket resolution time using business hours and holiday exclusions. Useful for SLA and service quality reporting.",
+    description:
+      "Measure total business-time to resolve tickets while excluding non-working periods.",
+    h1: "Resolution Time Calculator",
+    introduction:
+      "Measure total resolution time from ticket opening to final resolution, based on your business calendar. Non-working periods are excluded so your SLA reporting reflects staffed support coverage.\n\nBuilt for support managers, ITSM teams, and SaaS operations reporting.",
+    implementation: "resolution-time-calculator",
+    seoContent: `Resolution-time analysis is core to SLA governance and support quality improvement. This calculator isolates true business-time-to-resolution so teams can benchmark process efficiency without distortion from nights, weekends, or planned holidays.
+
+People searching "ticket resolution SLA calculator" usually need practical operational answers quickly. The tool is optimized for that use case with minimal inputs and direct output in readable time units.
+
+Use internal links to move from resolution metrics to response-time and SLA remaining checks as part of one connected support toolkit.`,
+    howToUse: [
+      "Set ticket opened and resolved timestamps.",
+      "Configure working days, office hours, and holidays.",
+      "Calculate business-time resolution duration.",
+      "Use result for SLA audits and team performance tracking.",
+    ],
+    faq: [
+      {
+        question: "Does this account for weekends automatically?",
+        answer:
+          "Yes, based on your selected working days. Unselected days are excluded from resolution time.",
+      },
+      {
+        question: "Can I compare resolution and response SLA performance?",
+        answer:
+          "Yes. Use this tool with the response-time calculator for end-to-end ticket SLA analysis.",
+      },
+    ],
+    relatedSlugs: [
+      "response-time-calculator",
+      "sla-remaining-time",
+      "business-hours-calculator",
+      "sla-calculator",
+    ],
+  },
+  {
+    id: "sla-remaining-time",
+    slug: "sla-remaining-time",
+    title: "SLA Remaining Time Calculator",
+    tier: "standard",
+    category: "calculator",
+    seoTitle:
+      "SLA Remaining Time Calculator — Time Left Before SLA Breach",
+    seoDescription:
+      "Check how much SLA time is left before breach using business-hour calculations. Supports custom workdays, shifts, and holidays.",
+    description:
+      "See remaining SLA time before breach based on elapsed business time.",
+    h1: "SLA Remaining Time Calculator",
+    introduction:
+      "Track how much SLA time is left at any moment before a ticket breaches target. Enter ticket open time, SLA target, and the current checkpoint to get remaining business-time instantly.\n\nIdeal for queue prioritization and real-time escalation decisions.",
+    implementation: "sla-remaining-time",
+    seoContent: `SLA remaining-time tracking helps support teams prioritize work before commitments are missed. This calculator estimates time left by subtracting elapsed business time from the target SLA duration, using your configured support calendar.
+
+Search intent around "SLA breach countdown" or "time left for SLA ticket" is highly actionable and tied directly to service outcomes. Fast, clear calculations can improve triage and reduce missed obligations during peak load.
+
+This page links back to the SLA deadline, response-time, and resolution-time calculators so teams can manage both proactive and retrospective SLA workflows from one cluster.`,
+    howToUse: [
+      "Enter ticket open time and current checkpoint time.",
+      "Set SLA target duration in minutes or use presets.",
+      "Configure business schedule and holidays.",
+      "Calculate remaining time and check breach risk.",
+    ],
+    faq: [
+      {
+        question: "What if the result is negative?",
+        answer:
+          "A negative value means the SLA is already breached by that amount of business time.",
+      },
+      {
+        question: "Can this be used for real-time queue triage?",
+        answer:
+          "Yes. Update the as-of timestamp to monitor remaining SLA time during ticket handling.",
+      },
+    ],
+    relatedSlugs: [
+      "sla-calculator",
+      "response-time-calculator",
+      "resolution-time-calculator",
+      "business-hours-calculator",
+    ],
+  },
 ];
 
 export const toolsBySlug: Map<string, Tool> = new Map(

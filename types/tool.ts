@@ -48,7 +48,12 @@ export type ToolImplementation =
   | "retirement-savings-calculator"
   | "inflation-calculator"
   | "roi-calculator"
-  | "break-even-calculator";
+  | "break-even-calculator"
+  | "sla-calculator"
+  | "business-hours-calculator"
+  | "response-time-calculator"
+  | "resolution-time-calculator"
+  | "sla-remaining-time";
 
 export type Tool = {
   id: string;

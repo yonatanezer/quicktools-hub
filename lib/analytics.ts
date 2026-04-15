@@ -2,7 +2,11 @@ type EventName =
   | "tool_open"
   | "tool_action"
   | "tool_engagement"
-  | "ad_slot_rendered";
+  | "ad_slot_rendered"
+  | "tool_start"
+  | "calculate_click"
+  | "config_change"
+  | "tool_complete";
 
 type DataLayerEvent = {
   event: EventName;
@@ -143,6 +147,17 @@ export function trackToolEngagement(
     event: "tool_engagement",
     tool_slug,
     event_type,
+  });
+  markClientSignal("engagement");
+}
+
+export function trackSlaToolEvent(
+  eventName: "tool_start" | "calculate_click" | "config_change" | "tool_complete",
+  tool_slug: string
+): void {
+  pushDataLayerEvent({
+    event: eventName,
+    tool_slug,
   });
   markClientSignal("engagement");
 }
