@@ -10,10 +10,10 @@ export type TrafficQualityCategory =
   | "bot_likely";
 
 export function getToolIntent(tool: Tool): ToolIntent {
-  if (tool.category === "pdf" || tool.category === "image") {
+  if (tool.category === "pdf-tools" || tool.category === "business-tools") {
     return "high_intent";
   }
-  if (tool.category === "text") {
+  if (tool.category === "text-tools" || tool.category === "image-tools") {
     return "medium_intent";
   }
   return "low_intent";

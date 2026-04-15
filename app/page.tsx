@@ -4,21 +4,50 @@ import { AdBanner } from "@/components/AdBanner";
 import { ToolCard } from "@/components/ToolCard";
 import { getStandardTools, getStarTools, tools } from "@/data/tools";
 import { brandIdentity } from "@/lib/brand/identity";
+import type { ToolCategory } from "@/types/tool";
 
 export const metadata: Metadata = {
   title: "Free Online Tools for Everyday Productivity | QuickTools Hub",
   description:
-    "QuickTools Hub is a premium, SEO-first platform for free online productivity tools. Convert files, process text, and solve calculations instantly with no signup.",
+    "QuickTools Hub is an SEO-first platform for free online tools: PDF workflows, business and time calculators, text utilities, image helpers, and everyday math tools.",
 };
 
 export default function HomePage() {
   const starTools = getStarTools();
   const standardTools = getStandardTools();
+  const categoryOrder: ToolCategory[] = [
+    "pdf-tools",
+    "business-tools",
+    "text-tools",
+    "image-tools",
+    "calculator-tools",
+  ];
+  const standardToolsByCategory = categoryOrder
+    .map((category) => ({
+      category,
+      tools: standardTools
+        .filter((tool) => tool.category === category)
+        .sort((a, b) => a.title.localeCompare(b.title)),
+    }))
+    .filter((group) => group.tools.length > 0);
+
+  const categoryLabels: Record<ToolCategory, string> = {
+    "pdf-tools": "PDF",
+    "business-tools": "Business & time",
+    "text-tools": "Text",
+    "image-tools": "Image",
+    "calculator-tools": "Basic calculators",
+  };
   const categoryCards = [
     {
-      title: "Image Tools",
-      description: "Convert images, package screenshots, and prepare sharable files.",
-      href: "/image-tools",
+      title: "PDF Tools",
+      description: "Convert, merge, split, and compress PDF files in practical flows.",
+      href: "/pdf-tools",
+    },
+    {
+      title: "Business & Time Tools",
+      description: "Run ROI, loan, and SLA calculations for high-value decisions.",
+      href: "/business-tools",
     },
     {
       title: "Text Tools",
@@ -26,13 +55,13 @@ export default function HomePage() {
       href: "/text-tools",
     },
     {
-      title: "PDF Tools",
-      description: "Convert, merge, split, and compress PDF files in practical flows.",
-      href: "/pdf-tools",
+      title: "Image Tools",
+      description: "Convert color values and handle quick visual formatting tasks.",
+      href: "/image-tools",
     },
     {
-      title: "Calculator Tools",
-      description: "Solve percentage and quick math tasks with clean, readable tools.",
+      title: "Basic Calculators",
+      description: "Solve percentage, unit, and everyday calculation tasks quickly.",
       href: "/calculator-tools",
     },
   ] as const;
@@ -72,8 +101,9 @@ export default function HomePage() {
           Free Online Tools for Everyday Productivity
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
-          A modern utility SaaS for document conversion, text workflows, and quick
-          calculations. Fast, simple, and built for real work with no signup.
+          A modern utility SaaS for document conversion, business workflows, text
+          cleanup, and practical calculations. Fast, simple, and built for real work
+          with no signup.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <a
@@ -179,9 +209,18 @@ export default function HomePage() {
             <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-600">
               Additional tools
             </h3>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {standardTools.map((tool) => (
-                <ToolCard key={tool.id} tool={tool} variant="standard" />
+            <div className="mt-4 space-y-8">
+              {standardToolsByCategory.map((group) => (
+                <section key={group.category}>
+                  <h4 className="text-sm font-semibold text-slate-700">
+                    {categoryLabels[group.category]} tools
+                  </h4>
+                  <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {group.tools.map((tool) => (
+                      <ToolCard key={tool.id} tool={tool} variant="standard" />
+                    ))}
+                  </div>
+                </section>
               ))}
             </div>
           </div>
@@ -248,7 +287,7 @@ export default function HomePage() {
             href="/image-tools"
             className="btn-secondary min-h-[46px]"
           >
-            Browse all categories
+            Browse image tools
           </Link>
         </div>
       </section>

@@ -2,10 +2,11 @@ import Link from "next/link";
 import { brandIdentity } from "@/lib/brand/identity";
 
 const nav = [
-  { href: "/image-tools", label: "Image tools" },
   { href: "/pdf-tools", label: "PDF tools" },
+  { href: "/business-tools", label: "Business & time" },
   { href: "/text-tools", label: "Text tools" },
-  { href: "/calculator-tools", label: "Calculators" },
+  { href: "/image-tools", label: "Image tools" },
+  { href: "/calculator-tools", label: "Basic calculators" },
 ] as const;
 
 export function SiteHeader() {

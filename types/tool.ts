@@ -4,6 +4,12 @@
  */
 
 export type ToolTier = "star" | "standard" | "seo";
+export type ToolCategory =
+  | "pdf-tools"
+  | "business-tools"
+  | "text-tools"
+  | "image-tools"
+  | "calculator-tools";
 
 export type ToolImplementation =
   | "image-to-pdf"
@@ -60,7 +66,7 @@ export type Tool = {
   slug: string;
   title: string;
   h1: string;
-  category: string;
+  category: ToolCategory;
 
   tier: ToolTier;
 

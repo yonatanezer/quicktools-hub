@@ -20,20 +20,23 @@ export function SiteFooter() {
             Tool categories
           </h3>
           <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-            <Link href="/image-tools" className="text-blue-700 hover:underline">
-              Image tools
-            </Link>
             <Link href="/pdf-tools" className="text-blue-700 hover:underline">
               PDF tools
             </Link>
+            <Link href="/business-tools" className="text-blue-700 hover:underline">
+              Business and time tools
+            </Link>
             <Link href="/text-tools" className="text-blue-700 hover:underline">
               Text tools
+            </Link>
+            <Link href="/image-tools" className="text-blue-700 hover:underline">
+              Image tools
             </Link>
             <Link
               href="/calculator-tools"
               className="text-blue-700 hover:underline"
             >
-              Calculator tools
+              Basic calculators
             </Link>
           </div>
         </nav>

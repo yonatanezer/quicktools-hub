@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CategoryLandingPage } from "@/components/CategoryLandingPage";
 import { categorySeo, getToolsByCategory } from "@/data/tools";
 
-const cat = "image" as const;
+const cat = "image-tools" as const;
 
 export const metadata: Metadata = {
   title: categorySeo[cat].title,
@@ -21,7 +21,8 @@ export default function ImageToolsPage() {
       tools={list}
       links={[
         { href: "/text-tools", label: "text tools" },
-        { href: "/calculator-tools", label: "calculator tools" },
+        { href: "/business-tools", label: "business and time tools" },
+        { href: "/calculator-tools", label: "basic calculators" },
         { href: "/pdf-tools", label: "PDF tools" },
       ]}
     />

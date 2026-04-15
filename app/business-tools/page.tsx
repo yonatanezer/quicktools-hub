@@ -2,27 +2,27 @@ import type { Metadata } from "next";
 import { CategoryLandingPage } from "@/components/CategoryLandingPage";
 import { categorySeo, getToolsByCategory } from "@/data/tools";
 
-const cat = "pdf-tools" as const;
+const cat = "business-tools" as const;
 
 export const metadata: Metadata = {
   title: categorySeo[cat].title,
   description: categorySeo[cat].description,
 };
 
-export default function PdfToolsPage() {
+export default function BusinessToolsPage() {
   const seo = categorySeo[cat];
   const list = getToolsByCategory(cat);
 
   return (
     <CategoryLandingPage
-      heading="PDF tools"
+      heading="Business and time tools"
       description={seo.description}
       body={seo.body}
       tools={list}
       links={[
-        { href: "/business-tools", label: "business and time tools" },
-        { href: "/text-tools", label: "text tools" },
+        { href: "/pdf-tools", label: "PDF tools" },
         { href: "/calculator-tools", label: "basic calculators" },
+        { href: "/text-tools", label: "text tools" },
       ]}
     />
   );

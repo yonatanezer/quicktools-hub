@@ -32,7 +32,7 @@ export function ToolPageInternalLinks({
             Featured tools
           </h3>
           <p className="mt-1 text-sm text-slate-600">
-            Our highest-priority tools across documents, text, health, and planning.
+            Our highest-priority tools across documents, text, business, and planning.
           </p>
           <ul className="mt-4 space-y-3">
             {allStarTools.map((t) => (
@@ -99,14 +99,21 @@ export function ToolPageInternalLinks({
           text tools
         </Link>
         , or{" "}
+        <Link href="/business-tools" className="text-blue-700 hover:underline">
+          business and time tools
+        </Link>
+        ,{" "}
         <Link
           href="/calculator-tools"
           className="text-blue-700 hover:underline"
         >
-          calculator tools
+          basic calculators
         </Link>
         , or{" "}
-        <Link href="/pdf-tools" className="text-blue-700 hover:underline">
+        <Link
+          href="/pdf-tools"
+          className="text-blue-700 hover:underline"
+        >
           PDF tools
         </Link>
         .

@@ -5,10 +5,11 @@ import { trackToolAction } from "@/lib/analytics";
 import type { Tool, ToolTier } from "@/types/tool";
 
 const categoryLabel: Record<string, string> = {
-  image: "Image",
-  text: "Text",
-  calculator: "Calculator",
-  pdf: "PDF",
+  "pdf-tools": "PDF tools",
+  "business-tools": "Business & time",
+  "text-tools": "Text tools",
+  "image-tools": "Image tools",
+  "calculator-tools": "Basic calculators",
 };
 
 const tierLabel: Record<ToolTier, string> = {

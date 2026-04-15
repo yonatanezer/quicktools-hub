@@ -6,7 +6,7 @@
  * For `tier: "seo"`, keep `relatedSlugs` pointing only to `star` or `standard` tools (link upward).
  */
 
-import type { Tool, ToolTier } from "@/types/tool";
+import type { Tool, ToolCategory, ToolTier } from "@/types/tool";
 
 export const tools: Tool[] = [
   {
@@ -14,7 +14,7 @@ export const tools: Tool[] = [
     slug: "image-to-pdf",
     title: "Image to PDF",
     tier: "star",
-    category: "image",
+    category: "pdf-tools",
     seoTitle:
       "Free Online Image to PDF Converter – Merge JPG & PNG into One PDF | QuickTools Hub",
     seoDescription:
@@ -68,7 +68,7 @@ QuickTools Hub is designed as a set of standalone SEO landing pages: each tool t
     slug: "word-counter",
     title: "Word Counter",
     tier: "star",
-    category: "text",
+    category: "text-tools",
     seoTitle:
       "Free Online Word Counter – Count Words, Characters & Sentences Instantly | QuickTools Hub",
     seoDescription:
@@ -122,7 +122,7 @@ QuickTools Hub also connects related workflows. If you need to package screensho
     slug: "percentage-calculator",
     title: "Percentage Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle:
       "Free Percentage Calculator Online – X% of Y & Percent Increase or Decrease | QuickTools Hub",
     seoDescription:
@@ -176,7 +176,7 @@ If you are writing up your findings afterward, a word counter online can help yo
     slug: "word-to-pdf",
     title: "Word to PDF",
     tier: "star",
-    category: "pdf",
+    category: "pdf-tools",
     seoTitle:
       "Free Word to PDF Converter Online (.DOCX) — Fast & Secure | QuickTools Hub",
     seoDescription:
@@ -224,7 +224,7 @@ If your workflow continues after conversion, check related tools in this hub. Yo
     slug: "pdf-to-word",
     title: "PDF to Word",
     tier: "standard",
-    category: "pdf",
+    category: "pdf-tools",
     seoTitle:
       "PDF to Word Converter Online — Convert PDF to Editable DOCX | QuickTools Hub",
     seoDescription:
@@ -265,7 +265,7 @@ Whether you are working on business paperwork or student assignments, having bot
     slug: "merge-pdfs",
     title: "Merge PDFs",
     tier: "standard",
-    category: "pdf",
+    category: "pdf-tools",
     seoTitle: "Merge PDF Files Online for Free — Combine Multiple PDFs | QuickTools Hub",
     seoDescription:
       "Combine multiple PDF files into one document online. Fast merge workflow for reports, applications, and attachments.",
@@ -305,7 +305,7 @@ When paired with other PDF tools, merge becomes part of a broader workflow. You 
     slug: "split-pdf",
     title: "Split PDF",
     tier: "standard",
-    category: "pdf",
+    category: "pdf-tools",
     seoTitle: "Split PDF Online — Extract Pages from PDF Files | QuickTools Hub",
     seoDescription:
       "Split PDF files online and extract only the pages you need. Great for sharing, submissions, and document cleanup.",
@@ -345,7 +345,7 @@ This page is part of the QuickTools Hub PDF category, where related tools suppor
     slug: "compress-pdf",
     title: "Compress PDF",
     tier: "standard",
-    category: "pdf",
+    category: "pdf-tools",
     seoTitle:
       "Compress PDF Online — Reduce PDF File Size Fast | QuickTools Hub",
     seoDescription:
@@ -386,7 +386,7 @@ Compression also pairs naturally with split and merge actions. You can assemble 
     slug: "bmi-calculator",
     title: "BMI Calculator",
     tier: "star",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "BMI Calculator Online — Check Body Mass Index Fast | QuickTools Hub",
     seoDescription:
       "Calculate BMI online using height and weight. Instant body mass index result with clear health range guidance.",
@@ -429,7 +429,7 @@ This page also links to related calculators inside QuickTools Hub, including cal
     slug: "age-calculator",
     title: "Age Calculator",
     tier: "star",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "Age Calculator Online — Calculate Exact Age by Date of Birth",
     seoDescription:
       "Find exact age in years, months, and days from date of birth. Free online age calculator with instant results.",
@@ -467,7 +467,7 @@ Within QuickTools Hub, this tool connects naturally to health and planning utili
     slug: "loan-emi-calculator",
     title: "Loan EMI Calculator",
     tier: "star",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Loan EMI Calculator — Monthly Payment Estimator Online",
     seoDescription:
       "Calculate monthly loan EMI instantly using principal, rate, and tenure. Free online EMI calculator for quick planning.",
@@ -506,7 +506,7 @@ QuickTools Hub keeps this workflow simple and mobile-friendly, with clear labels
     slug: "mortgage-calculator",
     title: "Mortgage Calculator",
     tier: "star",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Mortgage Calculator Online — Estimate Monthly Home Payment",
     seoDescription:
       "Calculate monthly mortgage payments, total interest, and total cost using loan amount, term, and interest rate.",
@@ -552,7 +552,7 @@ The page is mobile-friendly and built for repeated testing, so users can adjust 
     slug: "compound-interest-calculator",
     title: "Compound Interest Calculator",
     tier: "star",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Compound Interest Calculator — Growth Projection Online",
     seoDescription:
       "Project investment growth with compound interest using principal, rate, time, and compounding frequency.",
@@ -599,7 +599,7 @@ The interface is built for quick iteration so users can run multiple what-if mod
     slug: "savings-goal-calculator",
     title: "Savings Goal Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Savings Goal Calculator — Required Monthly Savings",
     seoDescription:
       "Find how much you need to save monthly to reach a target amount by a specific deadline.",
@@ -646,7 +646,7 @@ Clear, scenario-friendly inputs make this page useful for repeat use. Users can 
     slug: "simple-interest-calculator",
     title: "Simple Interest Calculator",
     tier: "seo",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Simple Interest Calculator — Interest and Total Amount",
     seoDescription:
       "Calculate simple interest and maturity value using principal, annual rate, and time.",
@@ -691,7 +691,7 @@ The interface is intentionally lightweight so users can test multiple rates and 
     slug: "credit-card-payoff-calculator",
     title: "Credit Card Payoff Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Credit Card Payoff Calculator — Estimate Debt Payoff Time",
     seoDescription:
       "Estimate how long it takes to pay off credit card debt based on APR, balance, and monthly payment.",
@@ -738,7 +738,7 @@ The workflow is simple and mobile-friendly, allowing users to test different mon
     slug: "auto-loan-calculator",
     title: "Auto Loan Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Auto Loan Calculator — Car Payment Estimator",
     seoDescription:
       "Estimate car loan monthly payment using vehicle price, down payment, APR, and term.",
@@ -785,7 +785,7 @@ The tool is optimized for quick iteration, making it practical on both mobile an
     slug: "debt-to-income-calculator",
     title: "Debt-to-Income Calculator",
     tier: "seo",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Debt-to-Income (DTI) Calculator — Monthly Ratio Check",
     seoDescription:
       "Calculate debt-to-income ratio (DTI) from monthly debt payments and gross monthly income.",
@@ -832,7 +832,7 @@ The interface is simple so users can test scenarios in seconds, such as reducing
     slug: "refinance-calculator",
     title: "Refinance Calculator",
     tier: "seo",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Refinance Calculator — Monthly Savings and Break-even",
     seoDescription:
       "Estimate mortgage refinance savings and break-even period using old rate, new rate, and closing costs.",
@@ -879,7 +879,7 @@ The page is optimized for fast scenario modeling on mobile and desktop so users 
     slug: "down-payment-calculator",
     title: "Down Payment Calculator",
     tier: "seo",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Down Payment Calculator — Home Down Payment and Loan Amount",
     seoDescription:
       "Calculate required down payment and remaining loan amount based on home price and percentage.",
@@ -925,7 +925,7 @@ The interface is deliberately simple for rapid scenario testing. Users can quick
     slug: "amortization-calculator",
     title: "Amortization Calculator",
     tier: "seo",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Loan Amortization Calculator — Payment Interest Breakdown",
     seoDescription:
       "Estimate loan amortization, monthly payment, and principal-interest split over time.",
@@ -972,7 +972,7 @@ This calculator is intentionally fast and mobile-friendly for repeated scenario 
     slug: "apr-calculator",
     title: "APR Calculator",
     tier: "seo",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "APR Calculator — Estimate Annual Percentage Rate",
     seoDescription:
       "Estimate APR using loan amount, fees, payment amount, and term.",
@@ -1019,7 +1019,7 @@ The page is designed for practical scenario testing, with clean inputs and insta
     slug: "retirement-savings-calculator",
     title: "Retirement Savings Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Retirement Savings Calculator — Long-Term Growth Projection",
     seoDescription:
       "Project retirement savings growth using current balance, monthly contributions, and expected annual return.",
@@ -1066,7 +1066,7 @@ The tool is optimized for quick scenario testing on mobile and desktop. Users ca
     slug: "inflation-calculator",
     title: "Inflation Calculator",
     tier: "seo",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Inflation Calculator — Future Cost and Purchasing Power",
     seoDescription:
       "Estimate future value impact of inflation and the changing purchasing power of money over time.",
@@ -1113,7 +1113,7 @@ The interface is lightweight and scenario-friendly. Users can test multiple infl
     slug: "roi-calculator",
     title: "ROI Calculator",
     tier: "seo",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "ROI Calculator — Return on Investment Percentage",
     seoDescription:
       "Calculate return on investment (ROI) percentage from initial investment and final value.",
@@ -1159,7 +1159,7 @@ The tool is intentionally minimal and built for repeated use. Users can quickly 
     slug: "break-even-calculator",
     title: "Break-even Calculator",
     tier: "seo",
-    category: "calculator",
+    category: "business-tools",
     seoTitle: "Break-even Calculator — Required Units to Cover Costs",
     seoDescription:
       "Calculate break-even units based on fixed costs, variable cost per unit, and selling price.",
@@ -1206,7 +1206,7 @@ The interface is clean and fast, designed for repeated scenario testing. Users c
     slug: "gpa-calculator",
     title: "GPA Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "GPA Calculator Online — Calculate Grade Point Average Fast",
     seoDescription:
       "Calculate GPA from grades and credits instantly. Free online GPA calculator for semester and cumulative planning.",
@@ -1243,7 +1243,7 @@ Because academic planning often includes deadlines and progression goals, relate
     slug: "calorie-calculator",
     title: "Calorie Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "Calorie Calculator — Estimate Daily Calorie Needs Online",
     seoDescription:
       "Estimate daily calorie needs based on age, sex, height, weight, and activity level. Fast online calorie calculator.",
@@ -1281,7 +1281,7 @@ Inside QuickTools Hub, this utility links to BMI and age calculators so users ca
     slug: "date-difference-calculator",
     title: "Date Difference Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "Date Difference Calculator — Days Between Dates Online",
     seoDescription:
       "Calculate days, weeks, months, and years between two dates. Free online date difference calculator.",
@@ -1319,7 +1319,7 @@ The page also links to age and percentage tools for related calculations, making
     slug: "celsius-to-fahrenheit",
     title: "Celsius to Fahrenheit Converter",
     tier: "standard",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "Celsius to Fahrenheit Converter — Convert C to F Instantly",
     seoDescription:
       "Convert Celsius to Fahrenheit online instantly with a free temperature converter.",
@@ -1355,7 +1355,7 @@ QuickTools Hub keeps these small utilities fast and mobile-friendly, then links 
     slug: "inches-to-cm",
     title: "Inches to CM Converter",
     tier: "standard",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "Inches to CM Converter — Convert Inches to Centimeters Online",
     seoDescription:
       "Convert inches to centimeters instantly with a free online unit converter.",
@@ -1391,7 +1391,7 @@ This page also connects to related unit converters in QuickTools Hub for users w
     slug: "mpg-to-kpl",
     title: "MPG to KPL Converter",
     tier: "seo",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "MPG to KPL Converter — Fuel Economy Conversion Tool",
     seoDescription:
       "Convert miles per gallon (MPG) to kilometers per liter (KPL) instantly.",
@@ -1428,7 +1428,7 @@ QuickTools Hub keeps this utility fast and direct while linking to broader conve
     slug: "km-to-miles",
     title: "KM to Miles Converter",
     tier: "seo",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "KM to Miles Converter — Convert Kilometers to Miles",
     seoDescription:
       "Free online converter for kilometers to miles with instant and accurate results.",
@@ -1464,7 +1464,7 @@ By focusing on a single conversion intent and clean output, this page supports b
     slug: "miles-to-km",
     title: "Miles to KM Converter",
     tier: "seo",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "Miles to KM Converter — Convert Miles to Kilometers",
     seoDescription:
       "Convert miles to kilometers online instantly with this free unit converter.",
@@ -1500,7 +1500,7 @@ QuickTools Hub links this converter to related distance and measurement utilitie
     slug: "pounds-to-kg",
     title: "Pounds to KG Converter",
     tier: "seo",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "Pounds to KG Converter — Convert LB to KG Online",
     seoDescription:
       "Convert pounds (lb) to kilograms (kg) instantly with accurate results.",
@@ -1536,7 +1536,7 @@ Internal links connect this utility to related converters and health calculators
     slug: "kg-to-pounds",
     title: "KG to Pounds Converter",
     tier: "seo",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "KG to Pounds Converter — Convert Kilograms to LB",
     seoDescription:
       "Convert kilograms to pounds instantly with a free online conversion tool.",
@@ -1572,7 +1572,7 @@ QuickTools Hub keeps the page simple and links to related measurement and health
     slug: "liters-to-gallons",
     title: "Liters to Gallons Converter",
     tier: "seo",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "Liters to Gallons Converter — Convert L to Gallons",
     seoDescription:
       "Convert liters to US gallons instantly using this free online converter.",
@@ -1608,7 +1608,7 @@ Related links point to other unit and calculator pages for common next steps, wh
     slug: "gallons-to-liters",
     title: "Gallons to Liters Converter",
     tier: "seo",
-    category: "calculator",
+    category: "calculator-tools",
     seoTitle: "Gallons to Liters Converter — Convert Gallons to L",
     seoDescription:
       "Convert US gallons to liters instantly with this free online unit tool.",
@@ -1644,7 +1644,7 @@ QuickTools Hub links this page to related measurement tools, enabling users to c
     slug: "hex-to-rgb",
     title: "HEX to RGB Converter",
     tier: "seo",
-    category: "text",
+    category: "image-tools",
     seoTitle: "HEX to RGB Converter — Convert Color Codes Online",
     seoDescription:
       "Convert HEX color codes to RGB values instantly for web and design workflows.",
@@ -1680,7 +1680,7 @@ This page links to related text-format tools in QuickTools Hub, helping users co
     slug: "rgb-to-hex",
     title: "RGB to HEX Converter",
     tier: "seo",
-    category: "text",
+    category: "image-tools",
     seoTitle: "RGB to HEX Converter — Convert RGB Colors to HEX",
     seoDescription:
       "Convert RGB color values to HEX code instantly for web and UI design.",
@@ -1716,7 +1716,7 @@ QuickTools Hub keeps this converter lightweight and internally linked to related
     slug: "case-converter",
     title: "Case Converter",
     tier: "standard",
-    category: "text",
+    category: "text-tools",
     seoTitle: "Case Converter Online — Uppercase, Lowercase, Title Case",
     seoDescription:
       "Convert text case online instantly: uppercase, lowercase, title case, and sentence case.",
@@ -1752,7 +1752,7 @@ QuickTools Hub links this tool to other writing utilities such as word counting 
     slug: "remove-duplicate-lines",
     title: "Remove Duplicate Lines",
     tier: "seo",
-    category: "text",
+    category: "text-tools",
     seoTitle: "Remove Duplicate Lines Online — Clean Repeated Text",
     seoDescription:
       "Remove duplicate lines from text instantly. Free online cleanup tool for lists and datasets.",
@@ -1789,7 +1789,7 @@ Within QuickTools Hub, this tool connects to other text-processing pages such as
     slug: "text-to-slug",
     title: "Text to Slug Converter",
     tier: "standard",
-    category: "text",
+    category: "text-tools",
     seoTitle: "Text to Slug Converter — URL Slug Generator Online",
     seoDescription:
       "Convert text to SEO-friendly URL slugs instantly. Free slug generator for blogs and product pages.",
@@ -1826,7 +1826,7 @@ QuickTools Hub links this page to other writing tools, including case and word u
     slug: "sla-calculator",
     title: "SLA Deadline Calculator",
     tier: "star",
-    category: "calculator",
+    category: "business-tools",
     seoTitle:
       "SLA Deadline Calculator — Add SLA Time with Business Hours and Holidays",
     seoDescription:
@@ -1878,7 +1878,7 @@ QuickTools Hub structures these pages as a focused SLA and support toolkit clust
     slug: "business-hours-calculator",
     title: "Business Hours Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "business-tools",
     seoTitle:
       "Business Hours Calculator — Working Time Between Two Timestamps",
     seoDescription:
@@ -1924,7 +1924,7 @@ If you also track response or resolution SLAs, this page links to the related ca
     slug: "response-time-calculator",
     title: "Response Time Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "business-tools",
     seoTitle:
       "Response Time Calculator — Ticket Open to First Reply (Business Hours)",
     seoDescription:
@@ -1970,7 +1970,7 @@ For complete support operations insight, pair this with resolution-time and rema
     slug: "resolution-time-calculator",
     title: "Resolution Time Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "business-tools",
     seoTitle:
       "Resolution Time Calculator — Ticket Open to Resolved (Business Hours)",
     seoDescription:
@@ -2016,7 +2016,7 @@ Use internal links to move from resolution metrics to response-time and SLA rema
     slug: "sla-remaining-time",
     title: "SLA Remaining Time Calculator",
     tier: "standard",
-    category: "calculator",
+    category: "business-tools",
     seoTitle:
       "SLA Remaining Time Calculator — Time Left Before SLA Breach",
     seoDescription:
@@ -2081,7 +2081,7 @@ export function getToolsForSlugs(slugs: readonly string[]): Tool[] {
   });
 }
 
-export function getToolsByCategory(category: string): Tool[] {
+export function getToolsByCategory(category: ToolCategory): Tool[] {
   return tools.filter((t) => t.category === category);
 }
 
@@ -2102,6 +2102,13 @@ export function getSeoTailTools(): Tool[] {
 }
 
 const isHubTier = (t: Tool) => t.tier === "star" || t.tier === "standard";
+const relatedCategoryPriority: Record<ToolCategory, ToolCategory[]> = {
+  "pdf-tools": ["business-tools", "text-tools", "image-tools", "calculator-tools"],
+  "business-tools": ["pdf-tools", "calculator-tools", "text-tools", "image-tools"],
+  "text-tools": ["pdf-tools", "business-tools", "calculator-tools", "image-tools"],
+  "image-tools": ["pdf-tools", "text-tools", "business-tools", "calculator-tools"],
+  "calculator-tools": ["business-tools", "text-tools", "pdf-tools", "image-tools"],
+};
 
 /**
  * Hub-and-spoke internal links for tool footers.
@@ -2113,43 +2120,86 @@ export function getToolPageLinkSections(current: Tool): {
   relatedTools: Tool[];
 } {
   const allStarTools = getStarTools();
-  let related = getToolsForSlugs(current.relatedSlugs).filter(
+  const relatedFromManual = getToolsForSlugs(current.relatedSlugs).filter(
     (t) => t.slug !== current.slug
   );
+  const relatedFromCategory = getToolsByCategory(current.category)
+    .filter((t) => t.slug !== current.slug)
+    .slice(0, 4);
+  const crossCategoryCandidates = relatedCategoryPriority[current.category]
+    .flatMap((cat) => getToolsByCategory(cat))
+    .filter((t) => t.slug !== current.slug)
+    .sort((a, b) => {
+      if (a.tier === b.tier) return a.title.localeCompare(b.title);
+      if (a.tier === "star") return -1;
+      if (b.tier === "star") return 1;
+      if (a.tier === "standard" && b.tier === "seo") return -1;
+      if (a.tier === "seo" && b.tier === "standard") return 1;
+      return 0;
+    })
+    .slice(0, 6);
+
+  let related = [
+    ...relatedFromManual,
+    ...relatedFromCategory,
+    ...crossCategoryCandidates,
+  ];
   if (current.tier === "seo") {
     related = related.filter(isHubTier);
   }
-  const relatedTools = related.filter(
-    (t) => !allStarTools.some((s) => s.slug === t.slug)
-  );
+  const seen = new Set<string>();
+  const relatedTools = related
+    .filter((t) => !allStarTools.some((s) => s.slug === t.slug))
+    .filter((t) => {
+      if (seen.has(t.slug)) return false;
+      seen.add(t.slug);
+      return true;
+    })
+    .slice(0, 8);
   return { allStarTools, relatedTools };
 }
 
-const categoryKeys = ["image", "text", "calculator", "pdf"] as const;
+const categoryKeys = [
+  "pdf-tools",
+  "business-tools",
+  "text-tools",
+  "image-tools",
+  "calculator-tools",
+] as const;
 export type CategoryPageId = (typeof categoryKeys)[number];
 
 export const categorySeo: Record<
   CategoryPageId,
   { title: string; description: string; body: string }
 > = {
-  image: {
-    title: "Image Tools — Quick, Browser-Based Utilities | QuickTools Hub",
+  "pdf-tools": {
+    title: "PDF Tools - Convert, Merge, Split & Compress Files Online | QuickTools Hub",
     description:
-      "Explore image utilities on QuickTools Hub. Convert formats and prepare files without heavy installs.",
-    body: `Image tools should feel immediate: you have a file in hand, and you want a clean result without signing up for another service. QuickTools Hub focuses on utilities that run in the browser when possible, so you can complete quick tasks and move on with your day.
+      "Use free PDF tools to convert, merge, split, and compress files online. Fast, high-intent document workflows with no signup.",
+    body: `PDF tools solve high-intent tasks: convert contracts, merge reports, split large files, and compress attachments before sharing. QuickTools Hub organizes these workflows so users can complete document jobs in minutes.
 
-This section highlights tools that help you prepare images for sharing, documentation, and archiving. Whether you are combining screenshots, packaging photos for a client, or exporting a lightweight PDF, the goal is a simple path from upload to download.
+People searching for terms like "Word to PDF converter", "PDF compressor online", and "split PDF pages" usually need immediate output under deadline pressure. These pages focus on clear actions, fast processing, and mobile-friendly controls.
 
-Because workflows vary, we keep pages readable and fast. Large tap targets and clear instructions matter on phones, where many quick edits happen. We also aim to avoid clutter so you can find the next step without hunting through unrelated features.
+This category also supports monetization naturally: users often run multi-step sessions (convert, then merge, then compress), which increases page depth without harming UX. Internal links keep those flows discoverable.
 
-As the catalog grows, you will find additional image utilities listed here. Each tool page includes guidance, a short FAQ, and links to related utilities across text and calculator categories. Bookmark the hub if you want a single place to return for small, repeatable tasks.
-
-Browse the cards below to open a tool. Every listing pulls from the same central directory, which helps us keep titles, descriptions, and routes consistent as new utilities are added.`,
+If you work across formats, jump to business calculators for pricing and ROI checks, or to text tools for cleanup tasks after extraction. Use the cards below to start with the exact PDF workflow you need.`,
   },
-  text: {
-    title: "Text Tools — Writing & Counting Utilities | QuickTools Hub",
+  "business-tools": {
+    title: "Business & Time Tools - Finance, SLA, ROI & Planning Calculators | QuickTools Hub",
     description:
-      "Text utilities for drafting, counting, and quick checks. Lightweight tools with clear results.",
+      "High-value business calculators for finance, planning, SLA tracking, and time operations. Built for practical decisions and repeat usage.",
+    body: `Business and time tools target commercial intent: loan planning, ROI and break-even analysis, and SLA timing for support teams. This category is built for users making decisions with financial or operational impact.
+
+Searchers arriving here often need confidence and speed. Inputs are clear, formulas are transparent, and outputs are easy to compare across scenarios. That supports both user trust and long-term monetization potential from repeat visits.
+
+These tools are grouped to match real workflows: estimate monthly cost, validate affordability, calculate business-hour response windows, and communicate results to stakeholders. Related links guide users into PDF and text utilities when reporting is part of the task.
+
+As this hub scales, this category can grow into one of the strongest intent clusters because users revisit calculators regularly. Browse the tools below to open the finance or SLA calculator that matches your use case.`,
+  },
+  "text-tools": {
+    title: "Text Tools - Word Count, Case Conversion & Writing Utilities | QuickTools Hub",
+    description:
+      "Free text tools for writing and cleanup workflows, including word count, case conversion, duplicate-line removal, and slug creation.",
     body: `Text tools support everyday writing work: checking length, tuning clarity, and preparing content for different channels. QuickTools Hub organizes these utilities so you can jump in, complete a task, and return to your draft without switching contexts for long.
 
 Writers often need counts that match platform rules. Character limits appear in product listings, messaging apps, and SEO snippets, while word limits show up in academic prompts and newsletters. A focused counter gives you feedback while you edit, which is more convenient than running a separate audit after each revision.
@@ -2158,32 +2208,31 @@ Accessibility and speed matter. The pages are designed to load quickly and read 
 
 This category will expand over time with additional text-focused utilities. Each tool is linked from this hub page so you can discover related options without searching elsewhere. Consistent metadata also helps you understand what a page does before you click.
 
-Pick a tool from the list below to get started. Related links on each page point to calculators and image utilities when a workflow spans more than one step.`,
+Pick a tool from the list below to get started. Related links point to PDF, business, and image workflows when a job spans more than one step.`,
   },
-  calculator: {
-    title: "Calculator Tools — Percentages & Quick Math | QuickTools Hub",
+  "image-tools": {
+    title: "Image Tools - Color & Visual Utility Converters | QuickTools Hub",
     description:
-      "Practical calculators for percentages and common comparisons. Clear inputs and readable outputs.",
-    body: `Calculator tools are most helpful when they match real questions: what is a percentage of a total, and how much did a value change between two measurements? QuickTools Hub emphasizes those practical patterns with large inputs and readable results you can copy into notes or messages.
+      "Image-focused utilities for designers and creators, including quick color format conversion for visual workflows.",
+    body: `Image tools on QuickTools Hub focus on practical visual tasks that appear in design and front-end workflows. This includes converting color values between HEX and RGB for faster implementation handoff.
 
-Percentages are easy to misread under pressure. A dedicated calculator reduces mistakes when you compare discounts, estimate tips, or interpret month-over-month changes. By keeping the interface minimal, you can re-run scenarios quickly until the numbers make sense.
+Users often search short, high-intent queries like "hex to rgb" during active production work. These pages prioritize instant results and clear formatting so you can copy values and continue without friction.
 
-We keep performance in mind. Lightweight pages load fast on mobile networks, and the layout avoids unnecessary animation so the experience stays calm and predictable. That matters when you are checking figures during a meeting or while traveling.
+As new image utilities are added, this category provides a clean route structure for SEO and internal linking. It also pairs naturally with PDF tools when visual assets need to be exported and shared.
 
-Additional calculator utilities will appear here as the site grows. Each listing uses the same structured data source, which keeps navigation and descriptions consistent. Tool pages also link to text and image utilities when your workflow needs supporting steps.
-
-Choose a calculator from the cards below. If you are writing up findings afterward, consider pairing results with our text tools for concise explanations.`,
+Choose an image utility below to complete your visual formatting task quickly.`,
   },
-  pdf: {
-    title: "PDF Tools — Convert, Merge, Split & Compress Online | QuickTools Hub",
+  "calculator-tools": {
+    title: "Basic Calculators - Everyday Math, Date & Unit Converters | QuickTools Hub",
     description:
-      "Use free PDF tools to convert, merge, split, and compress files online with fast browser-friendly workflows.",
-    body: `PDF tools are essential for modern digital workflows. Whether you are preparing applications, sharing business documents, or organizing study files, having quick access to conversion and file management utilities saves time and reduces friction.
+      "Use simple online calculators for percentages, date differences, health metrics, and unit conversions. Fast results with clean inputs.",
+    body: `Basic calculators are built for everyday intent: percentage checks, date differences, body metrics, and unit conversion. These tools are lightweight and optimized for quick, no-friction use.
 
-This category includes core workflows people search for most often: Word to PDF conversion, PDF to Word editing, file merging, page splitting, and PDF compression. Each tool is designed with clear inputs, simple calls to action, and mobile-friendly layout so tasks can be completed quickly.
+Unlike business calculators, this section focuses on broad utility queries used by students, households, and casual users. Each page keeps labels simple and results readable on mobile.
 
-Many document tasks happen under deadlines, so usability matters. We keep controls obvious, avoid unnecessary complexity, and provide practical guidance on each tool page. That approach helps users complete high-intent tasks without switching between multiple websites.
+The category is designed to scale with new converters and daily-use formulas while keeping naming consistent. Internal links guide users to business tools when a scenario shifts from basic math to financial planning.
 
-As QuickTools Hub expands, this PDF category will continue to grow with additional document utilities and stronger cross-linking between related tasks. Browse the tools below to pick the workflow you need and complete your document job in a few steps.`,
+Pick a calculator below and get results instantly.`,
   },
 };
+
