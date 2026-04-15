@@ -8,7 +8,7 @@
 
 import type { Tool, ToolCategory, ToolTier } from "@/types/tool";
 
-export const tools: Tool[] = [
+const toolRegistry: Omit<Tool, "label">[] = [
   {
     id: "image-to-pdf",
     slug: "image-to-pdf",
@@ -2058,6 +2058,11 @@ This page links back to the SLA deadline, response-time, and resolution-time cal
     ],
   },
 ];
+
+export const tools: Tool[] = toolRegistry.map((tool) => ({
+  ...tool,
+  label: tool.title,
+}));
 
 export const toolsBySlug: Map<string, Tool> = new Map(
   tools.map((t) => [t.slug, t])

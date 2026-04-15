@@ -65,6 +65,7 @@ export type Tool = {
   id: string;
   slug: string;
   title: string;
+  label: string;
   h1: string;
   category: ToolCategory;
 
