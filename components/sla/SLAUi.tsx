@@ -22,10 +22,12 @@ export function DateTimeInput({
   value: string;
   onChange: (next: string) => void;
 }) {
+  const inputId = `datetime-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   return (
-    <label className="block">
+    <label htmlFor={inputId} className="block">
       <span className="mb-2 block text-sm font-medium text-slate-700">{label}</span>
       <input
+        id={inputId}
         type="datetime-local"
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -145,11 +147,12 @@ export function SLAConfigPanel({
       <div>
         <p className="mb-2 text-sm font-medium text-slate-700">Working hours</p>
         <div className="grid gap-3 sm:grid-cols-2">
-          <label className="block">
+          <label htmlFor="sla-working-start" className="block">
             <span className="mb-1 block text-xs uppercase tracking-wide text-slate-500">
               Start
             </span>
             <input
+              id="sla-working-start"
               type="time"
               value={hoursStart}
               disabled={disabledWorkingHours}
@@ -165,11 +168,12 @@ export function SLAConfigPanel({
               className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm"
             />
           </label>
-          <label className="block">
+          <label htmlFor="sla-working-end" className="block">
             <span className="mb-1 block text-xs uppercase tracking-wide text-slate-500">
               End
             </span>
             <input
+              id="sla-working-end"
               type="time"
               value={hoursEnd}
               disabled={disabledWorkingHours}
@@ -188,11 +192,12 @@ export function SLAConfigPanel({
         </div>
       </div>
 
-      <label className="block">
+      <label htmlFor="sla-holidays" className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">
           Holidays (YYYY-MM-DD, one per line)
         </span>
         <textarea
+          id="sla-holidays"
           rows={4}
           value={holidaysText}
           onChange={(e) => {

@@ -104,9 +104,10 @@ export function SlaDeadlineCalculatorTool({ toolSlug }: { toolSlug: string }) {
           setStart(v);
         }}
       />
-      <label className="block">
+      <label htmlFor="sla-target-minutes" className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">SLA target (minutes)</span>
         <input
+          id="sla-target-minutes"
           type="number"
           min="1"
           value={durationMinutes}
@@ -330,11 +331,12 @@ export function SlaRemainingTimeTool({ toolSlug }: { toolSlug: string }) {
         />
         <DateTimeInput label="As of time" value={asOf} onChange={setAsOf} />
       </div>
-      <label className="block">
+      <label htmlFor="sla-remaining-target-minutes" className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">
           SLA target (minutes)
         </span>
         <input
+          id="sla-remaining-target-minutes"
           type="number"
           min="1"
           value={slaTargetMinutes}

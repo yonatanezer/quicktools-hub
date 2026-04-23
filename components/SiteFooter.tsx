@@ -61,6 +61,12 @@ export function SiteFooter() {
             <Link href="/contact" className="text-blue-700 hover:underline">
               Contact
             </Link>
+            <Link href="/about" className="text-blue-700 hover:underline">
+              About
+            </Link>
+            <Link href="/how-it-works" className="text-blue-700 hover:underline">
+              How Tools Work
+            </Link>
           </div>
         </nav>
       </div>

@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Free Online Tools for Everyday Productivity | QuickTools Hub",
   description:
     "QuickTools Hub is an SEO-first platform for free online tools: PDF workflows, business and time calculators, text utilities, image helpers, and everyday math tools.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function HomePage() {
@@ -129,7 +132,7 @@ export default function HomePage() {
         ))}
       </section>
 
-      <section id="tool-categories">
+      <section id="tools-section">
         <div className="max-w-2xl">
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
             Explore categories

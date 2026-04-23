@@ -7,6 +7,9 @@ const cat = "text-tools" as const;
 export const metadata: Metadata = {
   title: categorySeo[cat].title,
   description: categorySeo[cat].description,
+  alternates: {
+    canonical: "/text-tools",
+  },
 };
 
 export default function TextToolsPage() {
@@ -18,6 +21,9 @@ export default function TextToolsPage() {
       heading="Text tools"
       description={seo.description}
       body={seo.body}
+      workflows={seo.workflows}
+      pitfalls={seo.pitfalls}
+      faq={seo.faq}
       tools={list}
       links={[
         { href: "/image-tools", label: "image tools" },

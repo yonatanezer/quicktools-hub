@@ -91,11 +91,12 @@ export function ImageToPdfTool({ toolSlug }: { toolSlug: string }) {
 
   return (
     <div className="space-y-4">
-      <label className="block">
+      <label htmlFor="image-to-pdf-files" className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">
           Images (JPG or PNG)
         </span>
         <input
+          id="image-to-pdf-files"
           type="file"
           accept="image/jpeg,image/png,.jpg,.jpeg,.png"
           multiple
@@ -136,11 +137,12 @@ export function WordCounterTool({ toolSlug }: { toolSlug: string }) {
 
   return (
     <div className="space-y-4">
-      <label className="block">
+      <label htmlFor="word-counter-text" className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">
           Your text
         </span>
         <textarea
+          id="word-counter-text"
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={10}
@@ -222,11 +224,12 @@ export function PercentageCalculatorTool() {
           What is X% of Y?
         </h3>
         <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block">
+          <label htmlFor="percentage-pct" className="block">
             <span className="mb-2 block text-sm font-medium text-slate-700">
               Percent (X)
             </span>
             <input
+              id="percentage-pct"
               type="number"
               inputMode="decimal"
               value={pct}
@@ -234,11 +237,12 @@ export function PercentageCalculatorTool() {
               className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg"
             />
           </label>
-          <label className="block">
+          <label htmlFor="percentage-of" className="block">
             <span className="mb-2 block text-sm font-medium text-slate-700">
               Of (Y)
             </span>
             <input
+              id="percentage-of"
               type="number"
               inputMode="decimal"
               value={of}
@@ -257,11 +261,12 @@ export function PercentageCalculatorTool() {
           Percent increase / decrease
         </h3>
         <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block">
+          <label htmlFor="percentage-old" className="block">
             <span className="mb-2 block text-sm font-medium text-slate-700">
               Old value
             </span>
             <input
+              id="percentage-old"
               type="number"
               inputMode="decimal"
               value={oldVal}
@@ -269,11 +274,12 @@ export function PercentageCalculatorTool() {
               className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg"
             />
           </label>
-          <label className="block">
+          <label htmlFor="percentage-new" className="block">
             <span className="mb-2 block text-sm font-medium text-slate-700">
               New value
             </span>
             <input
+              id="percentage-new"
               type="number"
               inputMode="decimal"
               value={newVal}
@@ -319,9 +325,10 @@ function SingleValueConverterTool({
 
   return (
     <div className="space-y-4">
-      <label className="block">
+      <label htmlFor="single-value-input" className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">{label}</span>
         <input
+          id="single-value-input"
           type="number"
           inputMode="decimal"
           value={value}
@@ -360,9 +367,10 @@ function BmiCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block">
+        <label htmlFor="bmi-height" className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">Height (cm)</span>
           <input
+            id="bmi-height"
             type="number"
             inputMode="decimal"
             value={heightCm}
@@ -370,9 +378,10 @@ function BmiCalculatorTool() {
             className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg"
           />
         </label>
-        <label className="block">
+        <label htmlFor="bmi-weight" className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">Weight (kg)</span>
           <input
+            id="bmi-weight"
             type="number"
             inputMode="decimal"
             value={weightKg}
@@ -415,18 +424,20 @@ function AgeCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block">
+        <label htmlFor="age-dob" className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">Date of birth</span>
           <input
+            id="age-dob"
             type="date"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
             className="w-full rounded-lg border border-slate-300 px-4 py-3 text-base"
           />
         </label>
-        <label className="block">
+        <label htmlFor="age-as-of" className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">As of date</span>
           <input
+            id="age-as-of"
             type="date"
             value={asOf}
             onChange={(e) => setAsOf(e.target.value)}
@@ -460,17 +471,17 @@ function LoanEmiCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-3">
-        <label className="block">
+        <label htmlFor="loan-emi-principal" className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">Principal</span>
-          <input type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg" />
+          <input id="loan-emi-principal" type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg" />
         </label>
-        <label className="block">
+        <label htmlFor="loan-emi-rate" className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">Annual rate (%)</span>
-          <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg" />
+          <input id="loan-emi-rate" type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg" />
         </label>
-        <label className="block">
+        <label htmlFor="loan-emi-months" className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">Tenure (months)</span>
-          <input type="number" value={months} onChange={(e) => setMonths(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg" />
+          <input id="loan-emi-months" type="number" value={months} onChange={(e) => setMonths(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg" />
         </label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium text-slate-900">
@@ -508,8 +519,14 @@ function GpaCalculatorTool() {
     <div className="space-y-4">
       {rows.map((row, i) => (
         <div key={i} className="grid gap-3 sm:grid-cols-[1fr_1fr_auto]">
-          <input type="number" min="0" max="4" step="0.1" value={row.grade} onChange={(e) => update(i, "grade", e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Grade points" />
-          <input type="number" min="0" step="0.5" value={row.credit} onChange={(e) => update(i, "credit", e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Credits" />
+          <label htmlFor={`gpa-grade-${i}`} className="block">
+            <span className="mb-1 block text-sm font-medium text-slate-700">Grade points</span>
+            <input id={`gpa-grade-${i}`} type="number" min="0" max="4" step="0.1" value={row.grade} onChange={(e) => update(i, "grade", e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 3.7" />
+          </label>
+          <label htmlFor={`gpa-credit-${i}`} className="block">
+            <span className="mb-1 block text-sm font-medium text-slate-700">Credits</span>
+            <input id={`gpa-credit-${i}`} type="number" min="0" step="0.5" value={row.credit} onChange={(e) => update(i, "credit", e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 3" />
+          </label>
           <button type="button" onClick={() => removeRow(i)} className="btn-secondary px-3" disabled={rows.length <= 1}>Remove</button>
         </div>
       ))}
@@ -542,17 +559,29 @@ function CalorieCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <select value={sex} onChange={(e) => setSex(e.target.value as "male" | "female")} className="rounded-lg border border-slate-300 px-4 py-3">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-        <input type="number" value={age} onChange={(e) => setAge(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Age" />
-        <input type="number" value={heightCm} onChange={(e) => setHeightCm(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Height (cm)" />
-        <input type="number" value={weightKg} onChange={(e) => setWeightKg(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Weight (kg)" />
+        <label htmlFor="calorie-sex" className="block">
+          <span className="mb-1 block text-sm font-medium text-slate-700">Sex</span>
+          <select id="calorie-sex" value={sex} onChange={(e) => setSex(e.target.value as "male" | "female")} className="w-full rounded-lg border border-slate-300 px-4 py-3">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </label>
+        <label htmlFor="calorie-age" className="block">
+          <span className="mb-1 block text-sm font-medium text-slate-700">Age</span>
+          <input id="calorie-age" type="number" value={age} onChange={(e) => setAge(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 30" />
+        </label>
+        <label htmlFor="calorie-height" className="block">
+          <span className="mb-1 block text-sm font-medium text-slate-700">Height (cm)</span>
+          <input id="calorie-height" type="number" value={heightCm} onChange={(e) => setHeightCm(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 175" />
+        </label>
+        <label htmlFor="calorie-weight" className="block">
+          <span className="mb-1 block text-sm font-medium text-slate-700">Weight (kg)</span>
+          <input id="calorie-weight" type="number" value={weightKg} onChange={(e) => setWeightKg(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 72" />
+        </label>
       </div>
-      <label className="block">
+      <label htmlFor="calorie-activity" className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">Activity factor</span>
-        <select value={activity} onChange={(e) => setActivity(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3">
+        <select id="calorie-activity" value={activity} onChange={(e) => setActivity(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3">
           <option value="1.2">Sedentary</option>
           <option value="1.375">Light activity</option>
           <option value="1.55">Moderate activity</option>
@@ -583,8 +612,14 @@ function DateDifferenceCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="date" value={start} onChange={(e) => setStart(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" />
-        <input type="date" value={end} onChange={(e) => setEnd(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" />
+        <label htmlFor="date-diff-start" className="block">
+          <span className="mb-1 block text-sm font-medium text-slate-700">Start date</span>
+          <input id="date-diff-start" type="date" value={start} onChange={(e) => setStart(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" />
+        </label>
+        <label htmlFor="date-diff-end" className="block">
+          <span className="mb-1 block text-sm font-medium text-slate-700">End date</span>
+          <input id="date-diff-end" type="date" value={end} onChange={(e) => setEnd(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" />
+        </label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium text-slate-900">
         {result ? `${result.days} days | ${formatResult(result.weeks, 2)} weeks | ${formatResult(result.months, 2)} months | ${formatResult(result.years, 2)} years` : "—"}
@@ -607,7 +642,10 @@ function HexToRgbTool() {
   }, [hex]);
   return (
     <div className="space-y-4">
-      <input type="text" value={hex} onChange={(e) => setHex(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg" placeholder="#RRGGBB" />
+      <label htmlFor="hex-input" className="block">
+        <span className="mb-1 block text-sm font-medium text-slate-700">HEX color</span>
+        <input id="hex-input" type="text" value={hex} onChange={(e) => setHex(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg" placeholder="#RRGGBB" />
+      </label>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-lg font-medium text-slate-900">
         {rgb ? `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})` : "Enter a valid HEX code"}
       </p>
@@ -627,9 +665,18 @@ function RgbToHexTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-3">
-        <input type="number" min="0" max="255" value={r} onChange={(e) => setR(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="R" />
-        <input type="number" min="0" max="255" value={g} onChange={(e) => setG(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="G" />
-        <input type="number" min="0" max="255" value={b} onChange={(e) => setB(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="B" />
+        <label htmlFor="rgb-r" className="block">
+          <span className="mb-1 block text-sm font-medium text-slate-700">Red</span>
+          <input id="rgb-r" type="number" min="0" max="255" value={r} onChange={(e) => setR(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="0-255" />
+        </label>
+        <label htmlFor="rgb-g" className="block">
+          <span className="mb-1 block text-sm font-medium text-slate-700">Green</span>
+          <input id="rgb-g" type="number" min="0" max="255" value={g} onChange={(e) => setG(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="0-255" />
+        </label>
+        <label htmlFor="rgb-b" className="block">
+          <span className="mb-1 block text-sm font-medium text-slate-700">Blue</span>
+          <input id="rgb-b" type="number" min="0" max="255" value={b} onChange={(e) => setB(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="0-255" />
+        </label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-lg font-medium text-slate-900">
         {hex ?? "Enter values between 0 and 255"}
@@ -651,14 +698,20 @@ function CaseConverterTool() {
   }, [mode, text]);
   return (
     <div className="space-y-4">
-      <textarea value={text} onChange={(e) => setText(e.target.value)} rows={7} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="Paste text..." />
+      <label htmlFor="case-input" className="block">
+        <span className="mb-1 block text-sm font-medium text-slate-700">Input text</span>
+        <textarea id="case-input" value={text} onChange={(e) => setText(e.target.value)} rows={7} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="Paste text..." />
+      </label>
       <div className="flex flex-wrap gap-2">
         <button type="button" className="btn-secondary px-3" onClick={() => setMode("upper")}>UPPERCASE</button>
         <button type="button" className="btn-secondary px-3" onClick={() => setMode("lower")}>lowercase</button>
         <button type="button" className="btn-secondary px-3" onClick={() => setMode("title")}>Title Case</button>
         <button type="button" className="btn-secondary px-3" onClick={() => setMode("sentence")}>Sentence case</button>
       </div>
-      <textarea value={output} readOnly rows={7} className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3" />
+      <label htmlFor="case-output" className="block">
+        <span className="mb-1 block text-sm font-medium text-slate-700">Converted text</span>
+        <textarea id="case-output" value={output} readOnly rows={7} className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3" />
+      </label>
     </div>
   );
 }
@@ -679,8 +732,14 @@ function RemoveDuplicateLinesTool() {
   }, [input]);
   return (
     <div className="space-y-4">
-      <textarea value={input} onChange={(e) => setInput(e.target.value)} rows={8} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="One item per line..." />
-      <textarea value={output} readOnly rows={8} className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3" />
+      <label htmlFor="dedupe-input" className="block">
+        <span className="mb-1 block text-sm font-medium text-slate-700">Input lines</span>
+        <textarea id="dedupe-input" value={input} onChange={(e) => setInput(e.target.value)} rows={8} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="One item per line..." />
+      </label>
+      <label htmlFor="dedupe-output" className="block">
+        <span className="mb-1 block text-sm font-medium text-slate-700">Unique lines</span>
+        <textarea id="dedupe-output" value={output} readOnly rows={8} className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3" />
+      </label>
     </div>
   );
 }
@@ -699,8 +758,14 @@ function TextToSlugTool() {
   );
   return (
     <div className="space-y-4">
-      <input type="text" value={input} onChange={(e) => setInput(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="Enter title..." />
-      <input type="text" value={slug} readOnly className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3" />
+      <label htmlFor="slug-input" className="block">
+        <span className="mb-1 block text-sm font-medium text-slate-700">Input title</span>
+        <input id="slug-input" type="text" value={input} onChange={(e) => setInput(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="Enter title..." />
+      </label>
+      <label htmlFor="slug-output" className="block">
+        <span className="mb-1 block text-sm font-medium text-slate-700">Generated slug</span>
+        <input id="slug-output" type="text" value={slug} readOnly className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3" />
+      </label>
     </div>
   );
 }
@@ -723,9 +788,9 @@ function MortgageCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-3">
-        <input type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Loan amount" />
-        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual rate (%)" />
-        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Term (years)" />
+        <label htmlFor="mortgage-principal" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Loan amount</span><input id="mortgage-principal" type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 350000" /></label>
+        <label htmlFor="mortgage-rate" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Annual rate (%)</span><input id="mortgage-rate" type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 6.5" /></label>
+        <label htmlFor="mortgage-years" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Term (years)</span><input id="mortgage-years" type="number" value={years} onChange={(e) => setYears(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 30" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Monthly: {result ? formatResult(result.monthly, 2) : "—"} | Total paid: {result ? formatResult(result.total, 2) : "—"} | Interest: {result ? formatResult(result.interest, 2) : "—"}
@@ -750,10 +815,10 @@ function CompoundInterestCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Initial amount" />
-        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual rate (%)" />
-        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years" />
-        <input type="number" value={timesPerYear} onChange={(e) => setTimesPerYear(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Compounds per year" />
+        <label htmlFor="compound-principal" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Initial amount</span><input id="compound-principal" type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 10000" /></label>
+        <label htmlFor="compound-rate" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Annual rate (%)</span><input id="compound-rate" type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 7" /></label>
+        <label htmlFor="compound-years" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Years</span><input id="compound-years" type="number" value={years} onChange={(e) => setYears(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 10" /></label>
+        <label htmlFor="compound-times" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Compounds per year</span><input id="compound-times" type="number" value={timesPerYear} onChange={(e) => setTimesPerYear(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 12" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Future value: {amount === null ? "—" : formatResult(amount, 2)}
@@ -781,10 +846,10 @@ function SavingsGoalCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="number" value={target} onChange={(e) => setTarget(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Savings target" />
-        <input type="number" value={current} onChange={(e) => setCurrent(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current savings" />
-        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Expected annual return (%)" />
-        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years to goal" />
+        <label htmlFor="savings-target" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Savings target</span><input id="savings-target" type="number" value={target} onChange={(e) => setTarget(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 50000" /></label>
+        <label htmlFor="savings-current" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Current savings</span><input id="savings-current" type="number" value={current} onChange={(e) => setCurrent(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 5000" /></label>
+        <label htmlFor="savings-rate" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Expected annual return (%)</span><input id="savings-rate" type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 5" /></label>
+        <label htmlFor="savings-years" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Years to goal</span><input id="savings-years" type="number" value={years} onChange={(e) => setYears(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 8" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Required monthly savings: {monthlyContribution === null || monthlyContribution < 0 ? "—" : formatResult(monthlyContribution, 2)}
@@ -808,9 +873,9 @@ function SimpleInterestCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-3">
-        <input type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Principal" />
-        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Rate (%)" />
-        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years" />
+        <label htmlFor="simple-principal" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Principal</span><input id="simple-principal" type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 10000" /></label>
+        <label htmlFor="simple-rate" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Rate (%)</span><input id="simple-rate" type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 6" /></label>
+        <label htmlFor="simple-years" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Years</span><input id="simple-years" type="number" value={years} onChange={(e) => setYears(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 3" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Interest: {result ? formatResult(result.interest, 2) : "—"} | Total amount: {result ? formatResult(result.total, 2) : "—"}
@@ -835,9 +900,9 @@ function CreditCardPayoffCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-3">
-        <input type="number" value={balance} onChange={(e) => setBalance(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current balance" />
-        <input type="number" value={apr} onChange={(e) => setApr(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="APR (%)" />
-        <input type="number" value={monthlyPayment} onChange={(e) => setMonthlyPayment(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Monthly payment" />
+        <label htmlFor="cc-balance" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Current balance</span><input id="cc-balance" type="number" value={balance} onChange={(e) => setBalance(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 8000" /></label>
+        <label htmlFor="cc-apr" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">APR (%)</span><input id="cc-apr" type="number" value={apr} onChange={(e) => setApr(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 22" /></label>
+        <label htmlFor="cc-payment" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Monthly payment</span><input id="cc-payment" type="number" value={monthlyPayment} onChange={(e) => setMonthlyPayment(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 250" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Payoff time: {months === null ? "Increase monthly payment to exceed monthly interest." : `${formatResult(months, 1)} months`}
@@ -864,10 +929,10 @@ function AutoLoanCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="number" value={carPrice} onChange={(e) => setCarPrice(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Car price" />
-        <input type="number" value={downPayment} onChange={(e) => setDownPayment(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Down payment" />
-        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual rate (%)" />
-        <input type="number" value={months} onChange={(e) => setMonths(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Term (months)" />
+        <label htmlFor="auto-price" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Car price</span><input id="auto-price" type="number" value={carPrice} onChange={(e) => setCarPrice(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 30000" /></label>
+        <label htmlFor="auto-down" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Down payment</span><input id="auto-down" type="number" value={downPayment} onChange={(e) => setDownPayment(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 5000" /></label>
+        <label htmlFor="auto-rate" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Annual rate (%)</span><input id="auto-rate" type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 7.5" /></label>
+        <label htmlFor="auto-months" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Term (months)</span><input id="auto-months" type="number" value={months} onChange={(e) => setMonths(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 60" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Financed: {values ? formatResult(values.financed, 2) : "—"} | Monthly: {values ? formatResult(values.monthly, 2) : "—"} | Total: {values ? formatResult(values.total, 2) : "—"}
@@ -888,8 +953,8 @@ function DebtToIncomeCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="number" value={monthlyDebt} onChange={(e) => setMonthlyDebt(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Monthly debt payments" />
-        <input type="number" value={grossIncome} onChange={(e) => setGrossIncome(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Gross monthly income" />
+        <label htmlFor="dti-debt" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Monthly debt payments</span><input id="dti-debt" type="number" value={monthlyDebt} onChange={(e) => setMonthlyDebt(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 1800" /></label>
+        <label htmlFor="dti-income" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Gross monthly income</span><input id="dti-income" type="number" value={grossIncome} onChange={(e) => setGrossIncome(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 6000" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Debt-to-income ratio: {dti === null ? "—" : `${formatResult(dti, 2)}%`}
@@ -920,11 +985,11 @@ function RefinanceCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="number" value={oldBalance} onChange={(e) => setOldBalance(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current loan balance" />
-        <input type="number" value={remainingMonths} onChange={(e) => setRemainingMonths(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Remaining months" />
-        <input type="number" value={oldRate} onChange={(e) => setOldRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current rate (%)" />
-        <input type="number" value={newRate} onChange={(e) => setNewRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="New rate (%)" />
-        <input type="number" value={closingCosts} onChange={(e) => setClosingCosts(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3 sm:col-span-2" placeholder="Refinance closing costs" />
+        <label htmlFor="refi-balance" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Current loan balance</span><input id="refi-balance" type="number" value={oldBalance} onChange={(e) => setOldBalance(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 240000" /></label>
+        <label htmlFor="refi-months" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Remaining months</span><input id="refi-months" type="number" value={remainingMonths} onChange={(e) => setRemainingMonths(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 300" /></label>
+        <label htmlFor="refi-old-rate" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Current rate (%)</span><input id="refi-old-rate" type="number" value={oldRate} onChange={(e) => setOldRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 7.2" /></label>
+        <label htmlFor="refi-new-rate" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">New rate (%)</span><input id="refi-new-rate" type="number" value={newRate} onChange={(e) => setNewRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 5.9" /></label>
+        <label htmlFor="refi-costs" className="block sm:col-span-2"><span className="mb-1 block text-sm font-medium text-slate-700">Refinance closing costs</span><input id="refi-costs" type="number" value={closingCosts} onChange={(e) => setClosingCosts(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 5000" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Monthly savings: {result ? formatResult(result.savings, 2) : "—"} | Break-even: {result?.breakEven === null || result?.breakEven === undefined ? "Not beneficial at this rate" : `${formatResult(result.breakEven, 1)} months`}
@@ -946,8 +1011,8 @@ function DownPaymentCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="number" value={homePrice} onChange={(e) => setHomePrice(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Home price" />
-        <input type="number" value={downPercent} onChange={(e) => setDownPercent(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Down payment (%)" />
+        <label htmlFor="down-home-price" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Home price</span><input id="down-home-price" type="number" value={homePrice} onChange={(e) => setHomePrice(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 450000" /></label>
+        <label htmlFor="down-percent" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Down payment (%)</span><input id="down-percent" type="number" value={downPercent} onChange={(e) => setDownPercent(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 20" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Down payment: {values ? formatResult(values.down, 2) : "—"} | Estimated loan: {values ? formatResult(values.loanAmount, 2) : "—"}
@@ -975,9 +1040,9 @@ function AmortizationCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-3">
-        <input type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Loan amount" />
-        <input type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual rate (%)" />
-        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Term (years)" />
+        <label htmlFor="amort-principal" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Loan amount</span><input id="amort-principal" type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 250000" /></label>
+        <label htmlFor="amort-rate" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Annual rate (%)</span><input id="amort-rate" type="number" value={annualRate} onChange={(e) => setAnnualRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 6.2" /></label>
+        <label htmlFor="amort-years" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Term (years)</span><input id="amort-years" type="number" value={years} onChange={(e) => setYears(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 25" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-sm font-medium">
         Monthly payment: {values ? formatResult(values.payment, 2) : "—"} | Total interest: {values ? formatResult(values.totalInterest, 2) : "—"} | Month 1 principal/interest: {values ? `${formatResult(values.firstMonthPrincipal, 2)} / ${formatResult(values.firstMonthInterest, 2)}` : "—"}
@@ -1012,10 +1077,10 @@ function AprCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="number" value={loanAmount} onChange={(e) => setLoanAmount(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Loan amount" />
-        <input type="number" value={fees} onChange={(e) => setFees(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Upfront fees" />
-        <input type="number" value={monthlyPayment} onChange={(e) => setMonthlyPayment(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Monthly payment" />
-        <input type="number" value={months} onChange={(e) => setMonths(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Term (months)" />
+        <label htmlFor="apr-loan-amount" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Loan amount</span><input id="apr-loan-amount" type="number" value={loanAmount} onChange={(e) => setLoanAmount(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 20000" /></label>
+        <label htmlFor="apr-fees" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Upfront fees</span><input id="apr-fees" type="number" value={fees} onChange={(e) => setFees(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 800" /></label>
+        <label htmlFor="apr-monthly-payment" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Monthly payment</span><input id="apr-monthly-payment" type="number" value={monthlyPayment} onChange={(e) => setMonthlyPayment(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 420" /></label>
+        <label htmlFor="apr-months" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Term (months)</span><input id="apr-months" type="number" value={months} onChange={(e) => setMonths(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 60" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Estimated APR: {aprValue === null ? "—" : `${formatResult(aprValue, 2)}%`}
@@ -1042,10 +1107,10 @@ function RetirementSavingsCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="number" value={current} onChange={(e) => setCurrent(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Current savings" />
-        <input type="number" value={monthlyContribution} onChange={(e) => setMonthlyContribution(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Monthly contribution" />
-        <input type="number" value={annualReturn} onChange={(e) => setAnnualReturn(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Annual return (%)" />
-        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years" />
+        <label htmlFor="ret-current" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Current savings</span><input id="ret-current" type="number" value={current} onChange={(e) => setCurrent(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 25000" /></label>
+        <label htmlFor="ret-contribution" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Monthly contribution</span><input id="ret-contribution" type="number" value={monthlyContribution} onChange={(e) => setMonthlyContribution(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 500" /></label>
+        <label htmlFor="ret-return" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Annual return (%)</span><input id="ret-return" type="number" value={annualReturn} onChange={(e) => setAnnualReturn(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 7" /></label>
+        <label htmlFor="ret-years" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Years</span><input id="ret-years" type="number" value={years} onChange={(e) => setYears(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 25" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Estimated retirement value: {value === null ? "—" : formatResult(value, 2)}
@@ -1070,9 +1135,9 @@ function InflationCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-3">
-        <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Amount today" />
-        <input type="number" value={inflationRate} onChange={(e) => setInflationRate(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Inflation rate (%)" />
-        <input type="number" value={years} onChange={(e) => setYears(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Years" />
+        <label htmlFor="inflation-amount" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Amount today</span><input id="inflation-amount" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 10000" /></label>
+        <label htmlFor="inflation-rate" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Inflation rate (%)</span><input id="inflation-rate" type="number" value={inflationRate} onChange={(e) => setInflationRate(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 3" /></label>
+        <label htmlFor="inflation-years" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Years</span><input id="inflation-years" type="number" value={years} onChange={(e) => setYears(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 10" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-sm font-medium">
         Future cost equivalent: {values ? formatResult(values.futureCost, 2) : "—"} | Purchasing power of current amount: {values ? formatResult(values.futurePurchasingPower, 2) : "—"}
@@ -1093,8 +1158,8 @@ function RoiCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input type="number" value={initial} onChange={(e) => setInitial(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Initial investment" />
-        <input type="number" value={finalValue} onChange={(e) => setFinalValue(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Final value" />
+        <label htmlFor="roi-initial" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Initial investment</span><input id="roi-initial" type="number" value={initial} onChange={(e) => setInitial(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 10000" /></label>
+        <label htmlFor="roi-final" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Final value</span><input id="roi-final" type="number" value={finalValue} onChange={(e) => setFinalValue(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 13000" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         ROI: {roi === null ? "—" : `${formatResult(roi, 2)}%`}
@@ -1118,9 +1183,9 @@ function BreakEvenCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-3">
-        <input type="number" value={fixedCosts} onChange={(e) => setFixedCosts(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Fixed costs" />
-        <input type="number" value={pricePerUnit} onChange={(e) => setPricePerUnit(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Price per unit" />
-        <input type="number" value={variableCostPerUnit} onChange={(e) => setVariableCostPerUnit(e.target.value)} className="rounded-lg border border-slate-300 px-4 py-3" placeholder="Variable cost per unit" />
+        <label htmlFor="be-fixed-costs" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Fixed costs</span><input id="be-fixed-costs" type="number" value={fixedCosts} onChange={(e) => setFixedCosts(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 10000" /></label>
+        <label htmlFor="be-price-unit" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Price per unit</span><input id="be-price-unit" type="number" value={pricePerUnit} onChange={(e) => setPricePerUnit(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 80" /></label>
+        <label htmlFor="be-variable-unit" className="block"><span className="mb-1 block text-sm font-medium text-slate-700">Variable cost per unit</span><input id="be-variable-unit" type="number" value={variableCostPerUnit} onChange={(e) => setVariableCostPerUnit(e.target.value)} className="w-full rounded-lg border border-slate-300 px-4 py-3" placeholder="e.g. 35" /></label>
       </div>
       <p className="rounded-lg bg-slate-50 px-4 py-3 text-base font-medium">
         Break-even volume: {breakEvenUnits === null ? "—" : `${formatResult(breakEvenUnits, 2)} units`}
@@ -1261,11 +1326,12 @@ export function WordToPdfTool({ toolSlug }: { toolSlug: string }) {
 
   return (
     <div className="space-y-4">
-      <label className="block">
+      <label htmlFor="word-to-pdf-file" className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">
           Word file (.docx)
         </span>
         <input
+          id="word-to-pdf-file"
           type="file"
           accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           onChange={(e) => {

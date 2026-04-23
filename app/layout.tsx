@@ -3,12 +3,33 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { getSiteUrl } from "@/lib/seo/site-url";
 import "./globals.css";
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "QuickTools Hub — Free Online Tools",
   description:
     "Fast, lightweight browser tools for images, text, and everyday calculations.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    title: "QuickTools Hub — Free Online Tools",
+    description:
+      "Fast, lightweight browser tools for images, text, and everyday calculations.",
+    siteName: "QuickTools Hub",
+    url: siteUrl,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "QuickTools Hub — Free Online Tools",
+    description:
+      "Fast, lightweight browser tools for images, text, and everyday calculations.",
+  },
 
   verification: {
     google: "03vK3FWhMUnyBMYvG_boBKgpXZsdyamE2c6mY0VAphE",
@@ -51,6 +72,33 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       ) : null}
+      <Script
+        id="qth-org-jsonld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "QuickTools Hub",
+            url: siteUrl,
+            email: "support@quicktools-hub.com",
+          }),
+        }}
+      />
+      <Script
+        id="qth-website-jsonld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "QuickTools Hub",
+            url: siteUrl,
+          }),
+        }}
+      />
       <body className="flex min-h-screen flex-col antialiased">
       <noscript>
   <iframe

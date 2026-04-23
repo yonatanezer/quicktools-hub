@@ -7,6 +7,9 @@ const cat = "business-tools" as const;
 export const metadata: Metadata = {
   title: categorySeo[cat].title,
   description: categorySeo[cat].description,
+  alternates: {
+    canonical: "/business-tools",
+  },
 };
 
 export default function BusinessToolsPage() {
@@ -18,6 +21,9 @@ export default function BusinessToolsPage() {
       heading="Business and time tools"
       description={seo.description}
       body={seo.body}
+      workflows={seo.workflows}
+      pitfalls={seo.pitfalls}
+      faq={seo.faq}
       tools={list}
       links={[
         { href: "/pdf-tools", label: "PDF tools" },

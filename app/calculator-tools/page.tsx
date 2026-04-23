@@ -7,6 +7,9 @@ const cat = "calculator-tools" as const;
 export const metadata: Metadata = {
   title: categorySeo[cat].title,
   description: categorySeo[cat].description,
+  alternates: {
+    canonical: "/calculator-tools",
+  },
 };
 
 export default function CalculatorToolsPage() {
@@ -18,6 +21,9 @@ export default function CalculatorToolsPage() {
       heading="Basic calculators"
       description={seo.description}
       body={seo.body}
+      workflows={seo.workflows}
+      pitfalls={seo.pitfalls}
+      faq={seo.faq}
       tools={list}
       links={[
         { href: "/image-tools", label: "image tools" },
