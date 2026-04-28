@@ -3,8 +3,21 @@
  * Set NEXT_PUBLIC_SITE_URL in production (e.g. https://quicktoolshub.com).
  */
 export function getSiteUrl(): string {
-  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
-  if (fromEnv) return fromEnv;
+  const candidates = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    process.env.VERCEL_URL,
+  ];
 
-  return "https://quicktools-hub-seven.vercel.app";
+  const first = candidates.find((value) => value && value.trim().length > 0);
+  if (!first) {
+    return "https://quicktools-hub-seven.vercel.app";
+  }
+
+  const withProtocol = /^https?:\/\//i.test(first)
+    ? first
+    : `https://${first}`;
+
+  return withProtocol.replace(/\/$/, "");
 }
